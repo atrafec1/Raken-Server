@@ -2,26 +2,33 @@ package main
 
 import (
 	"daily_check_in/api"
-	"daily_check_in/config"
 	"log"
+	"fmt"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	cfg, err := config.LoadConfig()
+	if err := godotenv.Load(".env"); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	cfg, err := api.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	fmt.Println("Config loaded successfully:", cfg)
 	client, err := api.NewClient(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	resp, err := client.Get("/some-endpoint")
+	fromDate := "2025-12-01"
+	toDate := "2025-12-07"
+	fmt.Println("Fetching timecards from", fromDate, "to", toDate)
+    timecardsResp, err := client.GetTimecards(fromDate, toDate)	
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer resp.Body.Close()
-
-	log.Println("Status code:", resp.StatusCode)
+	fmt.Println("Timecards Retrieved:")
+	fmt.Println(timecardsResp)
+	fmt.Println(len(timecardsResp.Collection))	
 }

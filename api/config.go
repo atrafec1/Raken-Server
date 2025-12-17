@@ -3,6 +3,7 @@ package api
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 type Config struct {
@@ -11,6 +12,8 @@ type Config struct {
 	AccessToken  string
 	RefreshToken string
 	BaseURL      string
+	RefreshURL string
+	ExpiresAt   time.Time
 }
 
 // LoadConfig loads configuration from environment variables
@@ -21,6 +24,7 @@ func LoadConfig() (*Config, error) {
 		AccessToken:  os.Getenv("ACCESS_TOKEN"),
 		RefreshToken: os.Getenv("REFRESH_TOKEN"),
 		BaseURL:      os.Getenv("API_BASE_URL"),
+		RefreshURL: os.Getenv("REFRESH_URL"),
 	}
 
 	// Validate required fields
