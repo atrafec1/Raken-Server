@@ -1,0 +1,10 @@
+Set-Content -Path ".gitignore" -Value @"
+# Go build outputs
+/bin/
+/build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
