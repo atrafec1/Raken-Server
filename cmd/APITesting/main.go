@@ -21,21 +21,31 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fromDate := "2025-12-01"
-	toDate := "2025-12-07"
-	fmt.Println("Fetching timecards from", fromDate, "to", toDate)
-    timecardsResp, err := client.GetTimecards(fromDate, toDate)	
+	
+	fmt.Println("Fetching toolbox talks:")
+
+	toolboxTalks, err := client.GetToolboxTalks()
 	if err != nil {
 		log.Fatal(err)
 	}
-	for _, timecard := range timecardsResp.Collection {
-		employee, exists, err := client.GetEmployeeByUUID(timecard.Worker.UUID)
-		if !exists {
-			log.Fatalf("Employee with UUID %s not found", timecard.Worker.UUID)
-		}else if err != nil {
-			log.Fatalf("Error retrieving employee with UUID %s: %v", timecard.Worker.UUID, err)
+
+	var employeeNames []string
+
+	for _, talk := range toolboxTalks.Collection {
+	
+		for _, attendee := range talk.Attendees {
+			employee, exists, err := client.GetEmployeeByUUID(attendee.Employee.UUID)
+			if !exists {
+				log.Printf("Employee with UUID %s not found\n", attendee.Employee.UUID)
+				continue
+			}else if err != nil {
+				log.Fatal(err)
+			}
+			fullName := fmt.Sprintf("%s %s", employee.FirstName, employee.LastName)
+			employeeNames = append(employeeNames, fullName)
 		}
-		fmt.Printf("Timecard for %s %s :\n", employee.FirstName, employee.LastName, )
 	}
+	fmt.Println("Attendees:")
+	fmt.Println(employeeNames)
 }
 
