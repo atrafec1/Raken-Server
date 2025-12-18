@@ -47,21 +47,21 @@ func (m *MyExcel) InitializeStyles() error {
 	m.Styles["DateHeader"] = DateHeaderStyleID
 	m.Styles["Title"] =TitleStyleID
 
-	JobHeaderStyleID, err := m.File.NewStyle(&excelize.Style{
-		Font: {
-			Underline: true
-		},
-	})
+	// JobHeaderStyleID, err := m.File.NewStyle(&excelize.Style{
+	// 	Font: &excelize.Font{ 
+	// 		Underline: "single",
+	// 	},
+	// })
 	return nil
 }
 
-func (m *MyExcel) CreateCrewTable(jobNumber int startCell, endCell string) error {
-	m.File.AddTable("Sheet1", &excelize.Table{
-		Range: fmt.Sprintf("%v:%v", startCell, endCell)
+// func (m *MyExcel) CreateCrewTable(jobNumber int, startCell, endCell string) error {
+// 	m.File.AddTable("Sheet1", &excelize.Table{
+// 		Range: fmt.Sprintf("%v:%v", startCell, endCell)
 		
 
-	})
-}
+// 	})
+// }
 func (m *MyExcel) SetHeaderValues() error {
     currentTime := time.Now()
     currentDay := currentTime.Weekday()
