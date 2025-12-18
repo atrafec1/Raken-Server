@@ -174,17 +174,22 @@ type Project struct {
 }
 
 func (c *Client) GetTimecards(fromDate, toDate string) (*TimeCardResponse, error) {
-    // Use := for new variables
-	limit := 1000
-    endpoint := fmt.Sprintf("timeCards?fromDate=%s&toDate=%s&limit=%v", fromDate, toDate, limit)
-    fullURL := c.config.BaseURL + endpoint
-    
-    // Use http.NewRequest (your snippet had httpClient.NewRequest)
+	limit := "1000"
+    fullURL := c.config.BaseURL + "timecards"
+
     req, err := http.NewRequest("GET", fullURL, nil)
     if err != nil {
         return nil, fmt.Errorf("error creating request: %w", err)
     }
 
+	queryParams := req.URL.Query()
+	queryParams.Set("fromDate", fromDate)
+	queryParams.Set("toDate", toDate)
+	queryParams.Set("limit", limit)
+
+	req.URL.RawQuery = queryParams.Encode()
+
+	
     var timeCardResp TimeCardResponse
     // Pass the pointer so DoRequest can fill it
     err = c.DoRequest(req, &timeCardResp) 
