@@ -27,8 +27,22 @@ func (c *Client) GetProjects() (*ProjectResponse, error) {
 	queryParams.Set("limit",limit)
 	req.URL.RawQuery = queryParams.Encode()	
 	var projects ProjectResponse
-	if err := c.DoRequest(req, &projects); err != nil {
+	if err := c.doRequest(req, &projects); err != nil {
 		return nil, fmt.Errorf("error retrieving projects %v", err)
 	}
-	return projects, nil
+	return &projects, nil
+}
+
+func (c *Client) UpdateProjectMap() error {
+	projectsResp, err := c.GetProjects()
+	if err != nil {
+		return fmt.Errorf("error getting projects: %v", err)
+	}
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.projectMap = make(map[string]Project)
+	for _, project := range projectsResp.Collection {
+		c.projectMap[project.UUID] = project
+	}
+	return nil
 }

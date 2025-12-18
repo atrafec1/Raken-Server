@@ -41,9 +41,6 @@ type CostCode struct {
 	Division string `json:"division"`
 }
 
-type Project struct {
-	UUID string `json:"uuid"`
-}
 
 func (c *Client) GetTimecards(fromDate, toDate string) (*TimeCardResponse, error) {
 	limit := "1000"

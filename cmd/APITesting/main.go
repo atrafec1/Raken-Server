@@ -8,20 +8,19 @@ import (
 )
 
 func main() {
+	fmt.Println("Loading environment variables")
 	if err := godotenv.Load(".env"); err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	
+	fmt.Println("Loading config...")	
 	cfg, err := api.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Config loaded successfully:", cfg)
 	client, err := api.NewClient(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	fromDate := "2025-12-01"
 	toDate := "2025-12-07"
 	fmt.Println("Fetching timecards from", fromDate, "to", toDate)
@@ -29,8 +28,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Timecards Retrieved:")
-	fmt.Println(timecardsResp)
-	fmt.Println(len(timecardsResp.Collection))	
+	for _, timecard := range timecardsResp.Collection {
+		employee, exists, err := client.GetEmployeeByUUID(timecard.Worker.UUID)
+		if !exists {
+			log.Fatalf("Employee with UUID %s not found", timecard.Worker.UUID)
+		}else if err != nil {
+			log.Fatalf("Error retrieving employee with UUID %s: %v", timecard.Worker.UUID, err)
+		}
+		fmt.Printf("Timecard for %s %s :\n", employee.FirstName, employee.LastName, )
+	}
 }
 
