@@ -17,6 +17,7 @@ type Client struct {
 	mu         sync.Mutex
 	projectMap map[string]Project
 	employeeMap map[string]Employee
+	classMap map[string]Class
 }
 
 type TokenResponse struct {
@@ -37,6 +38,7 @@ func NewClient(cfg *Config) (*Client, error) {
 		},
 		projectMap: make(map[string]Project),
 		employeeMap: make(map[string]Employee),
+		classMap: make(map[string]Class),
 	}
 	if err := c.UpdateProjectMap(); err != nil {
 		return nil, fmt.Errorf("error initializing project map: %w", err)
@@ -45,34 +47,11 @@ func NewClient(cfg *Config) (*Client, error) {
 	if err := c.UpdateEmployeeMap(); err != nil {
 		return nil, fmt.Errorf("error initializing employee map: %w", err)
 	}
+	if err := c.UpdateClassMap(); err != nil {
+		return nil, fmt.Errorf("error initializing employee map: %w", err)
+	}
 	time.Sleep(2 * time.Second)
 	return c, nil
-}
-
-func (c *Client) GetProjectByUUID(uuid string) (Project, bool, error) {
-	project, exists := c.projectMap[uuid]
-	if exists {
-		return project, true, nil
-	}
-
-	if err := c.UpdateProjectMap(); err != nil {
-		return Project{}, false, fmt.Errorf("failed to refresh project map: %w", err)
-	}
-	project, exists = c.projectMap[uuid]
-	return project, exists, nil
-}
-
-func (c *Client) GetEmployeeByUUID(uuid string) (Employee, bool, error) {
-	employee, exists := c.employeeMap[uuid]
-	if exists {
-		return employee, true, nil
-	}
-
-	if err := c.UpdateEmployeeMap(); err != nil {
-		return Employee{}, false, fmt.Errorf("failed to refresh employee map: %w", err)
-	}
-	employee, exists = c.employeeMap[uuid]
-	return employee, exists, nil
 }
 
 func (c *Client) refreshAccessToken() error {

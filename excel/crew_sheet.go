@@ -2,9 +2,11 @@ package excel
 
 import (
 	"fmt"
+	"strings"
 	"time"
-
+	"sort"
 	"github.com/xuri/excelize/v2"
+	"daily_check_in/api"
 )
 
 type MyExcel struct {
@@ -13,145 +15,138 @@ type MyExcel struct {
 }
 
 func (m *MyExcel) InitializeStyles() error {
-	DateHeaderStyleID, err := m.File.NewStyle(&excelize.Style{
-		Border: []excelize.Border{
-			{Type: "bottom", Color: "000000", Style: 2},
-		},
-		Font: &excelize.Font{
-			Bold: true,
-		},
-	})
-	if err != nil {
-		return fmt.Errorf("failed to create date header style: %v", err)
-	}
+	m.Styles = make(map[string]int)
 
-	MainDateFormat := "dddd, mmmm dd, yyyy"
-	MainDateStyleID, err := m.File.NewStyle(&excelize.Style{
-		CustomNumFmt: &MainDateFormat,
-		Font: &excelize.Font{
-			Bold: true,
-			Size: 22,
-			Underline: "single",
-		},
+	dateHeaderStyle, _ := m.File.NewStyle(&excelize.Style{
+		Border: []excelize.Border{{Type: "bottom", Color: "000000", Style: 2}},
+		Font:   &excelize.Font{Bold: true},
 	})
-	if err != nil {
-		return fmt.Errorf("failed to create main date style: %v", err)
-	}
-	
-	TitleStyleID, err := m.File.NewStyle(&excelize.Style{
-		Font: &excelize.Font{
-			Size: 14,
-		},
-	})
-	m.Styles["MainDate"] = MainDateStyleID
-	m.Styles["DateHeader"] = DateHeaderStyleID
-	m.Styles["Title"] =TitleStyleID
 
-	// JobHeaderStyleID, err := m.File.NewStyle(&excelize.Style{
-	// 	Font: &excelize.Font{ 
-	// 		Underline: "single",
-	// 	},
-	// })
+	mainDateFormat := "dddd, mmmm dd, yyyy"
+	mainDateStyle, _ := m.File.NewStyle(&excelize.Style{
+		CustomNumFmt: &mainDateFormat,
+		Font:         &excelize.Font{Bold: true, Size: 22, Underline: "single"},
+	})
+
+	titleStyle, _ := m.File.NewStyle(&excelize.Style{
+		Font: &excelize.Font{Size: 14},
+	})
+
+	jobHeaderStyle, _ := m.File.NewStyle(&excelize.Style{
+		Font: &excelize.Font{Bold: true, Underline: "single"},
+	})
+
+	m.Styles["DateHeader"] = dateHeaderStyle
+	m.Styles["MainDate"] = mainDateStyle
+	m.Styles["Title"] = titleStyle
+	m.Styles["JobHeader"] = jobHeaderStyle
+
 	return nil
 }
 
-// func (m *MyExcel) CreateCrewTable(jobNumber int, startCell, endCell string) error {
-// 	m.File.AddTable("Sheet1", &excelize.Table{
-// 		Range: fmt.Sprintf("%v:%v", startCell, endCell)
+func (m *MyExcel) SetHeaderValues(week []time.Time) {
+	// 1. Static Headers
+	m.File.SetCellValue("Sheet1", "A1", "TIMESHEET REVIEW / RECAP")
+	m.File.SetCellStyle("Sheet1", "A1", "A1", m.Styles["Title"])
+
+	// 2. Main Date Display (Using the Friday/Sunday as the "Week Ending")
+	weDate := week[len(week)-1].Format("Monday, January 02, 2006")
+	m.File.SetCellValue("Sheet1", "F1", weDate)
+	m.File.SetCellStyle("Sheet1", "F1", "F1", m.Styles["MainDate"])
+
+	// 3. Table Column Headers
+	headers := map[string]string{
+		"A5": "Last Name", "B5": "First Name", "C5": "Class", "D5": "Equip",
+	}
+	for cell, val := range headers {
+		m.File.SetCellValue("Sheet1", cell, val)
+	}
+
+	// 4. M-S Days and Dates (F-K)
+	dayNames := []string{"M", "T", "W", "Th", "F", "S"}
+	for i, t := range week {
+		if i >= 6 { break } // Only map M-S
+		col, _ := excelize.ColumnNumberToName(6 + i) // Starts at F (6)
 		
-
-// 	})
-// }
-func (m *MyExcel) SetHeaderValues() error {
-    currentTime := time.Now()
-    currentDay := currentTime.Weekday()
-    endOfWeekSunday := currentTime.AddDate(0, 0, 6-int(currentDay))
-    week := make([]time.Time, 7)
-    for i := 0; i < 7; i++ {
-        week[i] = endOfWeekSunday.AddDate(0, 0, i-6)
-    }
-
-    // SECTION 1: The "01/02" Dates (Row 5)
-    dates := map[string]string {
-        "F5": week[0].Format("01/02"),
-        "G5": week[1].Format("01/02"),
-        "H5": week[2].Format("01/02"),
-        "I5": week[3].Format("01/02"),
-        "J5": week[4].Format("01/02"),
-        "K5": week[5].Format("01/02"),
-    }
-
-    // SECTION 2: The "M, T, W" Days (Row 4)
-    days := map[string]string {
-        "F4": "M",
-        "G4": "T",
-        "H4": "W",
-        "I4": "Th",
-        "J4": "F",
-        "K4": "S", // Fixed: replaced "." with ","
-    }
-	mainDateCell := "F1"
-	titleCell := "A1"
-    // SECTION 3: General Headers
-    headerCells := map[string]string{
-        "B5": "Last Name",
-        "C5": "First Name",
-        "D5": "Class",
-        "E5": "Equip",
-    }
-	fmt.Println("End of week Sunday Formatted and not Formatted:", endOfWeekSunday.Format("2006-01-02"), endOfWeekSunday)
-    DateHeaderStyleID := m.Styles["DateHeader"]
-	MainDateStyleID := m.Styles["MainDate"]
-	TitleStyleID := m.Styles["Title"]
-	
-	m.File.SetCellValue("Sheet1", titleCell, "TIMESHEET REVIEW / RECAP")
-	m.File.SetCellStyle("Sheet1", titleCell, titleCell, TitleStyleID)
-
-	m.File.SetCellValue("Sheet1", mainDateCell, endOfWeekSunday.Format("Monday, January 02, 2006"))
-	m.File.SetCellStyle("Sheet1", mainDateCell, mainDateCell, MainDateStyleID)
-    // Apply General Headers (No special style)
-    for cell, value := range headerCells {
-        m.File.SetCellValue("Sheet1", cell, value)
-    }
-
-    // Apply Days (Row 4) with the Border/Bold Style
-    for cell, value := range days {
-        m.File.SetCellValue("Sheet1", cell, value)
-    }
-
-    // Apply Dates (Row 5) with the Border/Bold Style
-    for cell, value := range dates {
-        m.File.SetCellValue("Sheet1", cell, value)
-        m.File.SetCellStyle("Sheet1", cell, cell, DateHeaderStyleID)
-    }
-
-    return nil
+		// Day Name (Row 4)
+		m.File.SetCellValue("Sheet1", col+"4", dayNames[i])
+		
+		// Date String (Row 5)
+		m.File.SetCellValue("Sheet1", col+"5", t.Format("01/02"))
+		m.File.SetCellStyle("Sheet1", col+"5", col+"5", m.Styles["DateHeader"])
+	}
 }
 
-func CreateCrewAllocationSheet(filename string) error {
+func (m *MyExcel) BuildTable(todaysCrews []api.CrewAllocationEntry, allEntries []api.CrewAllocationEntry, week []time.Time) {
+	// Map dates to columns for fast lookup
+	dateToCol := make(map[string]string)
+	for i, t := range week {
+		col, _ := excelize.ColumnNumberToName(6 + i)
+		dateToCol[t.Format("2006-01-02")] = col
+	}
+
+	// 1. Sort today's crews by Job Number
+	sort.Slice(todaysCrews, func(i, j int) bool {
+		return todaysCrews[i].Project.Number < todaysCrews[j].Project.Number
+	})
+
+	currentRow := 7
+	for _, crew := range todaysCrews {
+		// 2. Job Header Row
+		jobLabel := fmt.Sprintf("JOB %s %s", crew.Project.Number, crew.Project.Name)
+		m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), jobLabel)
+		m.File.SetCellStyle("Sheet1", "A"+fmt.Sprint(currentRow), "A"+fmt.Sprint(currentRow), m.Styles["JobHeader"])
+		currentRow++
+
+		for i, emp := range crew.Employees {
+			// 3. Employee Info (Left Side)
+			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), i+1) // Index
+			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.LastName)
+			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.FirstName)
+			m.Files.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.Class)
+
+			// 4. History (Right Side) - Aligned to current row
+			history := api.GetCrewMemberHistory(emp.UUID, allEntries)
+			for dateStr, colLetter := range dateToCol {
+				if projects, ok := history.Projects[dateStr]; ok {
+					displayVal := strings.Join(projects, " / ")
+					m.File.SetCellValue("Sheet1", colLetter+fmt.Sprint(currentRow), displayVal)
+				}
+			}
+			currentRow++
+		}
+		currentRow++ // Spacer row between jobs
+	}
+}
+
+// --- Entry Point ---
+
+func CreateCrewAllocationSheet(filename string, allCrews []api.CrewAllocationEntry) error {
 	f := excelize.NewFile()
-	styles := make(map[string]int)
-	myExcel := &MyExcel{File: f, Styles: styles}
+	defer f.Close()
+
+	myExcel := &MyExcel{File: f}
+	myExcel.InitializeStyles()
+
+	// Calculate the week (Monday to Saturday)
+	now := time.Now()
+	offset := int(time.Monday - now.Weekday())
+	if offset > 0 { offset = -6 } // Handle Sundays
 	
-	if err := myExcel.InitializeStyles(); err != nil {
-		return err
+	monday := now.AddDate(0, 0, offset)
+	week := make([]time.Time, 6)
+	for i := 0; i < 6; i++ {
+		week[i] = monday.AddDate(0, 0, i)
 	}
 
-	if err := myExcel.SetHeaderValues(); err != nil {
-		return err
-	}
+	myExcel.SetHeaderValues(week)
 
-	sheet2 := "Sheet2"
-	f.NewSheet(sheet2)
-	f.SetCellValue(sheet2, "A2", "This is on Sheet 2!")
+	todaysCrews := api.GetTodaysCrewAllocations(allCrews)
+	myExcel.BuildTable(todaysCrews, allCrews, week)
 
-	if err := f.SaveAs(filename); err != nil {
-		return fmt.Errorf("failed to save file: %v", err)
-	}
+	// Set column widths for readability
+	f.SetColWidth("Sheet1", "A", "A", 30)
+	f.SetColWidth("Sheet1", "B", "D", 15)
 
-	if err := f.Close(); err != nil {
-		return fmt.Errorf("failed to close file: %v", err)
-	}
-
-	return nil
+	return f.SaveAs(filename)
 }

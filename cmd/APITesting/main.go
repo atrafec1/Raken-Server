@@ -34,12 +34,9 @@ func main() {
 	for _, talk := range toolboxTalks.Collection {
 	
 		for _, attendee := range talk.Attendees {
-			employee, exists, err := client.GetEmployeeByUUID(attendee.Employee.UUID)
-			if !exists {
+			employee, err := client.GetEmployeeByUUID(attendee.Employee.UUID)
+			if err != nil {
 				log.Printf("Employee with UUID %s not found\n", attendee.Employee.UUID)
-				continue
-			}else if err != nil {
-				log.Fatal(err)
 			}
 			fullName := fmt.Sprintf("%s %s", employee.FirstName, employee.LastName)
 			employeeNames = append(employeeNames, fullName)

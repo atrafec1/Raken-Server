@@ -3,30 +3,39 @@ package main
 import (
      "daily_check_in/excel"
 	"fmt"
-	"daily_check_in/api"
 	"log"
 	"github.com/joho/godotenv"
 	"daily_check_in/api"
 )
 
 func main() {
+	fmt.Println("Loading environment variables")
 	if err := godotenv.Load(".env"); err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	fmt.Println("Loading config...")	
+	fmt.Println("Loading config...")
 	cfg, err := api.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
-	client, err := api.NewClient(config)
+	client, err := api.NewClient(cfg)
 	if err != nil {
-		fmt.Printf("Error creating API client: %v\n", err)
-		return
+		log.Fatal(err)
 	}
-	data := excel.FormatToolBoxTalkData(client)
-	fmt.Printf("Formatted Toolbox Talk Data: %+v\n", data)
+	fmt.Println("Fetching toolbox talks:")
 
-	fmt.Println("Creating Crew Allocation Sheet...")
-	excel.CreateCrewAllocationSheet("Crew_Sheet.xlsx")
-	fmt.Println("Crew_Sheet.xlsx created successfully")
+	allCrews, err := client.GetCrewAllocationData()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if allCrews == nil {
+		log.Fatal("No crew allocation data retrieved")
+	}
+	fmt.Println("amount of crews fetched:", len(allCrews))
+
+	fmt.Println("Creating Excel file...")
+	if err := excel.CreateCrewAllocationSheet("Crew_Allocation_Recap.xlsx", allCrews); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Excel file created: Crew_Allocation_Recap.xlsx")
 }

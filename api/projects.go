@@ -46,3 +46,16 @@ func (c *Client) UpdateProjectMap() error {
 	}
 	return nil
 }
+
+func (c *Client) GetProjectByUUID(uuid string) (Project, error) {
+	project, exists := c.projectMap[uuid]
+	if exists {
+		return project, true, nil
+	}
+
+	if err := c.UpdateProjectMap(); err != nil {
+		return Project{}, false, fmt.Errorf("failed to refresh project map: %w", err)
+	}
+	project, exists = c.projectMap[uuid]
+	return project, exists, nil
+}

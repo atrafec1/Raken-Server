@@ -14,6 +14,7 @@ type Employee struct {
 	FirstName string `json:"firstName"`
 	LastName string `json:"lastName"`
 	EmployeeID string `json:"employeeId"`
+	ClassUUID string `json:"classificationUuid"`
 }
 
 func (c *Client) GetEmployees() (*EmployeeResponse, error) {
@@ -48,4 +49,17 @@ func (c *Client) UpdateEmployeeMap() error {
 		c.employeeMap[employee.UUID] = employee
 	}
 	return nil
+}
+
+func (c *Client) GetEmployeeByUUID(uuid string) (Employee, error) {
+	employee, exists := c.employeeMap[uuid]
+	if exists {
+		return employee, true, nil
+	}
+
+	if err := c.UpdateEmployeeMap(); err != nil {
+		return Employee{}, false, fmt.Errorf("failed to refresh employee map: %w", err)
+	}
+	employee, exists = c.employeeMap[uuid]
+	return employee, exists, nil
 }

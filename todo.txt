@@ -1,0 +1,16 @@
+# Get all the toolbox talks from this week
+# Retrieve the entries just from today
+# If there are other days then we will get the previous day entries (We can check if other dates exist)
+#If there are other days:
+
+#go through each of todays crews and get their employee history
+#Make a table showing their employee history Mon-Sat (If days haven't happened yet then we can leave cells blank)
+#If an employee doesnt appear on previous day Crew Allocation entries then we can mark as NW (no work)
+#Otherwise we mark this cell as their previous project number
+
+
+#Need to break this up into different sections:
+
+#API Retrieval of Toolbox talks (Already have this)
+#Format the data for easier use (Partially done)
+#Use this data for creating the excel sheet (Not done)
