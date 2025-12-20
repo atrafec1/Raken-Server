@@ -4,15 +4,10 @@ import (
      "daily_check_in/excel"
 	"fmt"
 	"log"
-	"github.com/joho/godotenv"
 	"daily_check_in/api"
 )
 
 func main() {
-	fmt.Println("Loading environment variables")
-	if err := godotenv.Load(".env"); err != nil {
-		log.Fatal("Error loading .env file")
-	}
 	fmt.Println("Loading config...")
 	cfg, err := api.LoadConfig()
 	if err != nil {

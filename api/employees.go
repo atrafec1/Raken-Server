@@ -53,13 +53,14 @@ func (c *Client) UpdateEmployeeMap() error {
 
 func (c *Client) GetEmployeeByUUID(uuid string) (Employee, error) {
 	employee, exists := c.employeeMap[uuid]
-	if exists {
-		return employee, true, nil
+	if !exists {
+		if err := c.UpdateEmployeeMap(); err != nil {
+			return Employee{}, fmt.Errorf("failed to refresh employee map: %w", err)
+		}
+		employee, exists = c.employeeMap[uuid]
+		if !exists {
+			return Employee{}, fmt.Errorf("employee with UUID %s not found after refresh", uuid)
+		}
 	}
-
-	if err := c.UpdateEmployeeMap(); err != nil {
-		return Employee{}, false, fmt.Errorf("failed to refresh employee map: %w", err)
-	}
-	employee, exists = c.employeeMap[uuid]
-	return employee, exists, nil
+	return employee, nil
 }

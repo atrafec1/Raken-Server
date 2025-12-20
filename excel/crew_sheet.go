@@ -77,7 +77,7 @@ func (m *MyExcel) SetHeaderValues(week []time.Time) {
 	}
 }
 
-func (m *MyExcel) BuildTable(todaysCrews []api.CrewAllocationEntry, allEntries []api.CrewAllocationEntry, week []time.Time) {
+func (m *MyExcel) BuildTable(todaysCrews, allEntries []api.Crew, week []time.Time) {
 	// Map dates to columns for fast lookup
 	dateToCol := make(map[string]string)
 	for i, t := range week {
@@ -98,12 +98,12 @@ func (m *MyExcel) BuildTable(todaysCrews []api.CrewAllocationEntry, allEntries [
 		m.File.SetCellStyle("Sheet1", "A"+fmt.Sprint(currentRow), "A"+fmt.Sprint(currentRow), m.Styles["JobHeader"])
 		currentRow++
 
-		for i, emp := range crew.Employees {
+		for i, emp := range crew.CrewMembers {
 			// 3. Employee Info (Left Side)
 			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), i+1) // Index
 			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.LastName)
 			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.FirstName)
-			m.Files.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.Class)
+			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.Class)
 
 			// 4. History (Right Side) - Aligned to current row
 			history := api.GetCrewMemberHistory(emp.UUID, allEntries)
@@ -121,7 +121,7 @@ func (m *MyExcel) BuildTable(todaysCrews []api.CrewAllocationEntry, allEntries [
 
 // --- Entry Point ---
 
-func CreateCrewAllocationSheet(filename string, allCrews []api.CrewAllocationEntry) error {
+func CreateCrewAllocationSheet(filename string, allCrews []api.Crew) error {
 	f := excelize.NewFile()
 	defer f.Close()
 

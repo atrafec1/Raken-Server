@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"time"
+	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -18,6 +19,9 @@ type Config struct {
 
 // LoadConfig loads configuration from environment variables
 func LoadConfig() (*Config, error) {
+	err := godotenv.Load(".env"); if err != nil {
+		return nil, fmt.Errorf("error loading .env file: %v", err)
+	}
 	cfg := &Config{
 		ClientID:     os.Getenv("CLIENT_ID"),
 		ClientSecret: os.Getenv("CLIENT_SECRET"),

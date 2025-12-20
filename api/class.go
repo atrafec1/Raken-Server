@@ -28,21 +28,21 @@ func (c *Client) GetClasses() (*ClassResponse, error) {
 	queryParams.Set("limit", limit)
 	req.URL.RawQuery = queryParams.Encode()
 	var response ClassResponse 
-	resp, err := c.doRequest(req, *response) 
+ 	err = c.doRequest(req, &response)
 	if err != nil {
-		return nil, fmt.Errorf("error retrieving Class: %v", err)
+		return nil, fmt.Errorf("error retrieving classifications: %v", err)
 	}
 
-	return resp, nil
+	return &response, nil
 }
 
 func (c *Client) UpdateClassMap() error {
 	classResp, err := c.GetClasses()
 	if err != nil {
-		return fmt.Errof("error getting classifications: %v", err)
+		return fmt.Errorf("error getting classifications: %v", err)
 	}
 	c.mu.Lock()
-	defer.c.mu.Unlock()
+	defer c.mu.Unlock()
 	c.classMap = make(map[string]Class)
 	for _, class := range classResp.Collection {
 		c.classMap[class.UUID] = class
@@ -50,11 +50,16 @@ func (c *Client) UpdateClassMap() error {
 	return nil
 }
 
-func (c *Client) GetClassByUUID(uuid string) (Class, err) {
-	class, ok := c.classMap[uuid]
-	if !ok {
-		return nil, fmt.Errorf("Did not find a class for uuid: %v", uuid)
+func (c *Client) GetClassByUUID(uuid string) (Class, error) {
+	class, exists := c.classMap[uuid]
+	if !exists {
+		if err := c.UpdateClassMap(); err != nil {
+			return Class{}, fmt.Errorf("failed to refresh class map: %w", err)
+		}
+		class, exists = c.classMap[uuid]
+		if !exists {
+			return Class{}, fmt.Errorf("class with UUID %s not found after refresh", uuid)
+		}
 	}
 	return class, nil
 }
-

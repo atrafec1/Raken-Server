@@ -49,13 +49,14 @@ func (c *Client) UpdateProjectMap() error {
 
 func (c *Client) GetProjectByUUID(uuid string) (Project, error) {
 	project, exists := c.projectMap[uuid]
-	if exists {
-		return project, true, nil
+	if !exists {
+		if err := c.UpdateProjectMap(); err != nil {
+			return Project{}, fmt.Errorf("failed to refresh project map: %w", err)
+		}
+		project, exists = c.projectMap[uuid]
+		if !exists {
+			return Project{}, fmt.Errorf("project with UUID %s not found after refresh", uuid)
+		}
 	}
-
-	if err := c.UpdateProjectMap(); err != nil {
-		return Project{}, false, fmt.Errorf("failed to refresh project map: %w", err)
-	}
-	project, exists = c.projectMap[uuid]
-	return project, exists, nil
+	return project, nil
 }
