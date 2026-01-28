@@ -2,8 +2,9 @@ package main
 
 import (
 	"daily_check_in/api"
-	"log"
 	"fmt"
+	"log"
+
 	"github.com/joho/godotenv"
 )
 
@@ -12,7 +13,7 @@ func main() {
 	if err := godotenv.Load(".env"); err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	fmt.Println("Loading config...")	
+	fmt.Println("Loading config...")
 	cfg, err := api.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
@@ -21,7 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	fmt.Println("Fetching toolbox talks:")
 
 	toolboxTalks, err := client.GetToolboxTalks()
@@ -32,11 +33,11 @@ func main() {
 	var employeeNames []string
 
 	for _, talk := range toolboxTalks.Collection {
-	
+
 		for _, attendee := range talk.Attendees {
-			employee, err := client.GetEmployeeByUUID(attendee.Employee.UUID)
+			employee, err := client.GetEmployeeByUUID(attendee.Member.UUID)
 			if err != nil {
-				log.Printf("Employee with UUID %s not found\n", attendee.Employee.UUID)
+				log.Printf("Employee with UUID %s not found\n", attendee.Member.UUID)
 			}
 			fullName := fmt.Sprintf("%s %s", employee.FirstName, employee.LastName)
 			employeeNames = append(employeeNames, fullName)
@@ -45,4 +46,3 @@ func main() {
 	fmt.Println("Attendees:")
 	fmt.Println(employeeNames)
 }
-

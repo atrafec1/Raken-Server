@@ -6,19 +6,24 @@ import (
 	"time"
 )
 
-
 type ToolboxTalkResponse struct {
 	Collection []ToolboxTalkEntry `json:"collection"`
 }
 
 type ToolboxTalkEntry struct {
-	Project Project `json:"project"`
+	Project   Project    `json:"project"`
 	Attendees []Attendee `json:"attendees"`
-	Date string `json:"scheduleDate"`
+	Date      string     `json:"scheduleDate"`
+	Status    string     `json:"status"`
 }
 
 type Attendee struct {
-	Employee Employee `json:"member"`
+	Member Member `json:"member"`
+}
+
+type Member struct {
+	UUID string `json:"uuid"`
+	Name string `json:"name"`
 }
 
 func (c *Client) GetToolboxTalks() (*ToolboxTalkResponse, error) {
@@ -33,7 +38,7 @@ func (c *Client) GetToolboxTalks() (*ToolboxTalkResponse, error) {
 	queryParams.Set("limit", limit)
 	req.URL.RawQuery = queryParams.Encode()
 
-	var toolboxTalkResp ToolboxTalkResponse 
+	var toolboxTalkResp ToolboxTalkResponse
 
 	if err := c.doRequest(req, &toolboxTalkResp); err != nil {
 		return nil, fmt.Errorf("error retrieving toolbox talks: %v", err)
@@ -42,16 +47,16 @@ func (c *Client) GetToolboxTalks() (*ToolboxTalkResponse, error) {
 }
 
 type Crew struct {
-	Date string
-	Project Project 
+	Date        string
+	Project     Project
 	CrewMembers []CrewMember
 }
 
 type CrewMember struct {
 	FirstName string
 	LastName  string
-	Class string
-	UUID string
+	Class     string
+	UUID      string
 }
 
 func (c *Client) GetCrewAllocationData() ([]Crew, error) {
@@ -60,8 +65,11 @@ func (c *Client) GetCrewAllocationData() ([]Crew, error) {
 		fmt.Printf("Error fetching toolbox talks: %v\n", err)
 		return nil, err
 	}
-    var crews []Crew
+	var crews []Crew
 	for _, entry := range resp.Collection {
+		if entry.Status != "COMPLETED" {
+			continue
+		}
 		var crew Crew
 		crew.Date = entry.Date
 		project, err := c.GetProjectByUUID(entry.Project.UUID)
@@ -69,9 +77,9 @@ func (c *Client) GetCrewAllocationData() ([]Crew, error) {
 			fmt.Printf("Error retrieving project with UUID %s: %v\n", entry.Project.UUID, err)
 		}
 		for _, attendee := range entry.Attendees {
-			employee, err := c.GetEmployeeByUUID(attendee.Employee.UUID)
+			employee, err := c.GetEmployeeByUUID(attendee.Member.UUID)
 			if err != nil {
-				fmt.Printf("could not retrieve employee with UUID %s: %v\n", attendee.Employee.UUID, err)
+				fmt.Printf("could not retrieve employee with UUID %s: %v\n", attendee.Member.UUID, err)
 			}
 			class, err := c.GetClassByUUID(employee.ClassUUID)
 			if err != nil {
@@ -88,13 +96,13 @@ func (c *Client) GetCrewAllocationData() ([]Crew, error) {
 		crew.Project = project
 		crews = append(crews, crew)
 	}
-	return crews, nil 
+	return crews, nil
 }
 
 func GetTodaysCrewAllocations(crews []Crew) []Crew {
 	var todaysCrews []Crew
 	today := time.Now().Format("2006-01-02")
-	
+
 	for _, crew := range crews {
 		if crew.Date == today {
 			todaysCrews = append(todaysCrews, crew)
@@ -123,5 +131,3 @@ func GetCrewMemberHistory(employeeUUID string, history []Crew) CrewMemberHistory
 	}
 	return memberHistory
 }
-
-

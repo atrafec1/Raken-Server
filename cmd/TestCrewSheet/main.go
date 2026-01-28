@@ -1,20 +1,12 @@
 package main
 
-import (
-	 "daily_check_in/excel"
-	"fmt"
-	"log"
-	"daily_check_in/api"
-)
-
-
 func main() {
-	fmt.Println("Getting mock data")
+	// fmt.Println("Getting mock data")
 
-	mockCrews := api.GetMockData()
-	fmt.Println("Creating Excel file...")
-	if err := excel.CreateCrewAllocationSheet("Mock_Crew_Allocation_Recap.xlsx", mockCrews); err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Excile file created: Mock Crew_Allocation_Recap.xlsx")
+	// mockCrews := api.GetMockData()
+	// fmt.Println("Creating Excel file...")
+	// if err := excel.CreateCrewAllocationSheet("Mock_Crew_Allocation_Recap.xlsx", mockCrews); err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println("Excile file created: Mock Crew_Allocation_Recap.xlsx")
 }

@@ -1,12 +1,13 @@
 package excel
 
 import (
+	"daily_check_in/api"
 	"fmt"
+	"sort"
 	"strings"
 	"time"
-	"sort"
+
 	"github.com/xuri/excelize/v2"
-	"daily_check_in/api"
 )
 
 type MyExcel struct {
@@ -65,12 +66,14 @@ func (m *MyExcel) SetHeaderValues(week []time.Time) {
 	// 4. M-S Days and Dates (F-K)
 	dayNames := []string{"M", "T", "W", "Th", "F", "S"}
 	for i, t := range week {
-		if i >= 6 { break } // Only map M-S
+		if i >= 6 {
+			break
+		} // Only map M-S
 		col, _ := excelize.ColumnNumberToName(6 + i) // Starts at F (6)
-		
+
 		// Day Name (Row 4)
 		m.File.SetCellValue("Sheet1", col+"4", dayNames[i])
-		
+
 		// Date String (Row 5)
 		m.File.SetCellValue("Sheet1", col+"5", t.Format("01/02"))
 		m.File.SetCellStyle("Sheet1", col+"5", col+"5", m.Styles["DateHeader"])
@@ -78,6 +81,8 @@ func (m *MyExcel) SetHeaderValues(week []time.Time) {
 }
 
 func (m *MyExcel) BuildTable(todaysCrews, allEntries []api.Crew, week []time.Time) {
+	fmt.Println(len(todaysCrews))
+	fmt.Println(todaysCrews)
 	// Map dates to columns for fast lookup
 	dateToCol := make(map[string]string)
 	for i, t := range week {
@@ -98,12 +103,11 @@ func (m *MyExcel) BuildTable(todaysCrews, allEntries []api.Crew, week []time.Tim
 		m.File.SetCellStyle("Sheet1", "A"+fmt.Sprint(currentRow), "A"+fmt.Sprint(currentRow), m.Styles["JobHeader"])
 		currentRow++
 
-		for i, emp := range crew.CrewMembers {
+		for _, emp := range crew.CrewMembers {
 			// 3. Employee Info (Left Side)
-			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), i+1) // Index
 			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.LastName)
-			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.FirstName)
-			m.File.SetCellValue("Sheet1", "A"+fmt.Sprint(currentRow), emp.Class)
+			m.File.SetCellValue("Sheet1", "B"+fmt.Sprint(currentRow), emp.FirstName)
+			m.File.SetCellValue("Sheet1", "C"+fmt.Sprint(currentRow), emp.Class)
 
 			// 4. History (Right Side) - Aligned to current row
 			history := api.GetCrewMemberHistory(emp.UUID, allEntries)
@@ -131,8 +135,10 @@ func CreateCrewAllocationSheet(filename string, allCrews []api.Crew) error {
 	// Calculate the week (Monday to Saturday)
 	now := time.Now()
 	offset := int(time.Monday - now.Weekday())
-	if offset > 0 { offset = -6 } // Handle Sundays
-	
+	if offset > 0 {
+		offset = -6
+	} // Handle Sundays
+
 	monday := now.AddDate(0, 0, offset)
 	week := make([]time.Time, 6)
 	for i := 0; i < 6; i++ {
