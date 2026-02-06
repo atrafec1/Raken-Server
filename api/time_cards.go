@@ -13,6 +13,7 @@ type TimeCardResponse struct {
 type TimeCard struct {
 	TimeEntries []TimeEntries `json:"timeEntries"`
 	Worker      Worker        `json:"worker"`
+	Project     Project       `json:"project"`
 } 
 type TimeEntries struct {
 	Hours float64 `json:"hours"`
@@ -20,7 +21,6 @@ type TimeEntries struct {
 	PayType PayType `json:"payType"`
 	Classification Classification `json:"classification"`
 	CostCode CostCode `json:"costCode"`
-	Project Project `json:"project"`
 }
 
 type Worker struct {

@@ -16,4 +16,5 @@ type DailyReport struct {
 type Project struct {
 	Name   string
 	Number string
+	UUUID  string
 }
