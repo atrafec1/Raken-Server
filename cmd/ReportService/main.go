@@ -17,19 +17,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	reportService := reports.ReportService{
-		Client: apiClient,
-	}
-
-	projects, err := reportService.GetProjectsWorkedOn("2026-01-01", "2026-01-31")
+	filePath, err := reports.ExportReports("2026-01-01", "2026-01-31", ".", apiClient)
 	if err != nil {
 		log.Fatal(err)
 	}
-	allReports, err := reportService.GetReports("2026-01-01", "2026-01-31", projects)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Printf("Fetched reports for %d projects\n", len(allReports))
+	log.Printf("Saved report file: %s\n", filePath)
 
 }

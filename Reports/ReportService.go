@@ -58,7 +58,11 @@ func (r *ReportService) GetReports(fromDate, toDate string, projects []domain.Pr
 	var allReports []domain.ReportCollection
 
 	for _, project := range projects {
-		var projectReportCollection domain.ReportCollection
+		projectReportCollection := domain.ReportCollection{
+			FromDate: fromDate,
+			ToDate:   toDate,
+			Project:  project,
+		}
 		dailyReports, err := r.Client.GetDailyReports(project.UUUID, fromDate, toDate)
 		if err != nil {
 			return nil, fmt.Errorf("error getting reports for project %s: %v", project.Name, err)
