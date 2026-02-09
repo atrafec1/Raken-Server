@@ -1,10 +1,9 @@
-package api
+package rakenapi
 
 import (
 	"fmt"
 	"net/http"
 )
-
 
 type ClassResponse struct {
 	Collection []Class `json:"collection"`
@@ -27,8 +26,8 @@ func (c *Client) GetClasses() (*ClassResponse, error) {
 	queryParams := req.URL.Query()
 	queryParams.Set("limit", limit)
 	req.URL.RawQuery = queryParams.Encode()
-	var response ClassResponse 
- 	err = c.doRequest(req, &response)
+	var response ClassResponse
+	err = c.doRequest(req, &response)
 	if err != nil {
 		return nil, fmt.Errorf("error retrieving classifications: %v", err)
 	}

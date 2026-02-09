@@ -1,4 +1,4 @@
-package api
+package rakenapi
 
 import (
 	"fmt"
@@ -10,11 +10,11 @@ type EmployeeResponse struct {
 }
 
 type Employee struct {
-	UUID string `json:"uuid"`
-	FirstName string `json:"firstName"`
-	LastName string `json:"lastName"`
+	UUID       string `json:"uuid"`
+	FirstName  string `json:"firstName"`
+	LastName   string `json:"lastName"`
 	EmployeeID string `json:"employeeId"`
-	ClassUUID string `json:"classificationUuid"`
+	ClassUUID  string `json:"classificationUuid"`
 }
 
 func (c *Client) GetEmployees() (*EmployeeResponse, error) {
@@ -27,7 +27,7 @@ func (c *Client) GetEmployees() (*EmployeeResponse, error) {
 	}
 
 	queryParams := req.URL.Query()
-	queryParams.Set("limit",limit)
+	queryParams.Set("limit", limit)
 	req.URL.RawQuery = queryParams.Encode()
 
 	var employees EmployeeResponse
@@ -41,7 +41,7 @@ func (c *Client) UpdateEmployeeMap() error {
 	employeesResp, err := c.GetEmployees()
 	if err != nil {
 		return fmt.Errorf("error getting employees: %v", err)
-	}	
+	}
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.employeeMap = make(map[string]Employee)

@@ -1,4 +1,4 @@
-package api
+package rakenapi
 
 import (
 	"fmt"
@@ -19,15 +19,15 @@ func (c *Client) GetCompletedChecklists() (*ChecklistResponse, error) {
 	req, err := http.NewRequest("GET", requestURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error making checklist request: %v", err)
-	} 
+	}
 
 	queryParams := req.URL.Query()
-	queryParams.Set("limit",limit)
+	queryParams.Set("limit", limit)
 	queryParams.Set("statuses", "COMPLETED")
 	req.URL.RawQuery = queryParams.Encode()
 	var checklistResponse ChecklistResponse
 	if err := c.doRequest(req, &checklistResponse); err != nil {
-		return nil, fmt.Errorf("error retrieving checklist response: %v",err)
+		return nil, fmt.Errorf("error retrieving checklist response: %v", err)
 	}
 	return &checklistResponse, nil
 }

@@ -1,9 +1,10 @@
-package api
+package rakenapi
 
 import (
 	"fmt"
 	"os"
 	"time"
+
 	"github.com/joho/godotenv"
 )
 
@@ -13,13 +14,14 @@ type Config struct {
 	AccessToken  string
 	RefreshToken string
 	BaseURL      string
-	RefreshURL string
-	ExpiresAt   time.Time
+	RefreshURL   string
+	ExpiresAt    time.Time
 }
 
 // LoadConfig loads configuration from environment variables
 func LoadConfig() (*Config, error) {
-	err := godotenv.Load(".env"); if err != nil {
+	err := godotenv.Load(".env")
+	if err != nil {
 		return nil, fmt.Errorf("error loading .env file: %v", err)
 	}
 	cfg := &Config{
@@ -28,7 +30,7 @@ func LoadConfig() (*Config, error) {
 		AccessToken:  os.Getenv("ACCESS_TOKEN"),
 		RefreshToken: os.Getenv("REFRESH_TOKEN"),
 		BaseURL:      os.Getenv("API_BASE_URL"),
-		RefreshURL: os.Getenv("REFRESH_URL"),
+		RefreshURL:   os.Getenv("REFRESH_URL"),
 	}
 
 	// Validate required fields

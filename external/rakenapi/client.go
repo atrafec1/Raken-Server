@@ -1,4 +1,4 @@
-package api
+package rakenapi
 
 import (
 	"encoding/json"
@@ -12,12 +12,12 @@ import (
 )
 
 type Client struct {
-	config     *Config
-	httpClient *http.Client
-	mu         sync.Mutex
-	projectMap map[string]Project
+	config      *Config
+	httpClient  *http.Client
+	mu          sync.Mutex
+	projectMap  map[string]Project
 	employeeMap map[string]Employee
-	classMap map[string]Class
+	classMap    map[string]Class
 }
 
 type TokenResponse struct {
@@ -36,9 +36,9 @@ func NewClient(cfg *Config) (*Client, error) {
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		projectMap: make(map[string]Project),
+		projectMap:  make(map[string]Project),
 		employeeMap: make(map[string]Employee),
-		classMap: make(map[string]Class),
+		classMap:    make(map[string]Class),
 	}
 	if err := c.UpdateProjectMap(); err != nil {
 		return nil, fmt.Errorf("error initializing project map: %w", err)
@@ -114,7 +114,6 @@ func (c *Client) refreshAccessToken() error {
 	return nil
 }
 
-
 func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 	if time.Now().After(c.config.ExpiresAt) {
 		if err := c.refreshAccessToken(); err != nil {
@@ -156,5 +155,3 @@ func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 
 	return json.Unmarshal(body, respSchema)
 }
-
-
