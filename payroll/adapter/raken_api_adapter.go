@@ -81,15 +81,20 @@ func mergeTimeAndEquipLogs(
 		entry, exists := entries[key]
 		if !exists {
 			entry = &dto.PayrollEntry{
-				CurrentDate: tc.Date,
-				CraftLevel:  tc.Class,
-				JobNumber:   tc.JobNumber,
-				CostCode:    tc.CostCode,
+				EmployeeCode: tc.EmployeeCode,
+				CurrentDate:  tc.Date,
+				CraftLevel:   tc.Class,
+				JobNumber:    tc.JobNumber,
+				CostCode:     tc.CostCode,
 			}
 			entries[key] = entry
 		}
 
-		entry.RegularHours += tc.Hours
+		payRoute := routePay(tc)
+		entry.RegularHours += payRoute.RegularHours
+		entry.OvertimeHours += payRoute.OvertimeHours
+		entry.PremiumHours += payRoute.PremiumHours
+
 	}
 
 	// Equipment logs
@@ -104,9 +109,12 @@ func mergeTimeAndEquipLogs(
 		entry, exists := entries[key]
 		if !exists {
 			entry = &dto.PayrollEntry{
-				CurrentDate: el.Date,
-				JobNumber:   el.JobNumber,
-				CostCode:    el.CostCode,
+				CurrentDate:    el.Date,
+				JobNumber:      el.JobNumber,
+				CostCode:       el.CostCode,
+				SpecialPayType: "EQP",
+				SpecialPayCode: el.EquipNumber,
+				SpecialUnits:   el.Hours,
 			}
 			entries[key] = entry
 		}
@@ -121,6 +129,34 @@ func mergeTimeAndEquipLogs(
 	}
 
 	return result, nil
+}
+
+type payRouting struct {
+	RegularHours  float64
+	PremiumHours  float64
+	OvertimeHours float64
+}
+
+// Handles different pay types
+func routePay(timeCard adapterTimeCard) payRouting {
+	switch timeCard.PayType {
+	case "RT":
+		return payRouting{
+			RegularHours: timeCard.Hours,
+		}
+	case "OT":
+		return payRouting{
+			OvertimeHours: timeCard.Hours,
+		}
+	case "DT":
+		return payRouting{
+			PremiumHours: timeCard.Hours,
+		}
+	default:
+		return payRouting{
+			RegularHours: timeCard.Hours,
+		}
+	}
 }
 
 type adapterTimeCard struct {
@@ -141,32 +177,6 @@ type adapterEquipLog struct {
 	JobNumber    string
 	EquipNumber  string
 	CostCode     string
-}
-
-func normalizeEquipLogResponse(
-	equipLogResponse rakenapi.EquipmentLogResponse,
-	projectMap map[string]rakenapi.Project,
-	employeeMap map[string]rakenapi.Employee) ([]adapterEquipLog, error) {
-
-	equipAssignments := equipLogResponse.Collection
-	var adapterEquipLogs []adapterEquipLog
-	for _, assignment := range equipAssignments {
-		equipment := assignment.Equipment
-		projectUuid := assignment.ProjectUUID
-
-		for _, log := range assignment.Logs {
-			employeeName := fmt.Sprintf("%s %s", employeeMap[log.EmployeeID].FirstName, employeeMap[log.EmployeeID].LastName)
-			adapterEquipLogs = append(adapterEquipLogs,
-				adapterEquipLog{
-					EmployeeName: employeeName,
-					Date:         log.Date,
-					JobNumber:    projectMap[projectUuid].Number,
-					EquipNumber:  equipment.Code,
-					CostCode:     log.CostCode.Code,
-				})
-		}
-	}
-	return adapterEquipLogs, nil
 }
 
 // Need to fetch all projects (to map their uuid to metadata)
@@ -212,7 +222,7 @@ func normalizeTimeCardResponse(
 				adapterTimeCard{
 					EmployeeCode: employee.EmployeeID,
 					EmployeeName: fmt.Sprintf("%s %s", employee.FirstName, employee.LastName),
-					Date:         timeEntry.Date,
+					Date:         timeCard.Date,
 					Class:        timeEntry.Classification.Name,
 					JobNumber:    project.Number,
 					CostCode:     timeEntry.CostCode.Code,
@@ -222,4 +232,30 @@ func normalizeTimeCardResponse(
 		}
 	}
 	return adapterTimeCards, nil
+}
+
+func normalizeEquipLogResponse(
+	equipLogResponse rakenapi.EquipmentLogResponse,
+	projectMap map[string]rakenapi.Project,
+	employeeMap map[string]rakenapi.Employee) ([]adapterEquipLog, error) {
+
+	equipAssignments := equipLogResponse.Collection
+	var adapterEquipLogs []adapterEquipLog
+	for _, assignment := range equipAssignments {
+		equipment := assignment.Equipment
+		projectUuid := assignment.ProjectUUID
+
+		for _, log := range assignment.Logs {
+			employeeName := fmt.Sprintf("%s %s", employeeMap[log.EmployeeID].FirstName, employeeMap[log.EmployeeID].LastName)
+			adapterEquipLogs = append(adapterEquipLogs,
+				adapterEquipLog{
+					EmployeeName: employeeName,
+					Date:         log.Date,
+					JobNumber:    projectMap[projectUuid].Number,
+					EquipNumber:  equipment.Code,
+					CostCode:     log.CostCode.Code,
+				})
+		}
+	}
+	return adapterEquipLogs, nil
 }

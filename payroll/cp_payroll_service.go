@@ -22,8 +22,7 @@ func (s *CPPayrollService) PrintPayrollEntries(fromDate, toDate string) error {
 		return err
 	}
 	for _, entry := range entries {
-		fmt.Printf("Employee: %s, Date: %s, Job Number: %s, Cost Code: %s, Pay Type: %s, Hours: %.2f\n", entry.EmployeeCode,
-			entry.CurrentDate, entry.JobNumber, entry.CostCode)
+		fmt.Printf("Date: %s, Employee code: %s, Regular hours: %.2f, Premium Hours: %.2f, Overtime Hours %.2f \n", entry.CurrentDate, entry.EmployeeCode, entry.RegularHours, entry.PremiumHours, entry.OvertimeHours)
 	}
 	return nil
 }

@@ -9,6 +9,7 @@ type PayrollEntry struct {
 	CostCode       string
 	ChangeOrder    string
 	RegularHours   float64
+	OvertimeHours  float64
 	PremiumHours   float64
 	Day            int
 	EquipmentCode  string
