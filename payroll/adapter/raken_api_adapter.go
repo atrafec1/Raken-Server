@@ -55,13 +55,6 @@ func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) ([]dto.Payr
 	return mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
 }
 
-type mergeKey struct {
-	EmployeeName string
-	Date         string
-	JobNumber    string
-	CostCode     string
-}
-
 func mergeTimeAndEquipLogs(
 	timeCards []adapterTimeCard,
 	equipLogs []adapterEquipLog,
@@ -80,12 +73,17 @@ func mergeTimeAndEquipLogs(
 
 		entry, exists := entries[key]
 		if !exists {
+			day, err := convertDateToInt(tc.Date)
+			if err != nil {
+				return nil, fmt.Errorf("failed to convert date to int: %w", err)
+			}
 			entry = &dto.PayrollEntry{
 				EmployeeCode: tc.EmployeeCode,
 				CurrentDate:  tc.Date,
 				CraftLevel:   tc.Class,
 				JobNumber:    tc.JobNumber,
 				CostCode:     tc.CostCode,
+				Day:          day,
 			}
 			entries[key] = entry
 		}
@@ -108,6 +106,10 @@ func mergeTimeAndEquipLogs(
 
 		entry, exists := entries[key]
 		if !exists {
+			day, err := convertDateToInt(el.Date)
+			if err != nil {
+				return nil, fmt.Errorf("failed to convert date to int: %w", err)
+			}
 			entry = &dto.PayrollEntry{
 				CurrentDate:    el.Date,
 				JobNumber:      el.JobNumber,
@@ -115,6 +117,7 @@ func mergeTimeAndEquipLogs(
 				SpecialPayType: "EQP",
 				SpecialPayCode: el.EquipNumber,
 				SpecialUnits:   el.Hours,
+				Day:            day,
 			}
 			entries[key] = entry
 		}
