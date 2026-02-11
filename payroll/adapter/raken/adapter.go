@@ -1,8 +1,9 @@
-package adapter
+package raken
 
 import (
 	"daily_check_in/external/rakenapi"
 	"daily_check_in/payroll/dto"
+	"daily_check_in/payroll/port"
 	"fmt"
 )
 
@@ -25,141 +26,42 @@ func NewRakenAPIAdapter() (*RakenAPIAdapter, error) {
 	}, nil
 }
 
-func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) ([]dto.PayrollEntry, error) {
+func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (port.PayrollEntryResult, error) {
 
 	timeCardResponse, err := r.Client.GetTimeCards(fromDate, toDate)
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
 	equipLogResponse, err := r.Client.GetEquipmentLogs(fromDate, toDate)
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
 
 	projectMap, err := r.makeProjectMap()
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
 	employeeMap, err := r.makeEmployeeMap()
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
 	adapterTimeCards, err := normalizeTimeCardResponse(*timeCardResponse, projectMap, employeeMap)
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
 	adapterEquipLogs, err := normalizeEquipLogResponse(*equipLogResponse, projectMap, employeeMap)
 	if err != nil {
-		return nil, err
+		return port.PayrollEntryResult{}, err
 	}
-	return mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
-}
-
-func mergeTimeAndEquipLogs(
-	timeCards []adapterTimeCard,
-	equipLogs []adapterEquipLog,
-) ([]dto.PayrollEntry, error) {
-
-	entries := make(map[mergeKey]*dto.PayrollEntry)
-
-	// Timecards → labor hours
-	for _, tc := range timeCards {
-		key := mergeKey{
-			EmployeeName: tc.EmployeeName,
-			Date:         tc.Date,
-			JobNumber:    tc.JobNumber,
-			CostCode:     tc.CostCode,
-		}
-
-		entry, exists := entries[key]
-		if !exists {
-			day, err := convertDateToInt(tc.Date)
-			if err != nil {
-				return nil, fmt.Errorf("failed to convert date to int: %w", err)
-			}
-			entry = &dto.PayrollEntry{
-				EmployeeCode: tc.EmployeeCode,
-				CurrentDate:  tc.Date,
-				CraftLevel:   tc.Class,
-				JobNumber:    tc.JobNumber,
-				CostCode:     tc.CostCode,
-				Day:          day,
-			}
-			entries[key] = entry
-		}
-
-		payRoute := routePay(tc)
-		entry.RegularHours += payRoute.RegularHours
-		entry.OvertimeHours += payRoute.OvertimeHours
-		entry.PremiumHours += payRoute.PremiumHours
-
+	mergedLogs, err := mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
+	if err != nil {
+		return port.PayrollEntryResult{}, fmt.Errorf("failed to merge time cards and equip logs: %w", err)
 	}
-
-	// Equipment logs
-	for _, el := range equipLogs {
-		key := mergeKey{
-			EmployeeName: el.EmployeeName,
-			Date:         el.Date,
-			JobNumber:    el.JobNumber,
-			CostCode:     el.CostCode,
-		}
-
-		entry, exists := entries[key]
-		if !exists {
-			day, err := convertDateToInt(el.Date)
-			if err != nil {
-				return nil, fmt.Errorf("failed to convert date to int: %w", err)
-			}
-			entry = &dto.PayrollEntry{
-				CurrentDate:    el.Date,
-				JobNumber:      el.JobNumber,
-				CostCode:       el.CostCode,
-				SpecialPayType: "EQP",
-				SpecialPayCode: el.EquipNumber,
-				SpecialUnits:   el.Hours,
-				Day:            day,
-			}
-			entries[key] = entry
-		}
-
-		entry.EquipmentCode = el.EquipNumber
-	}
-
-	// Convert map → slice
-	result := make([]dto.PayrollEntry, 0, len(entries))
-	for _, v := range entries {
-		result = append(result, *v)
-	}
-
-	return result, nil
-}
-
-type payRouting struct {
-	RegularHours  float64
-	PremiumHours  float64
-	OvertimeHours float64
-}
-
-// Handles different pay types
-func routePay(timeCard adapterTimeCard) payRouting {
-	switch timeCard.PayType {
-	case "RT":
-		return payRouting{
-			RegularHours: timeCard.Hours,
-		}
-	case "OT":
-		return payRouting{
-			OvertimeHours: timeCard.Hours,
-		}
-	case "DT":
-		return payRouting{
-			PremiumHours: timeCard.Hours,
-		}
-	default:
-		return payRouting{
-			RegularHours: timeCard.Hours,
-		}
-	}
+	applyPayrollRules(mergedLogs)
+	warnings := collectWarnings(adapterTimeCards, adapterEquipLogs)
+	return port.PayrollEntryResult{
+		Entries:  CopySlice(mergedLogs),
+		Warnings: warnings}, nil
 }
 
 type adapterTimeCard struct {
@@ -207,6 +109,47 @@ func (r *RakenAPIAdapter) makeEmployeeMap() (map[string]rakenapi.Employee, error
 	}
 	return employeeMap, nil
 }
+func applyPayrollRules(entries []*dto.PayrollEntry) {
+	for _, entry := range entries {
+		applySpecialPhaseRules(entry)
+		applyCAOvertimeRules(entry)
+	}
+}
+
+func applySpecialPhaseRules(entry *dto.PayrollEntry) {
+	var specialPhasePayCodes = map[string]string{
+		"VACNJB": "VACNJB",
+		"SKLVCA": "SKLVCA",
+		// add more as needed
+	}
+	if specialPayCode, exists := specialPhasePayCodes[entry.Phase]; exists {
+		entry.SpecialPayType = "PAY"
+		entry.SpecialPayCode = specialPayCode
+		entry.SpecialUnits = entry.RegularHours
+		entry.RegularHours = 0
+		entry.OvertimeHours = 0
+		entry.PremiumHours = 0
+		entry.Phase = "0"
+	}
+}
+
+func applyCAOvertimeRules(entry *dto.PayrollEntry) {
+	switch entry.Day {
+	case 6:
+		threshold := 12.0
+		overTimeHours := entry.RegularHours + entry.OvertimeHours
+		if overTimeHours > threshold {
+			overAmount := overTimeHours - threshold
+			entry.PremiumHours += overAmount
+			entry.OvertimeHours = threshold
+		}
+	case 7:
+		totalHours := entry.RegularHours + entry.OvertimeHours + entry.PremiumHours
+		entry.PremiumHours = totalHours
+		entry.RegularHours = 0
+		entry.OvertimeHours = 0
+	}
+}
 
 func normalizeTimeCardResponse(
 	timeCardResponse rakenapi.TimeCardResponse,
@@ -218,8 +161,14 @@ func normalizeTimeCardResponse(
 
 	for _, timeCard := range timeCards {
 		for _, timeEntry := range timeCard.TimeEntries {
-			employee := employeeMap[timeCard.Worker.UUID]
-			project := projectMap[timeCard.Project.UUID]
+			employee, exists := employeeMap[timeCard.Worker.UUID]
+			if !exists {
+				fmt.Printf("Employee with uuid %s not found in employee map\n", timeCard.Worker.UUID)
+			}
+			project, exists := projectMap[timeCard.Project.UUID]
+			if !exists {
+				fmt.Printf("Project with uuid %s not found in project map\n", timeCard.Project.UUID)
+			}
 
 			adapterTimeCards = append(adapterTimeCards,
 				adapterTimeCard{

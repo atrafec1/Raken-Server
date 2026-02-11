@@ -1,7 +1,9 @@
 package main
 
 import (
-	"daily_check_in/payroll/adapter"
+	"daily_check_in/payroll"
+	"daily_check_in/payroll/adapter/cp"
+	"daily_check_in/payroll/adapter/raken"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -9,19 +11,24 @@ import (
 )
 
 func main() {
-	adapter, err := adapter.NewRakenAPIAdapter()
+	adapter, err := raken.NewRakenAPIAdapter()
 	if err != nil {
 		panic(err)
 	}
 
-	entries, err := adapter.GetPayrollEntries("2026-02-02", "2026-02-08")
+	exporter := cp.NewAdapter("C:\\Users\\EMarin\\Desktop")
+
+	payrollService := payroll.NewPayrollService(adapter, exporter)
+
+	entriesResult, err := payrollService.GetEntries("2026-02-02", "2026-02-08")
 	if err != nil {
 		panic(err)
 	}
-	if err := WriteCSV("payroll_entries.csv", entries); err != nil {
-		panic(err)
-	}
-
+	fmt.Printf("Got %d entries and %d warnings\n", len(entriesResult.Entries), len(entriesResult.Warnings))
+	fmt.Printf("Warnings: %+v\n", entriesResult.Warnings)
+	fmt.Printf("Entries: %+v\n", entriesResult.Entries)
+	payrollService.Export(entriesResult.Entries)
+	fmt.Println("Exported payroll entries to CP")
 }
 
 func WriteCSV[T any](filename string, data []T) error {
