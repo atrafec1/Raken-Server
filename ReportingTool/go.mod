@@ -1,8 +1,10 @@
 module ReportingTool
 
-go 1.23
+go 1.25.5
 
 require github.com/wailsapp/wails/v2 v2.11.0
+
+require github.com/joho/godotenv v1.5.1 // indirect
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
@@ -32,7 +34,9 @@ require (
 	golang.org/x/net v0.35.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
+	prg_tools v0.0.0
 )
 
-// replace github.com/wailsapp/wails/v2 v2.11.0 => C:\Users\jdtra\go\pkg\mod
+replace prg_tools => ../backend
 
+// replace github.com/wailsapp/wails/v2 v2.11.0 => C:\Users\jdtra\go\pkg\mod
