@@ -50,3 +50,4 @@ func (c *Client) GetEquipmentLogs(fromDate, toDate string) (*EquipmentLogRespons
 
 	return &response, nil
 }
+

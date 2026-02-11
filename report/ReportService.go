@@ -1,9 +1,9 @@
 package report
 
 import (
-	"daily_check_in/report/adapter/raken"
-	"daily_check_in/report/domain"
-	"daily_check_in/report/port"
+	"prg_tools/report/adapter/raken"
+	"prg_tools/report/domain"
+	"prg_tools/report/port"
 	"fmt"
 	"io"
 	"net/http"
@@ -97,3 +97,4 @@ func sanitize(name string) string {
 	)
 	return replacer.Replace(name)
 }
+

@@ -31,3 +31,4 @@ func (c *Client) GetCompletedChecklists() (*ChecklistResponse, error) {
 	}
 	return &checklistResponse, nil
 }
+

@@ -155,3 +155,4 @@ func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 
 	return json.Unmarshal(body, respSchema)
 }
+

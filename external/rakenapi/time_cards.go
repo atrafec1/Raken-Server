@@ -64,3 +64,4 @@ func (c *Client) GetTimeCards(fromDate, toDate string) (*TimeCardResponse, error
 
 	return &timeCardResp, nil
 }
+

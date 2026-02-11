@@ -1,7 +1,7 @@
 package raken
 
 import (
-	"daily_check_in/payroll/dto"
+	"prg_tools/payroll/dto"
 	"fmt"
 )
 
@@ -97,3 +97,4 @@ func findOrphanEquipLogs(equipLogs []adapterEquipLog, timeCards []adapterTimeCar
 
 	return warnings
 }
+

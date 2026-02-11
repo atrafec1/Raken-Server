@@ -1,9 +1,9 @@
 package raken
 
 import (
-	"daily_check_in/external/rakenapi"
-	"daily_check_in/payroll/dto"
-	"daily_check_in/payroll/port"
+	"prg_tools/external/rakenapi"
+	"prg_tools/payroll/dto"
+	"prg_tools/payroll/port"
 	"fmt"
 )
 
@@ -211,3 +211,4 @@ func normalizeEquipLogResponse(
 	}
 	return adapterEquipLogs, nil
 }
+

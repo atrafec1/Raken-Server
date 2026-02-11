@@ -1,8 +1,8 @@
 package raken
 
 import (
-	"daily_check_in/external/rakenapi"
-	"daily_check_in/report/domain"
+	"prg_tools/external/rakenapi"
+	"prg_tools/report/domain"
 	"fmt"
 	"time"
 )
@@ -119,3 +119,4 @@ func (a *Adapter) convertToDomainReport(apiReport rakenapi.DailyReport) (domain.
 //retrieve all the reports given that date
 // convert repoorts into domain reports
 //return domain report colelction
+

@@ -60,3 +60,4 @@ func (c *Client) GetProjectByUUID(uuid string) (Project, error) {
 	}
 	return project, nil
 }
+

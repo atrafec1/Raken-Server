@@ -64,3 +64,4 @@ func (c *Client) GetEmployeeByUUID(uuid string) (Employee, error) {
 	}
 	return employee, nil
 }
+

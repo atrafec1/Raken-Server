@@ -1,7 +1,7 @@
 package raken
 
 import (
-	"daily_check_in/payroll/dto"
+	"prg_tools/payroll/dto"
 	"fmt"
 	"strings"
 	"time"
@@ -174,3 +174,4 @@ func routePay(timeCard adapterTimeCard) payRouting {
 		}
 	}
 }
+

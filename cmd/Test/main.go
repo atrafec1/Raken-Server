@@ -1,9 +1,9 @@
 package main
 
 import (
-	"daily_check_in/payroll"
-	"daily_check_in/payroll/adapter/cp"
-	"daily_check_in/payroll/adapter/raken"
+	"prg_tools/payroll"
+	"prg_tools/payroll/adapter/cp"
+	"prg_tools/payroll/adapter/raken"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -75,3 +75,4 @@ func WriteCSV[T any](filename string, data []T) error {
 func toString(v any) string {
 	return fmt.Sprint(v)
 }
+

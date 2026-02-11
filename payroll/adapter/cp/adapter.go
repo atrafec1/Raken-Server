@@ -1,7 +1,7 @@
 package cp
 
 import (
-	"daily_check_in/payroll/dto"
+	"prg_tools/payroll/dto"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -56,3 +56,4 @@ func (a *Adapter) ExportPayrollEntries(entries []dto.PayrollEntry) error {
 	}
 	return nil
 }
+

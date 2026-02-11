@@ -62,3 +62,4 @@ func (c *Client) GetClassByUUID(uuid string) (Class, error) {
 	}
 	return class, nil
 }
+

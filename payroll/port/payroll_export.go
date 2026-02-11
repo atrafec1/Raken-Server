@@ -1,7 +1,8 @@
 package port
 
-import "daily_check_in/payroll/dto"
+import "prg_tools/payroll/dto"
 
 type PayrollExportPort interface {
 	ExportPayrollEntries([]dto.PayrollEntry) error
 }
+

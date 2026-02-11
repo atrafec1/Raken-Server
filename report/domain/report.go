@@ -35,3 +35,4 @@ func (r Report) YearWeek() (int, int, error) {
 func (r Report) ToFileName() string {
 	return fmt.Sprintf("%s.pdf", r.Date)
 }
+

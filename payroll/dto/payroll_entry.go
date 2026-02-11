@@ -19,3 +19,4 @@ type PayrollEntry struct {
 	SpecialUnits   float64
 	SpecialRate    float64
 }
+

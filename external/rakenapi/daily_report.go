@@ -41,3 +41,4 @@ func (c *Client) GetDailyReports(projectUuid string, fromDate string, toDate str
 	}
 	return &dailyReports, nil
 }
+

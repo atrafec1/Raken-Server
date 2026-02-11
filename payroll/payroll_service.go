@@ -1,8 +1,8 @@
 package payroll
 
 import (
-	"daily_check_in/payroll/dto"
-	"daily_check_in/payroll/port"
+	"prg_tools/payroll/dto"
+	"prg_tools/payroll/port"
 	"errors"
 )
 
@@ -36,3 +36,4 @@ func (s *PayrollService) GetEntries(fromDate, toDate string) (port.PayrollEntryR
 	}
 	return result, nil
 }
+
