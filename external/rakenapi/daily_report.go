@@ -9,18 +9,18 @@ type DailyReportResponse struct {
 	Collection []DailyReport `json:"collection"`
 }
 type DailyReport struct {
-	Status      string      `json:"status"`
-	ReportDate  string      `json:"reportDate"`
-	ProjectUuid string      `json:"projectUuid"`
-	ReportLinks ReportLinks `json:"reportLinks"`
-	SignedBy    Creator     `json:"signedBy"`
+	Status      string             `json:"status"`
+	ReportDate  string             `json:"reportDate"`
+	ProjectUuid string             `json:"projectUuid"`
+	ReportLinks ReportLinks        `json:"reportLinks"`
+	SignedBy    DailyReportCreator `json:"signedBy"`
 }
 
 type ReportLinks struct {
 	Link string `json:"daily"`
 }
 
-type Creator struct {
+type DailyReportCreator struct {
 	Name string `json:"name"`
 	Uuid string `json:"uuid"`
 }
