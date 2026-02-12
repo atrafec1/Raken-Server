@@ -24,6 +24,7 @@ function App() {
 
     return (
         <div id="App">
+            <h1> HERRO MADEREINE </h1>
             <DateRangePicker fromDate={fromDate} toDate={toDate} onSubmit={exportReportsToComputer} buttonText={"Submit"} />
             <p className="text-blue-500"> Hello</p>
         </div>
