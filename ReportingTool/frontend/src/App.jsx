@@ -25,7 +25,7 @@ function App() {
     return (
         <div id="App">
             <DateRangePicker fromDate={fromDate} toDate={toDate} onFromDateChange={updateFromDate} onToDateChange={updateToDate} />
-            <p> Hello world </p>
+            <p className="text-blue-500"> Hello</p>
         </div>
     );
 }
