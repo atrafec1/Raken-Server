@@ -46,4 +46,3 @@ func LoadConfig() (*Config, error) {
 
 	return cfg, nil
 }
-
