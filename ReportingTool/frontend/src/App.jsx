@@ -15,7 +15,7 @@ function App() {
     const updateToDate = (e) => setToDate(e.target.value);
 
     const greet = () => Greet(name).then(setResultText);
-    const exportReportsToComputer = () => {
+    const exportReportsToComputer = (fromDate, toDate) => {
         ExportReports(fromDate, toDate)
             .then(() => console.log("Reports exported successfully"))
             .catch(err => console.error(err));
@@ -24,7 +24,7 @@ function App() {
 
     return (
         <div id="App">
-            <DateRangePicker fromDate={fromDate} toDate={toDate} onFromDateChange={updateFromDate} onToDateChange={updateToDate} />
+            <DateRangePicker fromDate={fromDate} toDate={toDate} onSubmit={exportReportsToComputer} buttonText={"Submit"} />
             <p className="text-blue-500"> Hello</p>
         </div>
     );
