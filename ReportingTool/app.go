@@ -14,8 +14,13 @@ type App struct {
 
 // NewApp creates a new App application struct
 func NewApp() *App {
+	reportExporter, err := report.NewReportExporter("C:\\Users\\jdtra\\OneDrive\\Desktop\\Raken")
+	if err != nil {
+		fmt.Println("Error creating report exporter:", err)
+		return nil
+	}
 	return &App{
-		ReportExporter: report.NewReportExporter("),
+		ReportExporter: reportExporter,
 	}
 }
 
@@ -28,4 +33,15 @@ func (a *App) startup(ctx context.Context) {
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
+}
+
+func (a *App) ExportReports(fromDate, toDate string) error {
+	if err := a.ReportExporter.ExportToBaseDir(fromDate, toDate); err != nil {
+		return fmt.Errorf("error exporting reports: %v", err)
+	}
+	return nil
+}
+
+func (a *App) ChangeExportDir(newDir string) {
+	a.ReportExporter.SetBaseDir(newDir)
 }
