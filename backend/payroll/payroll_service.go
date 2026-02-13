@@ -1,10 +1,10 @@
 package payroll
 
 import (
+	"errors"
 	"fmt"
 	"prg_tools/payroll/dto"
 	"prg_tools/payroll/port"
-	"errors"
 )
 
 type PayrollService struct {
@@ -30,6 +30,15 @@ func (s *PayrollService) Export(payrollEntries []dto.PayrollEntry) error {
 	return nil
 }
 
+func (s *PayrollService) ExportWarnings(warnings []dto.Warning) error {
+	if len(warnings) == 0 {
+		return fmt.Errorf("no warnings to export")
+	}
+	
+	
+	return nil
+}
+
 func (s *PayrollService) GetEntries(fromDate, toDate string) (port.PayrollEntryResult, error) {
 	result, err := s.EntryReader.GetPayrollEntries(fromDate, toDate)
 	if err != nil {
@@ -37,5 +46,3 @@ func (s *PayrollService) GetEntries(fromDate, toDate string) (port.PayrollEntryR
 	}
 	return result, nil
 }
-
-

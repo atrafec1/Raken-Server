@@ -1,0 +1,904 @@
+{
+    "page": {
+        "offset": 0,
+        "limit": 48,
+        "totalElements": 48
+    },
+    "collection": [
+        {
+            "uuid": "341b3c5b-314b-4860-afc2-41fa150ee694",
+            "firstName": "Sergio",
+            "lastName": "Palafox",
+            "role": "ROLE_WORKER",
+            "email": "palafoxsergio656@yahoo.com",
+            "employeeId": "PALSER",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+17609759118",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2025-12-30T22:03:43Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "ce6a4690-5663-4b09-bf18-2c83a25ec263",
+            "firstName": "Santiago",
+            "lastName": "Aguirre",
+            "role": "ROLE_WORKER",
+            "email": "santiagoaguirre0685@gmail.com",
+            "employeeId": "AGUSAN",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+15623916569",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+            "firstName": "Raul",
+            "lastName": "Arreguin",
+            "role": "ROLE_WORKER",
+            "email": "rarreguin1963@gmail.com",
+            "employeeId": "ARRRAU",
+            "classificationUuid": "7160ea9d-6438-4a90-ad84-94bbbce5a43f",
+            "status": "ACTIVE",
+            "phoneNumber": "+16196491887",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "fed372ad-9281-4504-b29c-ab0c56a24734",
+            "firstName": "Oscar",
+            "lastName": "Calixto",
+            "role": "ROLE_WORKER",
+            "email": "chamulink@gmail.com",
+            "employeeId": "CALOSC",
+            "classificationUuid": "98efdf21-5419-4990-8c29-4f0905d705dc",
+            "status": "ACTIVE",
+            "phoneNumber": "+14424441151",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "c0a9b68b-e960-4759-b773-d25bf7721e83",
+            "firstName": "Fernado",
+            "lastName": "Correa",
+            "role": "ROLE_WORKER",
+            "email": "fernandocorrea72@yahoo.com",
+            "employeeId": "CORFER",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+17608019643",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "d7553d77-92f8-4306-a2eb-34641c37cddb",
+            "firstName": "Bernardino",
+            "lastName": "De La Cruz",
+            "role": "ROLE_WORKER",
+            "email": "jonathandelacruz@gmail.com",
+            "employeeId": "DELBER",
+            "classificationUuid": "bcce3709-5e02-46d3-816b-27100fb8b4bb",
+            "status": "ACTIVE",
+            "phoneNumber": "+17602089579",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-12-11T21:47:26Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "6f665834-8f65-4beb-a524-fbc1117b0b3a",
+            "firstName": "Salvador",
+            "lastName": "Fernandez",
+            "role": "ROLE_WORKER",
+            "employeeId": "FERSAL",
+            "classificationUuid": "517fc3cb-09e2-4a13-9b43-58057edc953c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19514353359",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "dabfa732-ea28-40d3-b4eb-384ac5ee6f06",
+            "firstName": "Jose A.",
+            "lastName": "Flores",
+            "role": "ROLE_WORKER",
+            "email": "floresjose0564@gmail.com",
+            "employeeId": "FLOJOS",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+17602073878",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "915ea1fb-9ad1-4968-b5be-540b79d9bd54",
+            "firstName": "Jesus",
+            "lastName": "Garcia",
+            "role": "ROLE_WORKER",
+            "email": "jesgarcia39@yahoo.com",
+            "employeeId": "GARJES",
+            "classificationUuid": "4440a835-97a8-4622-8876-4dc9a085cfe0",
+            "status": "ACTIVE",
+            "phoneNumber": "+19094469639",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-12-15T19:01:06Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "09f5a535-b5aa-4152-bf35-d815c4dcb3da",
+            "firstName": "Martin",
+            "lastName": "Garcia",
+            "role": "ROLE_WORKER",
+            "employeeId": "GARMAR",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19512235295",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "f60e3027-70e0-4253-a844-e9f08e5d6d3d",
+            "firstName": "Guy",
+            "lastName": "Gray",
+            "role": "ROLE_WORKER",
+            "email": "ggray@prgconst.com",
+            "employeeId": "GRAGUY",
+            "classificationUuid": "042e4782-5dca-4c74-bad7-2061cea240cc",
+            "status": "ACTIVE",
+            "phoneNumber": "+17608281680",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "52982158-a15e-4b57-a628-bc006c661542",
+            "firstName": "Gerardo",
+            "lastName": "Hernandez",
+            "role": "ROLE_WORKER",
+            "email": "hernandezgerardoprg@gmail.com",
+            "employeeId": "HERGER",
+            "classificationUuid": "b733ad05-73a9-44d6-aca7-52190d5fc573",
+            "status": "ACTIVE",
+            "phoneNumber": "+19092751701",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "3e5b3d81-b169-439c-b008-ada4fd89cae4",
+            "firstName": "Luis",
+            "lastName": "Jauregui",
+            "role": "ROLE_WORKER",
+            "email": "jaureguil560@gmail.com",
+            "employeeId": "JAULUI",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19513351193",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "1ec20bf5-0122-4abf-bdd5-f236a3de620d",
+            "firstName": "Fernando",
+            "lastName": "Jimenez",
+            "role": "ROLE_WORKER",
+            "email": "2014greenthumb@gmail.com",
+            "employeeId": "JIMFER",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19518074162",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "c4a22a92-6ac6-4dda-9496-d3a7204439d9",
+            "firstName": "Roberto",
+            "lastName": "Lastra",
+            "role": "ROLE_WORKER",
+            "email": "robertolastra183@gmail.com",
+            "employeeId": "LASROB",
+            "classificationUuid": "7160ea9d-6438-4a90-ad84-94bbbce5a43f",
+            "status": "ACTIVE",
+            "phoneNumber": "+17604206245",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "befd7ce9-a693-4883-b984-e6c88ebae46e",
+            "firstName": "Cipriano",
+            "lastName": "Flores-Leon",
+            "role": "ROLE_WORKER",
+            "email": "ciprianolflores@yahoo.com",
+            "employeeId": "LEOCIP",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+17602946774",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "de0dfb21-cf57-4939-a2d0-50d0272e7ebd",
+            "firstName": "Jose",
+            "lastName": "Lopez",
+            "role": "ROLE_WORKER",
+            "email": "lopezjose2938@gmail.com",
+            "employeeId": "LOPJOS",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+16197083229",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2026-02-02T22:12:32Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "ca7611e7-6750-431b-b7af-d45ba50bbffe",
+            "firstName": "Julian",
+            "lastName": "Lopez",
+            "role": "ROLE_WORKER",
+            "email": "julianreyes8812@gmail.com",
+            "employeeId": "LOPJUL",
+            "classificationUuid": "645fed45-e2ee-440e-ba6e-97d6d56f2b7d",
+            "status": "ACTIVE",
+            "phoneNumber": "+16195301281",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2026-02-02T22:12:42Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "10e9c6ae-094f-4ea2-b6d7-03ce691c9f47",
+            "firstName": "Paulin",
+            "lastName": "Marin",
+            "role": "ROLE_WORKER",
+            "email": "josemarin.1980@icloud.com",
+            "employeeId": "MARPAU",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19513739442",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "a4ef574f-8118-4186-b192-a8a2fcb5385e",
+            "firstName": "Salvador",
+            "lastName": "Mora-Quijas",
+            "role": "ROLE_WORKER",
+            "email": "morasalvadorprg@outlook.com",
+            "employeeId": "MORSAL",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19512567666",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "eaec8746-82fa-4984-9e44-c7b7357f0311",
+            "firstName": "Efrain",
+            "lastName": "Oropeza",
+            "role": "ROLE_WORKER",
+            "email": "eoropeza31@gmail.com",
+            "employeeId": "OROEFR",
+            "classificationUuid": "517fc3cb-09e2-4a13-9b43-58057edc953c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515361202",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "7641a734-e749-44ff-9fac-76e0a247aba4",
+            "firstName": "Bernardo",
+            "lastName": "Ramirez",
+            "role": "ROLE_WORKER",
+            "email": "ramirezbernardo501@gmail.com",
+            "employeeId": "RAMBER",
+            "classificationUuid": "3683a185-03e6-47e0-b07c-a22f46b875c2",
+            "status": "ACTIVE",
+            "phoneNumber": "+19517322639",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-12-15T23:07:09Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "1de4892f-1e9a-42ab-bace-dbd0788884c2",
+            "firstName": "Cesar",
+            "lastName": "Ramirez-Hernandez",
+            "role": "ROLE_WORKER",
+            "email": "cramirezh87@gmail.com",
+            "employeeId": "RAMCES",
+            "classificationUuid": "b733ad05-73a9-44d6-aca7-52190d5fc573",
+            "status": "ACTIVE",
+            "phoneNumber": "+19518556651",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-07-29T21:44:57Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "e92df683-21fb-43c5-ba44-369e8117a0be",
+            "firstName": "Ricardo",
+            "lastName": "Roblado",
+            "role": "ROLE_WORKER",
+            "email": "rrobledo326@gmail.com",
+            "employeeId": "ROBRIC",
+            "classificationUuid": "b2eee188-7d43-4482-ad63-5eca380912a0",
+            "status": "ACTIVE",
+            "phoneNumber": "+19519920668",
+            "createdAt": "2025-07-29T21:44:58Z",
+            "updatedAt": "2025-07-29T21:44:58Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "511ac6c9-b572-45d3-add9-a6a38b99fa9a",
+            "firstName": "Matilde",
+            "lastName": "Torres",
+            "role": "ROLE_WORKER",
+            "email": "matytrs@icloud.com",
+            "employeeId": "TORMAT",
+            "classificationUuid": "db499068-11d5-49e7-8a5c-1ad6f60393b0",
+            "status": "ACTIVE",
+            "phoneNumber": "+17607159204",
+            "createdAt": "2025-07-29T21:44:58Z",
+            "updatedAt": "2025-12-12T22:48:07Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "b193f240-9e20-464a-a797-7abc1be8cd07",
+            "firstName": "Ivan",
+            "lastName": "Valdivia",
+            "role": "ROLE_WORKER",
+            "email": "ivanm24442@gmail.com",
+            "employeeId": "VALIVA",
+            "classificationUuid": "642ed851-bb05-4b6f-9a6c-a166e4093108",
+            "status": "ACTIVE",
+            "phoneNumber": "+19519563930",
+            "createdAt": "2025-07-29T21:44:58Z",
+            "updatedAt": "2025-07-29T21:44:58Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+            "firstName": "Luis",
+            "lastName": "Espinoza",
+            "role": "ROLE_WORKER",
+            "email": "L.espinoza31966@yahoo.com",
+            "employeeId": "ESPLUI",
+            "classificationUuid": "343ff87f-d80e-43ab-9809-9f0f4e1af93c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19517896320",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2025-07-29T21:35:09Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "6f24834a-fe38-492d-b965-84e49af221d4",
+            "firstName": "Jose Santos",
+            "lastName": "Marin",
+            "role": "ROLE_WORKER",
+            "email": "jsantos4513@gmail.com",
+            "employeeId": "MARJOS",
+            "classificationUuid": "c795da2d-176a-4931-9225-4928d288db6e",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515297203",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2025-07-29T21:35:09Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+            "firstName": "Gilberto",
+            "lastName": "Ortiz",
+            "role": "ROLE_WORKER",
+            "email": "gilbertootiz831@gmail.com",
+            "employeeId": "ORTGIL",
+            "classificationUuid": "343ff87f-d80e-43ab-9809-9f0f4e1af93c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19516871767",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2025-07-29T21:35:09Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "b4f46d4d-a228-4cb6-9dd3-7be8721d69ef",
+            "firstName": "Jesus",
+            "lastName": "Velasquez Benitez",
+            "role": "ROLE_WORKER",
+            "employeeId": "VELJES",
+            "classificationUuid": "b733ad05-73a9-44d6-aca7-52190d5fc573",
+            "status": "ACTIVE",
+            "createdAt": "2025-10-13T19:23:28Z",
+            "updatedAt": "2025-12-04T23:19:44Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "481bee6c-f024-4f5c-853b-06b30cf1d60b",
+            "firstName": "Jesus",
+            "lastName": "Marin",
+            "role": "ROLE_WORKER",
+            "employeeId": "MARJES",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "createdAt": "2025-12-09T16:23:35Z",
+            "updatedAt": "2025-12-09T16:23:35Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "e9574d58-b733-4b34-96b8-53341b52cc82",
+            "firstName": "John",
+            "lastName": "Richards",
+            "role": "ROLE_ACCOUNT_ADMIN",
+            "email": "jrichards@prgconst.com",
+            "employeeId": "RICJOH",
+            "username": "jrichards@prgconst.com",
+            "classificationUuid": "9d84f4a8-ec06-495d-b027-430245b9e00e",
+            "status": "ACTIVE",
+            "phoneNumber": "+19514574118",
+            "title": "",
+            "lastLoginAt": "2026-01-12T22:25:55Z",
+            "createdAt": "2020-07-31T18:10:08Z",
+            "updatedAt": "2025-07-03T15:59:43Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "b0bf3596-338a-46d2-9117-8b099cb16314",
+            "firstName": "Danny",
+            "lastName": "Richards",
+            "role": "ROLE_ACCOUNT_ADMIN",
+            "email": "drichards@prgconst.com",
+            "employeeId": "RICDAN",
+            "username": "drichards@prgconst.com",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515387400",
+            "title": "Executive",
+            "lastLoginAt": "2026-02-12T19:13:04Z",
+            "createdAt": "2025-07-03T15:31:56Z",
+            "updatedAt": "2025-10-14T20:38:31Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "firstName": "Edgar",
+            "lastName": "Marin",
+            "role": "ROLE_ACCOUNT_ADMIN",
+            "email": "emarin@prgconst.com",
+            "employeeId": "MAREDG",
+            "username": "emarin@prgconst.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19518099254",
+            "lastLoginAt": "2026-02-13T19:39:24Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-01-07T19:33:05Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "29822358-e25a-402a-a0e8-ed130f477024",
+            "firstName": "Pablo",
+            "lastName": "Marin",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "marin.p725@yahoo.com",
+            "employeeId": "MARPAB",
+            "username": "marin.p725@yahoo.com",
+            "classificationUuid": "b3cfc41a-1f9b-4b52-821f-7ac2c4fdd489",
+            "status": "ACTIVE",
+            "phoneNumber": "+19514277069",
+            "lastLoginAt": "2026-02-11T16:11:35Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-01-07T19:00:37Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "firstName": "Agustin",
+            "lastName": "Avila",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "agustin00avila@icloud.com",
+            "employeeId": "AVIAGU",
+            "username": "agustin00avila@icloud.com",
+            "classificationUuid": "758ae3c5-744e-47be-acdb-b8087178c184",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515386621",
+            "title": "Foreman",
+            "lastLoginAt": "2026-02-13T15:49:29Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-01-12T17:12:15Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "dfb52c00-abef-48c7-aaa0-9f7be92f20e5",
+            "firstName": "Cristoval",
+            "lastName": "Delgado",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "cdelgado0823@gmail.com",
+            "employeeId": "DELCRI",
+            "username": "cdelgado0823@gmail.com",
+            "classificationUuid": "8d9dce4d-04ba-4d85-83fe-4a014e54edfa",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515706397",
+            "lastLoginAt": "2026-02-12T21:03:25Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-01-08T23:52:02Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "254b61f6-e826-4bfe-8e0b-e23c0a855b00",
+            "firstName": "Georgia",
+            "lastName": "Vitous",
+            "role": "ROLE_ADMIN",
+            "email": "gvitous@prgconst.com",
+            "employeeId": "VITGEO",
+            "username": "gvitous@prgconst.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515956355",
+            "lastLoginAt": "2026-02-13T15:28:50Z",
+            "createdAt": "2025-07-29T21:44:58Z",
+            "updatedAt": "2025-11-26T00:19:33Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "4fa20fd6-3348-4a5a-9b00-d2869885119c",
+            "firstName": "Guadalupe",
+            "lastName": "Marin",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "villemarin19@gmail.com",
+            "employeeId": "MARGUA",
+            "username": "villemarin19@gmail.com",
+            "classificationUuid": "c795da2d-176a-4931-9225-4928d288db6e",
+            "status": "ACTIVE",
+            "phoneNumber": "+19515384558",
+            "lastLoginAt": "2026-02-12T23:47:38Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-02-11T22:38:49Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+            "firstName": "Doug",
+            "lastName": "Richards",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "snoopjohnson8@yahoo.com",
+            "employeeId": "RICDOU",
+            "username": "snoopjohnson8@yahoo.com",
+            "classificationUuid": "d239c40e-931c-465a-81e1-49b9a253f753",
+            "status": "ACTIVE",
+            "phoneNumber": "+19517571021",
+            "lastLoginAt": "2026-01-12T16:36:54Z",
+            "createdAt": "2025-07-29T21:35:10Z",
+            "updatedAt": "2026-01-12T16:17:36Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+            "firstName": "Salvador",
+            "lastName": "Martinez",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "salmartinez6351@yahoo.com",
+            "employeeId": "MARSAL",
+            "username": "salmartinez6351@yahoo.com",
+            "classificationUuid": "343ff87f-d80e-43ab-9809-9f0f4e1af93c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19512959388",
+            "lastLoginAt": "2026-02-11T02:37:23Z",
+            "createdAt": "2025-07-29T21:35:09Z",
+            "updatedAt": "2026-01-05T08:59:35Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "553e36d7-503e-4cc8-908c-3c22272239d1",
+            "firstName": "Trinidad",
+            "lastName": "Lomeli",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "jtrinidad1972@hotmail.com",
+            "employeeId": "LOMTRI",
+            "username": "jtrinidad1972@hotmail.com",
+            "classificationUuid": "6d7af05b-5ff9-410d-b607-6f209dee0b06",
+            "status": "ACTIVE",
+            "phoneNumber": "+19519563386",
+            "title": "Foreman",
+            "lastLoginAt": "2026-02-12T15:51:13Z",
+            "createdAt": "2025-10-21T23:52:11Z",
+            "updatedAt": "2026-01-28T14:22:37Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+            "firstName": "Salvador",
+            "lastName": "Ortiz",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "nycoortiz1975@icloud.com",
+            "employeeId": "ORTSAL",
+            "username": "nycoortiz1975@icloud.com",
+            "classificationUuid": "343ff87f-d80e-43ab-9809-9f0f4e1af93c",
+            "status": "ACTIVE",
+            "phoneNumber": "+19512952917",
+            "lastLoginAt": "2026-01-19T22:26:45Z",
+            "createdAt": "2025-07-03T19:23:25Z",
+            "updatedAt": "2026-02-10T23:35:11Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "7549d434-ce2b-4e36-983e-7fedfc0967f3",
+            "firstName": "DeAnna",
+            "lastName": "Jessup",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "djessup@prgconst.com",
+            "employeeId": "JESDEA",
+            "username": "djessup@prgconst.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19518343071",
+            "lastLoginAt": "2026-02-13T18:32:28Z",
+            "createdAt": "2025-07-29T21:44:57Z",
+            "updatedAt": "2025-11-12T21:41:13Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "06754466-41e7-4aa5-bc75-5d8ad8a7cf07",
+            "firstName": "Alex",
+            "lastName": "Regalado",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "aregalado@prgconst.com",
+            "employeeId": "REGALX",
+            "username": "aregalado@prgconst.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19512104667",
+            "lastLoginAt": "2026-02-13T00:30:14Z",
+            "createdAt": "2025-07-29T21:44:58Z",
+            "updatedAt": "2025-11-14T18:07:48Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "c994fffb-f0bb-48b5-afe9-ec583a791e8d",
+            "firstName": "Adam",
+            "lastName": "Trafecanty",
+            "role": "ROLE_ACCOUNT_ADMIN",
+            "email": "adamtraf@gmail.com",
+            "employeeId": "TRAADA",
+            "username": "adamtraf@gmail.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19094511637",
+            "lastLoginAt": "2026-02-13T20:24:33Z",
+            "createdAt": "2025-12-01T22:25:27Z",
+            "updatedAt": "2025-12-01T22:25:58Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "7876f4e1-a3e2-4b22-8171-6694a751ce07",
+            "firstName": "Chloe",
+            "lastName": "Richards",
+            "role": "ROLE_ADMIN",
+            "email": "ccrichards@prgconst.com",
+            "employeeId": "RICCHL",
+            "username": "ccrichards@prgconst.com",
+            "classificationUuid": "8ed64a45-3236-47a8-bd35-b5f6c67c844d",
+            "status": "ACTIVE",
+            "phoneNumber": "+19517514725",
+            "lastLoginAt": "2025-12-17T20:22:12Z",
+            "createdAt": "2025-12-17T18:59:18Z",
+            "updatedAt": "2025-12-17T19:01:53Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        },
+        {
+            "uuid": "7654454a-d54e-4dd2-bcb1-62eecc39ceae",
+            "firstName": "Cameron",
+            "lastName": "Causey",
+            "role": "ROLE_PROJECT_MEMBER",
+            "email": "cscausey97@gmail.com",
+            "employeeId": "CAUCAM",
+            "username": "cscausey97@gmail.com",
+            "classificationUuid": "eeece8eb-5c36-43cd-bb3d-5da479f004d1",
+            "status": "ACTIVE",
+            "phoneNumber": "+19096332089",
+            "lastLoginAt": "2026-02-11T00:27:55Z",
+            "createdAt": "2025-12-18T00:20:35Z",
+            "updatedAt": "2026-01-16T00:27:32Z",
+            "timeSettings": {
+                "blockTimeClock": false,
+                "defaultCostCode": "",
+                "defaultShift": ""
+            }
+        }
+    ]
+}

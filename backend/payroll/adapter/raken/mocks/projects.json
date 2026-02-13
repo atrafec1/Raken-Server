@@ -1,0 +1,781 @@
+{
+    "page": {
+        "offset": 0,
+        "limit": 44,
+        "totalElements": 44
+    },
+    "collection": [
+        {
+            "uuid": "1eff1640-3d66-4f9d-bea3-f44ac7705807",
+            "name": "Aspen - SB On-Call",
+            "number": "224034",
+            "address": {
+                "streetAddress1": "Abby Way",
+                "city": "HIGHLAND",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92374"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-02-13",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-02-13T21:33:48Z",
+            "updatedAt": "2026-02-13T21:33:49Z"
+        },
+        {
+            "uuid": "b4d03c5b-83fe-47c7-8800-c44b49c68951",
+            "name": "Ortiz - Skyview Rd Bridge",
+            "number": "224043",
+            "address": {
+                "streetAddress1": "Skyview Rd",
+                "city": "Winchister",
+                "state": "",
+                "country": "US",
+                "postalCode": "92596"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-02-04",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-02-04T16:25:53Z",
+            "updatedAt": "2026-02-04T16:25:53Z"
+        },
+        {
+            "uuid": "7b65d81e-08ec-48c9-9f59-dedb6b80df35",
+            "name": "HWI Johnson Canyon Wetland",
+            "number": "226003",
+            "address": {
+                "streetAddress1": "Enrico Fermi Dr",
+                "city": "Otay",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-02-03",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-02-03T19:20:51Z",
+            "updatedAt": "2026-02-03T19:22:24Z"
+        },
+        {
+            "uuid": "be92779b-d871-4678-a45c-e6ac7fa67f25",
+            "name": "RCTC Central Vernal Pools",
+            "number": "223017",
+            "address": {
+                "city": "Lakeview",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92567"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-29",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-30T01:01:34Z",
+            "updatedAt": "2026-01-30T01:01:34Z"
+        },
+        {
+            "uuid": "5d2db53a-2c26-4730-8942-e80909cfb054",
+            "name": "American Pacific Route 91 08-1P2804",
+            "number": "225029",
+            "address": {
+                "streetAddress1": "McKinley St",
+                "city": "Corona",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92879"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-27",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-27T18:51:39Z",
+            "updatedAt": "2026-01-27T18:51:39Z"
+        },
+        {
+            "uuid": "e27d09cf-6a96-49ca-8c59-79a3a830fd12",
+            "name": "Aspen Jawbone Canyon",
+            "number": "225006",
+            "address": {
+                "city": "Mojave",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-19",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-19T23:15:15Z",
+            "updatedAt": "2026-01-20T18:57:11Z"
+        },
+        {
+            "uuid": "47e95fbb-d510-4456-87c5-d6dd9c00b605",
+            "name": "Caltrans On-Call 11A3575",
+            "number": "223007",
+            "address": {
+                "city": "San Diego",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-13",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-19T17:17:52Z",
+            "updatedAt": "2026-01-19T17:17:52Z"
+        },
+        {
+            "uuid": "004a691a-71ea-4482-9a15-8a54b36dab10",
+            "name": "HNTB RCTC SR 60 TCL",
+            "number": "223028",
+            "address": {
+                "city": "Moreno Valley",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92555"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-13",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-13T22:11:01Z",
+            "updatedAt": "2026-01-13T22:11:01Z"
+        },
+        {
+            "uuid": "c2b7be92-0687-49b7-a983-cc42e0e430fa",
+            "name": "MCM Rock Springs Rd",
+            "number": "225041",
+            "address": {
+                "streetAddress1": "Rock Springs Road",
+                "city": "Hesperia",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2026-01-07",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2026-01-07T17:56:37Z",
+            "updatedAt": "2026-01-07T17:56:37Z"
+        },
+        {
+            "uuid": "d4176684-2978-480d-a44e-436246e49679",
+            "name": "Stantec RCTC SR 91/71 TO 5",
+            "number": "225033",
+            "address": {
+                "city": "Corona",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92880"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-23",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-12-30T16:35:21Z",
+            "updatedAt": "2026-02-12T22:43:28Z"
+        },
+        {
+            "uuid": "114769fa-d012-467f-bd74-11b9d3e51b24",
+            "name": "Psomas Stickleback River Ranch",
+            "number": "223045",
+            "address": {
+                "streetAddress1": "9777 Soledad Canyon Road",
+                "city": "Santa Clarita",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91390"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-12-19",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-12-19T16:49:45Z",
+            "updatedAt": "2025-12-19T16:49:45Z"
+        },
+        {
+            "uuid": "6f629208-60b6-4728-ad87-0871e985b0a6",
+            "name": "Marathon Corporate",
+            "number": "224035",
+            "address": {
+                "streetAddress1": "La Jolla Village Drive",
+                "city": "San Diego",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-25",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-26T00:16:12Z",
+            "updatedAt": "2025-12-08T19:55:56Z"
+        },
+        {
+            "uuid": "ea2d569c-5334-4c60-a4fa-b61b6c5f7514",
+            "name": "Riverside Const - SR38 08-1T3304",
+            "number": "225046",
+            "address": {
+                "city": "",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-12",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-17T18:53:21Z",
+            "updatedAt": "2025-12-08T19:56:01Z"
+        },
+        {
+            "uuid": "ce5b5d85-0c2b-4036-9998-2a899c3cad15",
+            "name": "Morteson - EdSan 2A2B",
+            "number": "225012",
+            "address": {
+                "city": "Mojave",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-09",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-17T17:42:47Z",
+            "updatedAt": "2025-12-08T19:56:00Z"
+        },
+        {
+            "uuid": "5c9f89b4-3d4b-4318-a1ef-b0ffe171852b",
+            "name": "RCRCD Temescal Valley",
+            "number": "225039",
+            "address": {
+                "streetAddress1": "Dos Lagos Drive",
+                "city": "Corona",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92883"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-12",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-13T00:09:21Z",
+            "updatedAt": "2026-02-04T16:37:59Z"
+        },
+        {
+            "uuid": "d3349303-ccab-4b45-b99c-c98e941eecf9",
+            "name": "PRG Office",
+            "number": "",
+            "address": {
+                "streetAddress1": "506 West Graham Avenue",
+                "city": "Lake Elsinore",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92530"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-02",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-12T19:15:42Z",
+            "updatedAt": "2025-12-08T19:56:00Z"
+        },
+        {
+            "uuid": "e0537a1b-2119-47fc-bcab-48b5fbbf99a4",
+            "name": "Caltrans Route 805 11A4115",
+            "number": "225013",
+            "address": {
+                "city": "San Diego",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-26",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-10T20:08:42Z",
+            "updatedAt": "2025-12-08T19:56:01Z"
+        },
+        {
+            "uuid": "860cdd23-9c98-4f57-9d0d-a6b9028afca6",
+            "name": "Skanska SBCTA I-15",
+            "number": "225027",
+            "address": {
+                "streetAddress1": "California 60",
+                "city": "Ontario",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-02",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-07T00:00:55Z",
+            "updatedAt": "2025-12-08T19:55:57Z"
+        },
+        {
+            "uuid": "7006a968-394f-4ee1-9f0b-277548a6b3e4",
+            "name": "Beador Route 15 08-1J8704",
+            "number": "224019",
+            "address": {
+                "streetAddress1": "Eastvale Gateway",
+                "city": "Eastvale",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-02",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-06T23:59:03Z",
+            "updatedAt": "2025-12-08T19:55:57Z"
+        },
+        {
+            "uuid": "52cde7e6-5b53-450b-b93d-e1a8be1ce84c",
+            "name": "Sully Miller LAWA Van Nuys Airport",
+            "number": "225030",
+            "address": {
+                "streetAddress1": "Airport Business Park Way",
+                "city": "Los Angeles",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91406"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-04",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-04T23:56:10Z",
+            "updatedAt": "2026-01-07T19:54:49Z"
+        },
+        {
+            "uuid": "880f51bb-77cd-4098-a301-4f54bde8f614",
+            "name": "Philbin Los Cerritos Wetlands",
+            "number": "225044",
+            "address": {
+                "streetAddress1": "6720 Pacific Coast Highway",
+                "city": "Seal Beach",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "90740"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-04",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-04T20:58:13Z",
+            "updatedAt": "2026-02-05T00:35:37Z"
+        },
+        {
+            "uuid": "78a377e2-d5cd-40db-88a8-b3e3a6a12b38",
+            "name": "AAA Caltrans Rte 243 08-1J4504",
+            "number": "225025",
+            "address": {
+                "streetAddress1": "Esperanza Firefighters Memorial Highway",
+                "city": "Idyllwild-Pine Cove",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-11-02",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-11-04T20:56:05Z",
+            "updatedAt": "2025-12-15T19:00:18Z"
+        },
+        {
+            "uuid": "e73d59df-4764-4e6f-b853-1b3491fffeae",
+            "name": "Stacy Witbeck Rt 1 Malibu 07-291404",
+            "number": "223010",
+            "address": {
+                "city": "Malibu",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-31",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-31T17:30:09Z",
+            "updatedAt": "2025-12-08T19:56:01Z"
+        },
+        {
+            "uuid": "17bb5b2b-2a91-4d8b-95e1-1a2aaabdb6fd",
+            "name": "Papich - Route 395 Bishop North 09-366804",
+            "number": "225018",
+            "address": {
+                "streetAddress1": "Cherry Lane",
+                "city": "Bishop",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "93514"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-29",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-29T23:05:30Z",
+            "updatedAt": "2025-12-08T19:55:54Z"
+        },
+        {
+            "uuid": "ef9b35de-3c11-4e1a-9d67-19204c740c52",
+            "name": "Philbin Const - Ontario Grand Park",
+            "number": "225032",
+            "address": {
+                "streetAddress1": "2661 East Grand Park Street",
+                "city": "Ontario",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91762"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-27",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-29T21:44:20Z",
+            "updatedAt": "2025-12-08T19:56:02Z"
+        },
+        {
+            "uuid": "d9b60fe3-5402-4e73-966a-64cc3a87750b",
+            "name": "Papich Caltrans Route 395 09-374704",
+            "number": "225014",
+            "address": {
+                "streetAddress1": "137 S Main St",
+                "city": "Bishop",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "93514"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-26",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-28T23:02:57Z",
+            "updatedAt": "2025-12-08T19:56:01Z"
+        },
+        {
+            "uuid": "3e08e7eb-06d7-460b-98d9-ff8a49d205f4",
+            "name": "Beador Route 57/90",
+            "number": "225043",
+            "address": {
+                "streetAddress1": "1210 E Imperial Hwy",
+                "city": "Brea",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92821"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-27",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-27T23:24:35Z",
+            "updatedAt": "2025-12-08T19:55:54Z"
+        },
+        {
+            "uuid": "10e57cbc-6812-4c43-8cb4-c66fd381b418",
+            "name": "Aspen Cogswell Dam",
+            "number": "225036",
+            "address": {
+                "streetAddress1": "West Fork Trail",
+                "city": "Azusa",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91702"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-20",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-21T23:46:43Z",
+            "updatedAt": "2025-12-08T22:35:31Z"
+        },
+        {
+            "uuid": "cb2a8628-3488-490f-b2b3-c553c81a58bf",
+            "name": "PRG Perris Yard",
+            "number": "",
+            "address": {
+                "streetAddress1": "325 East Ellis Avenue",
+                "city": "Perris",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92570"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-12",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-21T18:15:12Z",
+            "updatedAt": "2026-01-05T18:21:37Z"
+        },
+        {
+            "uuid": "6ca0e3c6-d288-459d-bd34-928b345a2b6b",
+            "name": "Caltrans JOC Rt 805 National City",
+            "number": "224005",
+            "address": {
+                "streetAddress1": "E 16th Street",
+                "city": "National City",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-17",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-17T20:46:10Z",
+            "updatedAt": "2025-12-08T19:55:56Z"
+        },
+        {
+            "uuid": "0f89fc0b-f87a-4ad7-b3d7-af850ffb40f7",
+            "name": "FSSW - 1-5 NCC 11-2T36U4",
+            "number": "224026",
+            "address": {
+                "city": "Carlsbad",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92008"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-17",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-17T20:36:04Z",
+            "updatedAt": "2026-01-20T19:09:58Z"
+        },
+        {
+            "uuid": "c8fc30a5-d4d0-4399-b87a-050d8cbfc04f",
+            "name": "JWJ - March ARB",
+            "number": "225024",
+            "address": {
+                "streetAddress1": "363 Graeber Street",
+                "city": "March Air Reserve Base",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92518"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-17",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-17T16:58:07Z",
+            "updatedAt": "2025-12-08T19:55:59Z"
+        },
+        {
+            "uuid": "b203abc9-b3a4-48d8-98bf-818e8c825b77",
+            "name": "Aguanga Remediation Maint.",
+            "number": "223020",
+            "address": {
+                "city": "Aguanga",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-17",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-17T16:53:34Z",
+            "updatedAt": "2025-12-08T22:30:04Z"
+        },
+        {
+            "uuid": "d52f2357-d44b-4e30-a1d2-64d8bb26c914",
+            "name": "Myers-Rados JV RCTC I-15/SR-91 ELC",
+            "number": "220024",
+            "address": {
+                "streetAddress1": "830 East Parkridge Avenue",
+                "city": "Corona",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92879"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-17",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-17T15:49:26Z",
+            "updatedAt": "2025-12-08T19:56:00Z"
+        },
+        {
+            "uuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "name": "Beador Rt 15 08-1K4004",
+            "number": "225010",
+            "address": {
+                "streetAddress1": "28220 Jefferson Avenue",
+                "city": "Temecula",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92590"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-16",
+            "endDate": "2025-10-16",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-16T23:07:10Z",
+            "updatedAt": "2026-01-13T23:39:37Z"
+        },
+        {
+            "uuid": "456c1158-7d46-4343-a991-66c66194d4a2",
+            "name": "Skanska Rt 57/60 Interchange",
+            "number": "223027",
+            "address": {
+                "streetAddress1": "22632 Golden Springs dr",
+                "city": "Diamond Bar",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91765"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-15",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-15T22:51:18Z",
+            "updatedAt": "2025-12-08T19:55:55Z"
+        },
+        {
+            "uuid": "5db0b345-a941-42ae-8262-a5b7758b17c3",
+            "name": "Sukut Chiquita Landfill",
+            "number": "225037",
+            "address": {
+                "streetAddress1": "29201 Henry Mayo Drive",
+                "city": "Castaic",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91384"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-13",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-13T17:14:50Z",
+            "updatedAt": "2025-12-08T19:55:56Z"
+        },
+        {
+            "uuid": "1ff47221-7d6e-49d8-b2b8-75b573243709",
+            "name": "Republic Sunshine Canyon Landfill",
+            "number": "225038",
+            "address": {
+                "streetAddress1": "14747 Sunshine Canyon Road",
+                "city": "Los Angeles",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "91344"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-13",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-13T16:42:08Z",
+            "updatedAt": "2025-12-08T19:55:54Z"
+        },
+        {
+            "uuid": "547ff70d-d2a5-4f0a-8fc8-a20a0248ba79",
+            "name": "Rosendin - Nighthawk Transmission Line",
+            "number": "225034",
+            "address": {
+                "streetAddress1": "Stonebridge Parkway",
+                "city": "San Diego",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92131"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-10-03",
+            "endDate": "2025-12-31",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-10-03T22:04:50Z",
+            "updatedAt": "2025-12-08T19:55:55Z"
+        },
+        {
+            "uuid": "ab9aed9a-59db-40c8-b34f-0d0d4b5ded38",
+            "name": "Fisher Rt 395 Olancha 09-213404",
+            "number": "222003",
+            "address": {
+                "streetAddress1": "123 School Rd",
+                "city": "Olancha",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "93549"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-09-29",
+            "endDate": "2026-01-01",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-09-29T17:56:46Z",
+            "updatedAt": "2025-12-08T19:55:58Z"
+        },
+        {
+            "uuid": "91461772-d818-4b4f-94e6-4b81283b58c4",
+            "name": "Beador Route 15 Temecula #08-1K4004",
+            "number": "225010",
+            "address": {
+                "streetAddress1": "Route 15 - Winchester to Rt 79",
+                "city": "Temecula",
+                "state": "",
+                "country": "US",
+                "postalCode": "92591"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-09-23",
+            "endDate": "2027-10-27",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-09-23T20:37:01Z",
+            "updatedAt": "2025-10-01T20:32:10Z"
+        },
+        {
+            "uuid": "a2c21a55-d5de-481d-bdca-9c8247af03c8",
+            "name": "Rosendin Nighthawk Transmission Line",
+            "number": "225034",
+            "address": {
+                "streetAddress1": "14110 Stoneridge Pkwy",
+                "city": "San Diego",
+                "state": "",
+                "country": "US",
+                "postalCode": "92131"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-09-23",
+            "endDate": "2026-06-30",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-09-23T20:31:53Z",
+            "updatedAt": "2025-10-01T20:32:11Z"
+        },
+        {
+            "uuid": "963490ee-566a-4038-b603-740b60f0bb00",
+            "name": "FSSW I-5 NCC",
+            "number": "224026",
+            "address": {
+                "city": "",
+                "state": "CA",
+                "country": "US"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-09-23",
+            "endDate": "2026-11-01",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-09-23T20:27:01Z",
+            "updatedAt": "2025-10-01T20:32:10Z"
+        },
+        {
+            "uuid": "b4d50b66-5b55-4535-9bb9-c06404e7738d",
+            "name": "San Dieguito Lagoon Restoration #11-2E1544",
+            "number": "222001",
+            "address": {
+                "streetAddress1": "13884 El Camino Real",
+                "city": "San Diego",
+                "state": "CA",
+                "country": "US",
+                "postalCode": "92130"
+            },
+            "status": "ACTIVE",
+            "startDate": "2025-07-03",
+            "endDate": "2029-09-15",
+            "externalEmailRecipients": [],
+            "internalEmailRecipients": [],
+            "createdAt": "2025-07-03T19:16:44Z",
+            "updatedAt": "2026-01-20T17:17:14Z"
+        }
+    ]
+}

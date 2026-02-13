@@ -1,0 +1,1521 @@
+{
+    "page": {
+        "offset": 0,
+        "limit": 10,
+        "totalElements": 25,
+        "next": "/equipmentLogs?fromDate=2026-02-01&toDate=2026-02-09&offset=10&limit=10",
+        "nextOffset": "10"
+    },
+    "collection": [
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2025-11-21T00:18:50Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-11T00:41:01Z",
+            "uuid": "697ac77e-38e8-4ffc-8231-efbd1304de59",
+            "equipment": {
+                "uuid": "b535137a-14f4-4b04-8863-93c01d5e8318",
+                "name": "Truck",
+                "equipmentId": "1007"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2025-11-20",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-10T16:49:07Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-10T16:49:07Z",
+                    "uuid": "86a0aa97-d878-4dfb-99d0-7e2de5c3713a",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:08:33Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T21:53:21Z",
+                    "uuid": "4ce99030-5d70-45cf-a270-95095dd60811",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "6ff92988-8f14-4d9a-9f59-4d893d3c9f09",
+                "code": "400/550",
+                "division": "Erosion Control",
+                "description": "Fiber Rolls"
+            },
+            "daysOnsite": 86,
+            "daysNotInUse": 4
+        },
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2025-11-21T00:19:47Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-02T19:41:54Z",
+            "uuid": "3baedc0d-4e5f-4b1b-a62c-5b2331cca653",
+            "equipment": {
+                "uuid": "d9997ced-421e-4545-873b-b5f074462644",
+                "name": "Truck",
+                "equipmentId": "1016"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2025-11-20",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-05T22:44:12Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-05T22:44:12Z",
+                    "uuid": "37b652e4-780d-4a74-aea4-e95db4661cb2",
+                    "description": "4 on wires and 4 on main line",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "553e36d7-503e-4cc8-908c-3c22272239d1",
+                    "odometerReading": 167277.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-06T15:44:41Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-06T15:44:41Z",
+                    "uuid": "a70bf146-00d6-48f0-b1d7-e73ecbbb06c9",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "553e36d7-503e-4cc8-908c-3c22272239d1",
+                    "odometerReading": 167277.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:09:03Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T16:51:16Z",
+                    "uuid": "ab68132d-85f2-4548-bf52-0660fb175962",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "553e36d7-503e-4cc8-908c-3c22272239d1",
+                    "odometerReading": 167277.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T21:52:39Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T21:52:39Z",
+                    "uuid": "c3b115b1-e32c-4721-8f95-c9c51086d920",
+                    "description": "Working on wires",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "553e36d7-503e-4cc8-908c-3c22272239d1",
+                    "odometerReading": 167277.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "daysOnsite": 86,
+            "daysNotInUse": 7
+        },
+        {
+            "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+            "createdAt": "2025-12-02T23:22:35Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2025-12-15T18:31:03Z",
+            "uuid": "e9042487-15e7-4ac5-8eff-f7a3e3db0c69",
+            "equipment": {
+                "uuid": "62349457-6993-493b-97a3-7c564471dfca",
+                "name": "Truck",
+                "equipmentId": "1010"
+            },
+            "projectUuid": "0f89fc0b-f87a-4ad7-b3d7-af850ffb40f7",
+            "startDate": "2025-12-01",
+            "logs": [
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-09T21:14:36Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-09T21:14:36Z",
+                    "uuid": "742377eb-780f-4140-a342-a12e7c305861",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-05T21:39:12Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-05T21:39:12Z",
+                    "uuid": "5cc06d61-7bb0-4448-89f8-2c89f2c5c42e",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-06T22:24:14Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-06T22:24:14Z",
+                    "uuid": "495f3dcd-371a-4943-bab1-933d191bd3db",
+                    "date": "2026-02-06",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-03T22:44:57Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-03T22:44:57Z",
+                    "uuid": "41e17afa-10f6-4133-a780-963321d3606a",
+                    "description": "",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-06T22:25:20Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-06T22:25:20Z",
+                    "uuid": "3d930365-2128-4df2-b3a0-e6ae82f48305",
+                    "date": "2026-02-06",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "f0e09717-7069-4304-8e70-4e13304ecc22",
+                        "code": "900/110",
+                        "division": "Maintenance",
+                        "description": "Herbicide"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-04T22:26:09Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-04T22:26:09Z",
+                    "uuid": "a992b1dd-1f1c-44ab-9f73-82df4d53ebdf",
+                    "description": "",
+                    "date": "2026-02-04",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "createdAt": "2026-02-02T22:55:07Z",
+                    "updatedBy": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "updatedAt": "2026-02-02T22:55:07Z",
+                    "uuid": "3568e07a-0258-4b9f-a294-572a5b942081",
+                    "description": "",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "d3bb07da-4cba-4090-b1ae-70bc4125c957",
+                    "odometerReading": 299736.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                "code": "900/050",
+                "division": "Maintenance",
+                "description": "Weeding/Trimming"
+            },
+            "daysOnsite": 75,
+            "daysNotInUse": 3
+        },
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2025-12-11T22:35:59Z",
+            "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "updatedAt": "2026-02-13T15:42:31Z",
+            "uuid": "390eb425-1e9a-423c-91bc-c53346023d42",
+            "equipment": {
+                "uuid": "b535137a-14f4-4b04-8863-93c01d5e8318",
+                "name": "Truck",
+                "equipmentId": "1007"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2025-12-11",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-04T19:52:00Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:16:49Z",
+                    "uuid": "9b2c2bfc-4848-405e-8a8b-aa6d884578ea",
+                    "date": "2026-02-04",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T16:54:58Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:16:16Z",
+                    "uuid": "da8f07fd-521e-4ad9-ad14-95858efe1518",
+                    "date": "2026-02-03",
+                    "hours": 5.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T01:16:28Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:17:03Z",
+                    "uuid": "56b78b27-cbc6-4a79-8a92-4e804c45ada8",
+                    "date": "2026-02-04",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T01:15:39Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:15:58Z",
+                    "uuid": "d56b8ac5-3469-4083-b1cf-6d7f4058f1f6",
+                    "date": "2026-02-03",
+                    "hours": 3.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-06T15:44:18Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-06T15:44:18Z",
+                    "uuid": "c1b31b52-548d-433e-b39a-5d9aa77c8783",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-05T22:44:29Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:17:59Z",
+                    "uuid": "eb9a2a99-5907-44a9-86d5-ab2479802a7d",
+                    "date": "2026-02-05",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T01:17:22Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:17:29Z",
+                    "uuid": "a34731f0-80c5-4f4f-bbd8-9f0b5a4bed00",
+                    "date": "2026-02-05",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 315310.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                "code": "200/500",
+                "division": "Irrigation",
+                "description": "Mainline"
+            },
+            "daysOnsite": 65,
+            "daysNotInUse": 0
+        },
+        {
+            "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "createdAt": "2025-12-12T22:18:44Z",
+            "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "updatedAt": "2026-01-30T22:07:03Z",
+            "uuid": "79e1adfa-fa28-45c8-ae60-fe0722e6c09e",
+            "equipment": {
+                "uuid": "032a1c86-8d46-434a-b761-65d05bce5ccc",
+                "name": "Truck",
+                "equipmentId": "1009"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2025-12-11",
+            "logs": [
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T00:58:35Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:58:48Z",
+                    "uuid": "34466f1e-fbac-4ba5-a9e4-11c6eb1cca66",
+                    "date": "2026-02-05",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-04T19:51:38Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:58:10Z",
+                    "uuid": "662c892f-4be2-408f-9664-50dc9fce7d80",
+                    "date": "2026-02-04",
+                    "hours": 6.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-05T22:43:03Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:58:56Z",
+                    "uuid": "b76e1b7c-2e27-4297-b9da-5ba0e7c20959",
+                    "date": "2026-02-05",
+                    "hours": 4.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-10T16:45:00Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:39:31Z",
+                    "uuid": "1854c2ec-3b95-4115-8d68-a555435b1e7a",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T22:18:37Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:57:42Z",
+                    "uuid": "c3faa995-6a4a-4f6a-a187-4dc34b15de32",
+                    "description": "Install main",
+                    "date": "2026-02-03",
+                    "hours": 6.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T00:57:19Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:57:34Z",
+                    "uuid": "df094db9-6c21-456d-bc44-6b31a0a36403",
+                    "date": "2026-02-03",
+                    "hours": 2.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-06T15:44:04Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:59:36Z",
+                    "uuid": "f3615e24-de1c-4608-a6e1-4c3479d7b6d8",
+                    "date": "2026-02-06",
+                    "hours": 6.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T00:57:53Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:57:59Z",
+                    "uuid": "c6a7385e-aea9-4a3f-84d7-274a513d84f1",
+                    "date": "2026-02-04",
+                    "hours": 2.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T00:59:06Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:59:17Z",
+                    "uuid": "f01c8aaa-d1b0-4fb0-b52a-bea10b904613",
+                    "date": "2026-02-06",
+                    "hours": 2.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-10T16:46:04Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-10T16:46:04Z",
+                    "uuid": "2d15f06c-4bbb-4770-9f01-2805c0215124",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:06:56Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T16:52:29Z",
+                    "uuid": "5d106d3d-accf-4c27-84c6-8c7d6ad46a1d",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "14ac02ef-95a4-44ce-a83e-d743692aa1d8",
+                    "odometerReading": 285780.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                "code": "200/500",
+                "division": "Irrigation",
+                "description": "Mainline"
+            },
+            "daysOnsite": 65,
+            "daysNotInUse": 0
+        },
+        {
+            "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "createdAt": "2025-12-16T22:31:13Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-02T20:21:30Z",
+            "uuid": "6c77edde-9be1-40ab-86f1-88a2f5f96ec7",
+            "equipment": {
+                "uuid": "7688e96d-45ba-4615-9a31-5a3a23fd0c1c",
+                "name": "Truck",
+                "equipmentId": "1013"
+            },
+            "projectUuid": "b4d50b66-5b55-4535-9bb9-c06404e7738d",
+            "startDate": "2025-12-19",
+            "logs": [
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-05T23:27:48Z",
+                    "updatedBy": "c994fffb-f0bb-48b5-afe9-ec583a791e8d",
+                    "updatedAt": "2026-02-09T18:36:04Z",
+                    "uuid": "97036b9f-7a96-4d9e-a668-33b03d1cb61a",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "f0e09717-7069-4304-8e70-4e13304ecc22",
+                        "code": "900/110",
+                        "division": "Maintenance",
+                        "description": "Herbicide"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-04T23:31:31Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-04T23:31:31Z",
+                    "uuid": "e89aa12d-1880-416c-8b5f-832655cae684",
+                    "date": "2026-02-04",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-10T04:40:52Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-10T04:40:52Z",
+                    "uuid": "e3d1589c-8023-4ec6-ab49-9ae49a6a2ff1",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-02T23:18:19Z",
+                    "updatedBy": "c994fffb-f0bb-48b5-afe9-ec583a791e8d",
+                    "updatedAt": "2026-02-09T18:37:01Z",
+                    "uuid": "06a689eb-b38f-4016-9d5c-7eb63ba35cb4",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "f0e09717-7069-4304-8e70-4e13304ecc22",
+                        "code": "900/110",
+                        "division": "Maintenance",
+                        "description": "Herbicide"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-03T23:13:40Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-03T23:13:40Z",
+                    "uuid": "7d535493-6e9c-43e5-bc0b-7b65ec4fe6f8",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-06T23:04:27Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-06T23:04:27Z",
+                    "uuid": "d055d1a6-4a98-4453-a72a-c6d1d38a0546",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "odometerReading": 162020.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                "code": "900/050",
+                "division": "Maintenance",
+                "description": "Weeding/Trimming"
+            },
+            "daysOnsite": 57,
+            "daysNotInUse": 1
+        },
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2025-12-16T21:07:40Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-02T20:23:22Z",
+            "uuid": "e4a3689d-f552-4bec-9665-d87830bc58a2",
+            "equipment": {
+                "uuid": "de99b1d1-dd0c-4544-90c5-33b818a96588",
+                "name": "Utility Vehicle",
+                "equipmentId": "3027"
+            },
+            "projectUuid": "b4d50b66-5b55-4535-9bb9-c06404e7738d",
+            "startDate": "2025-12-19",
+            "logs": [
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-04T23:31:45Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-04T23:31:45Z",
+                    "uuid": "5dfbe1b0-b98a-4fae-a521-80579f34ac32",
+                    "date": "2026-02-04",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-02T23:18:36Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-02T23:18:36Z",
+                    "uuid": "7996b695-a164-4413-ae84-e5cf1b4ed666",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-05T23:28:08Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-05T23:28:08Z",
+                    "uuid": "f5d87ed3-e376-47db-a008-4128cced987b",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-03T23:14:03Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-03T23:14:03Z",
+                    "uuid": "2f22ffdb-663a-4848-8229-ad0775a4712c",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-10T04:41:10Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-10T04:41:10Z",
+                    "uuid": "b448d37d-07ed-4e38-9328-91a9a9c193c5",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "37eb3578-f4c3-45fa-a5c2-6615d32b9cc5",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "createdAt": "2026-02-06T23:04:54Z",
+                    "updatedBy": "79ebc09c-31de-46df-926c-6bdd4c74dffb",
+                    "updatedAt": "2026-02-06T23:04:54Z",
+                    "uuid": "57218a01-9e8f-496f-87b4-0b0e2fc9a24e",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7641a734-e749-44ff-9fac-76e0a247aba4",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                        "code": "900/050",
+                        "division": "Maintenance",
+                        "description": "Weeding/Trimming"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "cd271772-fc89-4eeb-8f9e-fc98ba8ce1de",
+                "code": "900/050",
+                "division": "Maintenance",
+                "description": "Weeding/Trimming"
+            },
+            "daysOnsite": 57,
+            "daysNotInUse": 1
+        },
+        {
+            "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "createdAt": "2026-01-19T19:13:42Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-02T22:36:39Z",
+            "uuid": "d71eb660-200b-4a0f-b842-fc2010036c35",
+            "equipment": {
+                "uuid": "5ed11fd1-8e53-49d3-bc1d-127211924e60",
+                "name": "Class 4 Truck",
+                "equipmentId": "1015"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2026-01-12",
+            "endDate": "2026-02-02",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T22:21:20Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T01:21:13Z",
+                    "uuid": "d33ba7ac-6080-4522-92e3-26a2ddebc030",
+                    "date": "2026-02-03",
+                    "hours": 6.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "ce6a4690-5663-4b09-bf18-2c83a25ec263",
+                    "odometerReading": 55719.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "createdAt": "2026-02-11T00:53:37Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:53:52Z",
+                    "uuid": "a94f5405-63be-4b95-a768-8352a7d78361",
+                    "date": "2026-02-03",
+                    "hours": 2.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "ce6a4690-5663-4b09-bf18-2c83a25ec263",
+                    "odometerReading": 55719.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:09:52Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T22:21:42Z",
+                    "uuid": "943b0dc2-73f1-47a2-ac8c-93788fa61af8",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "ce6a4690-5663-4b09-bf18-2c83a25ec263",
+                    "odometerReading": 55719.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "28b4ecfc-68c7-476b-99a0-a791d7497ce3",
+                        "code": "200/400",
+                        "division": "Irrigation",
+                        "description": "Conductors"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "9b38f6e1-dfe6-47a9-95a8-25a6d3bbdaa0",
+                "code": "300/106",
+                "division": "Landscape",
+                "description": "Prune Existing"
+            },
+            "daysOnsite": 22,
+            "daysNotInUse": -1
+        },
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2026-01-27T22:48:45Z",
+            "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+            "updatedAt": "2026-02-02T19:38:24Z",
+            "uuid": "faf19d54-961d-44be-aeed-0d27077735d1",
+            "equipment": {
+                "uuid": "30de192e-b065-4dbe-bf3f-f3946f8b911f",
+                "name": "Truck",
+                "equipmentId": "1005"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2026-01-26",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:06:29Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T16:52:55Z",
+                    "uuid": "b62bdd26-630f-4f61-ac8a-849ddc9c49c5",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-04T19:50:54Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-04T19:50:54Z",
+                    "uuid": "0475e29b-6c28-4d42-a728-e857e4839c0c",
+                    "date": "2026-02-04",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "d77e8a9e-401b-46a4-916c-785016bb2cfd",
+                        "code": "900/100",
+                        "division": "Maintenance"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-10T16:44:41Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:54:53Z",
+                    "uuid": "394782ed-2a77-4fd6-acb9-e025105ca4fe",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T22:20:28Z",
+                    "updatedBy": "c994fffb-f0bb-48b5-afe9-ec583a791e8d",
+                    "updatedAt": "2026-02-09T18:45:17Z",
+                    "uuid": "14834bcc-17f8-4a66-baed-e712b5b798ac",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "d77e8a9e-401b-46a4-916c-785016bb2cfd",
+                        "code": "900/100",
+                        "division": "Maintenance"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-05T22:42:32Z",
+                    "updatedBy": "62d44c52-accd-47ef-b283-3439e8d443d4",
+                    "updatedAt": "2026-02-11T00:55:27Z",
+                    "uuid": "86c4e8db-e0b3-4499-8cb2-5d36bc3d7384",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "d77e8a9e-401b-46a4-916c-785016bb2cfd",
+                        "code": "900/100",
+                        "division": "Maintenance"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-06T15:43:34Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-06T15:43:34Z",
+                    "uuid": "a8b44b3c-0fc2-4405-9421-171dffe410f5",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "fa4eb2c5-9720-4cae-b0c5-e69a7165c0b7",
+                    "odometerReading": 267612.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "d77e8a9e-401b-46a4-916c-785016bb2cfd",
+                        "code": "900/100",
+                        "division": "Maintenance"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "costCode": {
+                "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                "code": "200/500",
+                "division": "Irrigation",
+                "description": "Mainline"
+            },
+            "daysOnsite": 19,
+            "daysNotInUse": 0
+        },
+        {
+            "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "createdAt": "2026-01-28T01:10:03Z",
+            "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+            "updatedAt": "2026-02-13T14:08:59Z",
+            "uuid": "4eff5918-1844-495f-9f95-9b93c81a49dc",
+            "equipment": {
+                "uuid": "6461c46c-25fc-4d3b-9494-aab970baf985",
+                "name": "Mini-Excavator",
+                "equipmentId": "3026"
+            },
+            "projectUuid": "eb3c558a-8bd2-412d-93bd-05d9917f3f16",
+            "startDate": "2026-01-27",
+            "endDate": "2026-02-13",
+            "logs": [
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-05T22:40:50Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-05T22:40:50Z",
+                    "uuid": "5c9df6e8-d816-4b60-a44a-6a390079c9f1",
+                    "description": "Excavation and back filling main",
+                    "date": "2026-02-05",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T15:05:40Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T16:53:33Z",
+                    "uuid": "a789d53c-9623-4356-8166-7b29ddda1399",
+                    "date": "2026-02-02",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-06T15:42:25Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-06T15:42:25Z",
+                    "uuid": "db7ce87a-e684-4028-94ad-19f33a972b3d",
+                    "date": "2026-02-06",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "c961e68d-8bfa-4d75-9436-c0ee623deca6",
+                        "code": "200/500",
+                        "division": "Irrigation",
+                        "description": "Mainline"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-04T19:50:06Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-04T19:50:06Z",
+                    "uuid": "657f9359-6944-4a86-8002-da086f9d3c80",
+                    "date": "2026-02-04",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-10T16:44:15Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-10T16:44:15Z",
+                    "uuid": "8f72221c-8354-4666-aec3-67514e0bbc55",
+                    "date": "2026-02-09",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                },
+                {
+                    "createdBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "createdAt": "2026-02-03T21:51:24Z",
+                    "updatedBy": "7b580c8a-9e22-4394-ba9a-c954ee718504",
+                    "updatedAt": "2026-02-03T21:51:24Z",
+                    "uuid": "2b55d097-a174-40b2-a9cc-bac2c85bba4a",
+                    "description": "Trenching lateral",
+                    "date": "2026-02-03",
+                    "hours": 8.0,
+                    "idleHours": 0.0,
+                    "status": "IN_USE",
+                    "attachments": [],
+                    "operator": "9b674c3a-c5d0-4aab-bda5-9c59f98dbd4d",
+                    "odometerReading": 0.0,
+                    "fuelConsumption": 0.0,
+                    "costCode": {
+                        "uuid": "50798d8f-b4a2-422c-a79d-547356281d87",
+                        "code": "200/200",
+                        "division": "Irrigation",
+                        "description": "Main line"
+                    },
+                    "equipmentDeficiencies": []
+                }
+            ],
+            "daysOnsite": 18,
+            "daysNotInUse": 0
+        }
+    ]
+}

@@ -11,6 +11,13 @@ import (
 	"time"
 )
 
+type RakenClient interface {
+	GetTimeCards(from, to string) (*TimeCardResponse, error)
+	GetEquipmentLogs(from, to string) (*EquipmentLogResponse, error)
+	GetProjects() (*ProjectResponse, error)
+	GetEmployees() (*EmployeeResponse, error)
+}
+
 type Client struct {
 	config     *Config
 	httpClient *http.Client

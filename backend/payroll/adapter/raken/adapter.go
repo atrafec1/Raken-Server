@@ -8,7 +8,7 @@ import (
 )
 
 type RakenAPIAdapter struct {
-	Client *rakenapi.Client
+	Client rakenapi.RakenClient
 }
 
 func NewRakenAPIAdapter() (*RakenAPIAdapter, error) {
@@ -45,19 +45,19 @@ func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (port.Payro
 	if err != nil {
 		return port.PayrollEntryResult{}, err
 	}
-	adapterTimeCards, err := normalizeTimeCardResponse(*timeCardResponse, projectMap, employeeMap)
+	adapterTimeCards, err := r.normalizeTimeCardResponse(*timeCardResponse, projectMap, employeeMap)
 	if err != nil {
 		return port.PayrollEntryResult{}, err
 	}
-	adapterEquipLogs, err := normalizeEquipLogResponse(*equipLogResponse, projectMap, employeeMap)
+	adapterEquipLogs, err := r.normalizeEquipLogResponse(*equipLogResponse, projectMap, employeeMap)
 	if err != nil {
 		return port.PayrollEntryResult{}, err
 	}
-	mergedLogs, err := mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
+	mergedLogs, err := r.mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
 	if err != nil {
 		return port.PayrollEntryResult{}, fmt.Errorf("failed to merge time cards and equip logs: %w", err)
 	}
-	applyPayrollRules(mergedLogs)
+	r.applyPayrollRules(mergedLogs)
 	warnings := collectWarnings(adapterTimeCards, adapterEquipLogs)
 	return port.PayrollEntryResult{
 		Entries:  CopySlice(mergedLogs),
@@ -110,14 +110,14 @@ func (r *RakenAPIAdapter) makeEmployeeMap() (map[string]rakenapi.Employee, error
 	}
 	return employeeMap, nil
 }
-func applyPayrollRules(entries []*dto.PayrollEntry) {
+func (r *RakenAPIAdapter) applyPayrollRules(entries []*dto.PayrollEntry) {
 	for _, entry := range entries {
-		applySpecialPhaseRules(entry)
-		applyCAOvertimeRules(entry)
+		r.applySpecialPhaseRules(entry)
+		r.applyCAOvertimeRules(entry)
 	}
 }
 
-func applySpecialPhaseRules(entry *dto.PayrollEntry) {
+func (r *RakenAPIAdapter) applySpecialPhaseRules(entry *dto.PayrollEntry) {
 	var specialPhasePayCodes = map[string]string{
 		"VACNJB": "VACNJB",
 		"SKLVCA": "SKLVCA",
@@ -134,7 +134,7 @@ func applySpecialPhaseRules(entry *dto.PayrollEntry) {
 	}
 }
 
-func applyCAOvertimeRules(entry *dto.PayrollEntry) {
+func (r *RakenAPIAdapter) applyCAOvertimeRules(entry *dto.PayrollEntry) {
 	switch entry.Day {
 	case 6:
 		threshold := 12.0
@@ -143,6 +143,9 @@ func applyCAOvertimeRules(entry *dto.PayrollEntry) {
 			overAmount := overTimeHours - threshold
 			entry.PremiumHours += overAmount
 			entry.OvertimeHours = threshold
+		} else {
+			entry.OvertimeHours = overTimeHours
+			entry.RegularHours = 0
 		}
 	case 7:
 		totalHours := entry.RegularHours + entry.OvertimeHours + entry.PremiumHours
@@ -152,7 +155,7 @@ func applyCAOvertimeRules(entry *dto.PayrollEntry) {
 	}
 }
 
-func normalizeTimeCardResponse(
+func (r *RakenAPIAdapter) normalizeTimeCardResponse(
 	timeCardResponse rakenapi.TimeCardResponse,
 	projectMap map[string]rakenapi.Project,
 	employeeMap map[string]rakenapi.Employee) ([]adapterTimeCard, error) {
@@ -188,7 +191,7 @@ func normalizeTimeCardResponse(
 	return adapterTimeCards, nil
 }
 
-func normalizeEquipLogResponse(
+func (r *RakenAPIAdapter) normalizeEquipLogResponse(
 	equipLogResponse rakenapi.EquipmentLogResponse,
 	projectMap map[string]rakenapi.Project,
 	employeeMap map[string]rakenapi.Employee) ([]adapterEquipLog, error) {
@@ -208,6 +211,7 @@ func normalizeEquipLogResponse(
 					JobNumber:    projectMap[projectUuid].Number,
 					EquipNumber:  equipment.Code,
 					CostCode:     log.CostCode.Code,
+					Hours:        log.Hours,
 				})
 		}
 	}

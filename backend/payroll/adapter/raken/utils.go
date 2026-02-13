@@ -41,8 +41,6 @@ func parseRakenCostCode(costCode string) rakenCostCode {
 	if len(parts) >= 3 {
 		result.ChangeOrder = parts[2]
 	}
-	fmt.Println("Parsed cost code: ", result)
-	fmt.Println("Original cost code: ", costCode)
 	return result
 }
 
@@ -53,7 +51,7 @@ type mergeKey struct {
 	CostCode     string
 }
 
-func mergeTimeAndEquipLogs(timeCards []adapterTimeCard, equipLogs []adapterEquipLog) ([]*dto.PayrollEntry, error) {
+func (r *RakenAPIAdapter) mergeTimeAndEquipLogs(timeCards []adapterTimeCard, equipLogs []adapterEquipLog) ([]*dto.PayrollEntry, error) {
 	var payrollEntries []*dto.PayrollEntry
 	entries := make(map[mergeKey]*dto.PayrollEntry)
 
@@ -89,18 +87,20 @@ func mergeTimeAndEquipLogs(timeCards []adapterTimeCard, equipLogs []adapterEquip
 		}
 		entry, exists := entries[key]
 		if !exists {
-			fmt.Printf("Should exist but doesnt: %v", key)
+			//INTENTIONALLY SKIPPING EQUIP LOGS THAT DONT HAVE A MATCHING TIMECARD
+			// fmt.Printf("Equip log exists but timecard doesnt: %v", key)
 			continue
 		}
 		if entry.SpecialPayCode == "" {
 			applyEquipLog(entry, equipLog)
 		} else {
-			clone := *entry
-			clone.RegularHours = 0
-			clone.OvertimeHours = 0
-			clone.PremiumHours = 0
-			applyEquipLog(&clone, equipLog)
-			payrollEntries = append(payrollEntries, &clone)
+			clonePtr := new(dto.PayrollEntry)
+			*clonePtr = *entry
+			clonePtr.RegularHours = 0
+			clonePtr.OvertimeHours = 0
+			clonePtr.PremiumHours = 0
+			applyEquipLog(clonePtr, equipLog)
+			payrollEntries = append(payrollEntries, clonePtr)
 		}
 
 	}
@@ -131,7 +131,7 @@ func newBasePayrollEntry(timeCard adapterTimeCard) (*dto.PayrollEntry, error) {
 	costCodeParts := parseRakenCostCode(timeCard.CostCode)
 	day, err := convertDateToInt(timeCard.Date)
 	if err != nil {
-		return nil, fmt.Errorf("failed to convert date to int: %w")
+		return nil, fmt.Errorf("failed to convert date to int: %w", err)
 	}
 	return &dto.PayrollEntry{
 		CurrentDate:      timeCard.Date,

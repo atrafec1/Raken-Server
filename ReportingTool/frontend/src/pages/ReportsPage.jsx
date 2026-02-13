@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { EventsOn } from "../../wailsjs/runtime/runtime";
-import ExportLogger from "../components/ExportLogger";
+import ExportLogger from "../components/ReportsPage/ExportLogger";
 import DateRangePicker from "../components/DateRangePicker";
 import FolderSelector from "../components/FolderSelector";
-import ExportReportsButton from "../components/ExportReportsButton";
+import ExportReportsButton from "../components/ReportsPage/ExportReportsButton";
 import Error from "../components/Error";
 import "../index.css";
 import {
@@ -37,8 +37,7 @@ function ReportsPage() {
   const [toDate, setToDate] = useState("");
   const [savePath, setSavePath] = useState("Desktop/Raken Reports");
   const [error, setError] = useState(false);
-  const [isExporting, setIsExporting] = useState(false);
-  const [isExportComplete, setIsExportComplete] = useState(false);
+  const [exportStatus, setExportStatus] = useState('idle'); // 'idle' | 'exporting' | 'success' | 'error'
 
   // Load export directory on mount
   useEffect(() => {
@@ -60,14 +59,13 @@ function ReportsPage() {
     });
 
     const unsubscribeComplete = EventsOn("exportComplete", () => {
-      setIsExportComplete(true);
+      setExportStatus('success');
       setLog((prev) => [...prev, "Export complete."]);
-      setIsExporting(false);
     });
 
     const unsubscribeError = EventsOn("exportError", (message) => {
+      setExportStatus('error');
       setLog((prev) => [...prev, `Error: ${message}`]);
-      setIsExporting(false);
     });
 
     return () => {
@@ -81,19 +79,18 @@ function ReportsPage() {
     if (!isValidDateRange(fromDate, toDate)) return;
 
     setLog([]);          // Clear previous run
-    setIsExporting(true);
-    setIsExportComplete(false); // Reset completion state
+    setExportStatus('exporting');
 
     try {
       await ExportDailyReports(fromDate, toDate);
     } catch (err) {
-      setIsExporting(false);
+      setExportStatus('error');
       console.log(err);
     }
   };
 
   const handleStartNew = () => {
-    setIsExportComplete(false);
+    setExportStatus('idle');
     setLog([]);
     setFromDate("");
     setToDate("");
@@ -126,8 +123,8 @@ function ReportsPage() {
       </div>
 
       <div className="flex-1 flex flex-col gap-4 items-center justify-center">
-        {/* Show controls only when not exporting and not complete */}
-        {!isExporting && !isExportComplete && (
+        {/* Show controls only when idle */}
+        {exportStatus === 'idle' && (
           <>
             <div className="flex items-end gap-3">
               <DateRangePicker
@@ -137,7 +134,7 @@ function ReportsPage() {
               />
               <ExportReportsButton
                 onClick={exportReportsToComputer}
-                disabled={isExporting}
+                disabled={false}
               />
             </div>
 
@@ -148,11 +145,11 @@ function ReportsPage() {
           </>
         )}
 
-        {/* Show logger when exporting or complete */}
-        {(isExporting || isExportComplete) && (
-          <ExportLogger
+        {/* Show logger when exporting, success, or error */}
+        {exportStatus !== 'idle' && (
+          <ExportLogger 
             progressLogs={log} 
-            isComplete={isExportComplete}
+            exportStatus={exportStatus}
             onStartNew={handleStartNew}
           />
         )}
