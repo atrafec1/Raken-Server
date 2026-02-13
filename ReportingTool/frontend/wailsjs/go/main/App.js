@@ -6,8 +6,8 @@ export function ChangeExportDir(arg1) {
   return window['go']['main']['App']['ChangeExportDir'](arg1);
 }
 
-export function ExportReports(arg1, arg2) {
-  return window['go']['main']['App']['ExportReports'](arg1, arg2);
+export function ExportDailyReports(arg1, arg2) {
+  return window['go']['main']['App']['ExportDailyReports'](arg1, arg2);
 }
 
 export function GetExportDir() {

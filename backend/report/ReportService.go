@@ -38,16 +38,24 @@ func (r *ReportExporterService) SetBaseDir(dir string) {
 	r.baseDir = filepath.Clean(dir)
 }
 
-func (r *ReportExporterService) ExportToBaseDir(fromDate, toDate string) error {
+func (r *ReportExporterService) ExportToBaseDir(fromDate, toDate string, onProgress func(message string)) error {
 	reportCollections, err := r.reportFetcher.GetReports(fromDate, toDate)
 	if err != nil {
 		return fmt.Errorf("failed to fetch reports: %w", err)
+	}
+
+	if onProgress != nil {
+		onProgress(fmt.Sprintf("Fetched %d report collections", len(reportCollections)))
 	}
 
 	for _, reportCollection := range reportCollections {
 		projectDir := r.getProjectDirectory(reportCollection.Reports[0].Project)
 
 		for _, report := range reportCollection.Reports {
+			if onProgress != nil {
+				progressMsg := fmt.Sprintf("Exporting report for project %s: %s", report.Project.Name, report.Date)
+				onProgress(progressMsg)
+			}
 			savePath := filepath.Join(projectDir, "Daily Reports", report.ToFileName())
 			if err := downloadPDF(report.PDFLink, savePath); err != nil {
 				return fmt.Errorf("failed to export report: %w", err)

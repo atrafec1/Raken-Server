@@ -6,8 +6,7 @@ function Navbar() {
   const isActive = (path) => location.pathname === path;
   
   const navItems = [
-    { name: "Home", path: "/", disabled: false },
-    { name: "Payroll", path: "/payroll", disabled: false },
+    { name: "Payroll", path: "/", disabled: false },
     { name: "Reports", path: "/reports", disabled: false },
   ];
   
@@ -16,9 +15,7 @@ function Navbar() {
       {/* Logo Section */}
       <div className="px-4 py-5 border-b border-neutral-800">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded flex items-center justify-center">
-            <span className="text-white font-bold text-sm">PR</span>
-          </div>
+        
           <span className="text-white font-semibold text-base">PRG Tools</span>
         </Link>
       </div>

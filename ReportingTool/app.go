@@ -29,7 +29,7 @@ func (a *App) ensureReportExporter() error {
 	if a.ReportExporter != nil {
 		return nil
 	}
-	svc, err := report.NewReportExporter("C:\\Users\\jdtra\\OneDrive\\Desktop\\raken")
+	svc, err := report.NewReportExporter("I:\\Raken")
 	if err != nil {
 		return fmt.Errorf("error initializing ReportExporterService: %v", err)
 	}
@@ -37,14 +37,28 @@ func (a *App) ensureReportExporter() error {
 	return nil
 }
 
-func (a *App) ExportReports(fromDate, toDate string) error {
+func (a *App) progressEventEmitter(message string) {
+	runtime.EventsEmit(a.ctx, "exportProgress", message)
+}
+func (a *App) ExportDailyReports(fromDate, toDate string) error {
+	runtime.EventsEmit(a.ctx, "exportProgress", "Starting export...")
+	runtime.EventsEmit(a.ctx, "exportError", "test error!")
 	if err := a.ensureReportExporter(); err != nil {
 		return err
 	}
+	go func() {
+		err := a.ReportExporter.ExportToBaseDir(
+			fromDate,
+			toDate,
+			a.progressEventEmitter,
+		)
 
-	if err := a.ReportExporter.ExportToBaseDir(fromDate, toDate); err != nil {
-		return fmt.Errorf("error exporting reports: %v", err)
-	}
+		if err != nil {
+			runtime.EventsEmit(a.ctx, "exportError", fmt.Sprintf("Export failed: %v", err))
+			return
+		}
+		runtime.EventsEmit(a.ctx, "exportComplete", fmt.Sprintf("Export completed. Check %s for the results.", a.ReportExporter.GetBaseDir()))
+	}()
 	return nil
 }
 

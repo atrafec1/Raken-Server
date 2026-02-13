@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import "../index.css";
 function Layout() {
   return (
-    <div className="flex h-screen bg-neutral-950">
+    <div className="flex h-screen ">
       <Navbar />
       
       {/* Main Content Area */}
