@@ -34,32 +34,3 @@ func (c *Client) GetClasses() (*ClassResponse, error) {
 
 	return &response, nil
 }
-
-func (c *Client) UpdateClassMap() error {
-	classResp, err := c.GetClasses()
-	if err != nil {
-		return fmt.Errorf("error getting classifications: %v", err)
-	}
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	c.classMap = make(map[string]Class)
-	for _, class := range classResp.Collection {
-		c.classMap[class.UUID] = class
-	}
-	return nil
-}
-
-func (c *Client) GetClassByUUID(uuid string) (Class, error) {
-	class, exists := c.classMap[uuid]
-	if !exists {
-		if err := c.UpdateClassMap(); err != nil {
-			return Class{}, fmt.Errorf("failed to refresh class map: %w", err)
-		}
-		class, exists = c.classMap[uuid]
-		if !exists {
-			return Class{}, fmt.Errorf("class with UUID %s not found after refresh", uuid)
-		}
-	}
-	return class, nil
-}
-

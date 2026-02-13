@@ -10,6 +10,10 @@ export function ExportReports(arg1, arg2) {
   return window['go']['main']['App']['ExportReports'](arg1, arg2);
 }
 
-export function Greet(arg1) {
-  return window['go']['main']['App']['Greet'](arg1);
+export function GetExportDir() {
+  return window['go']['main']['App']['GetExportDir']();
+}
+
+export function SelectFolder() {
+  return window['go']['main']['App']['SelectFolder']();
 }

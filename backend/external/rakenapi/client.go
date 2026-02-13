@@ -12,12 +12,9 @@ import (
 )
 
 type Client struct {
-	config      *Config
-	httpClient  *http.Client
-	mu          sync.Mutex
-	projectMap  map[string]Project
-	employeeMap map[string]Employee
-	classMap    map[string]Class
+	config     *Config
+	httpClient *http.Client
+	mu         sync.Mutex
 }
 
 type TokenResponse struct {
@@ -36,21 +33,7 @@ func NewClient(cfg *Config) (*Client, error) {
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		projectMap:  make(map[string]Project),
-		employeeMap: make(map[string]Employee),
-		classMap:    make(map[string]Class),
 	}
-	if err := c.UpdateProjectMap(); err != nil {
-		return nil, fmt.Errorf("error initializing project map: %w", err)
-	}
-	time.Sleep(2 * time.Second)
-	if err := c.UpdateEmployeeMap(); err != nil {
-		return nil, fmt.Errorf("error initializing employee map: %w", err)
-	}
-	if err := c.UpdateClassMap(); err != nil {
-		return nil, fmt.Errorf("error initializing employee map: %w", err)
-	}
-	time.Sleep(2 * time.Second)
 	return c, nil
 }
 
@@ -123,12 +106,15 @@ func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 
 	req.Header.Set("Authorization", "Bearer "+c.config.AccessToken)
 	print("Requesting ", req.URL.String(), "\n")
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return err
 	}
 
 	if resp.StatusCode == http.StatusUnauthorized || resp.StatusCode == http.StatusForbidden {
+
+		io.Copy(io.Discard, resp.Body)
 		resp.Body.Close()
 
 		if err := c.refreshAccessToken(); err != nil {
@@ -155,4 +141,3 @@ func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 
 	return json.Unmarshal(body, respSchema)
 }
-

@@ -1,33 +1,23 @@
 import { useState } from 'react';
-import logo from './assets/images/logo-universal.png';
-import './App.css';
-import { Greet, ExportReports } from "../wailsjs/go/main/App";
-import DateRangePicker from "./components/DateRangePicker"
-
+import ReportsPage from "./pages/ReportsPage";
+import './index.css';
+import Navbar from "./components/Navbar";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import PayrollPage from "./pages/PayrollPage";
+import HomePage from "./pages/HomePage";
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
-    const [name, setName] = useState('');
-    const [fromDate, setFromDate] = useState('');
-    const [toDate, setToDate] = useState('');
-
-    const updateName = (e) => setName(e.target.value);
-    const updateFromDate = (e) => setFromDate(e.target.value);
-    const updateToDate = (e) => setToDate(e.target.value);
-
-    const greet = () => Greet(name).then(setResultText);
-    const exportReportsToComputer = (fromDate, toDate) => {
-        ExportReports(fromDate, toDate)
-            .then(() => console.log("Reports exported successfully"))
-            .catch(err => console.error(err));
-    };
-
 
     return (
-        <div id="App">
-            <h1> HERRO MADEREINE </h1>
-            <DateRangePicker fromDate={fromDate} toDate={toDate} onSubmit={exportReportsToComputer} buttonText={"Submit"} />
-            <p className="text-blue-500"> Hello</p>
+        <Router>
+            <Navbar />
+        <div className="flex-1">
+            <Routes>
+                <Route path="/" element={<HomePage/>} />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path="/payroll" element={<PayrollPage />} />
+            </Routes>
         </div>
+        </Router>
     );
 }
 

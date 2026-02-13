@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"prg_tools/report"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -27,17 +29,12 @@ func (a *App) ensureReportExporter() error {
 	if a.ReportExporter != nil {
 		return nil
 	}
-	svc, err := report.NewReportExporter("C:\\Users\\adamt\\OneDrive\\Desktop\\Raken")
+	svc, err := report.NewReportExporter("C:\\Users\\jdtra\\OneDrive\\Desktop\\raken")
 	if err != nil {
 		return fmt.Errorf("error initializing ReportExporterService: %v", err)
 	}
 	a.ReportExporter = svc
 	return nil
-}
-
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
 func (a *App) ExportReports(fromDate, toDate string) error {
@@ -51,10 +48,27 @@ func (a *App) ExportReports(fromDate, toDate string) error {
 	return nil
 }
 
-func (a *App) ChangeExportDir(newDir string) error {
+func (a *App) ChangeExportDir(newDir string) (string, error) {
 	if err := a.ensureReportExporter(); err != nil {
-		return err
+		return "", err
 	}
 	a.ReportExporter.SetBaseDir(newDir)
-	return nil
+	return newDir, nil
+}
+
+func (a *App) SelectFolder() (string, error) {
+	dir, err := runtime.OpenDirectoryDialog(a.ctx, runtime.OpenDialogOptions{
+		Title: "Select Export Folder",
+	})
+	if err != nil {
+		return "", err
+	}
+	return dir, nil
+}
+
+func (a *App) GetExportDir() string {
+	if err := a.ensureReportExporter(); err != nil {
+		return ""
+	}
+	return a.ReportExporter.GetBaseDir()
 }

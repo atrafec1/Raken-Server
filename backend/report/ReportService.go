@@ -1,14 +1,14 @@
 package report
 
 import (
-	"prg_tools/report/adapter/raken"
-	"prg_tools/report/domain"
-	"prg_tools/report/port"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
+	"prg_tools/report/adapter/raken"
+	"prg_tools/report/domain"
+	"prg_tools/report/port"
 	"strings"
 )
 
@@ -30,6 +30,10 @@ func NewReportExporter(baseDir string) (*ReportExporterService, error) {
 
 }
 
+func (r *ReportExporterService) GetBaseDir() string {
+	return r.baseDir
+}
+
 func (r *ReportExporterService) SetBaseDir(dir string) {
 	r.baseDir = filepath.Clean(dir)
 }
@@ -46,7 +50,7 @@ func (r *ReportExporterService) ExportToBaseDir(fromDate, toDate string) error {
 		for _, report := range reportCollection.Reports {
 			savePath := filepath.Join(projectDir, report.ToFileName())
 			if err := downloadPDF(report.PDFLink, savePath); err != nil {
-				return fmt.Errorf("failed to export report")
+				return fmt.Errorf("failed to export report: %w", err)
 			}
 		}
 	}
@@ -97,4 +101,3 @@ func sanitize(name string) string {
 	)
 	return replacer.Replace(name)
 }
-
