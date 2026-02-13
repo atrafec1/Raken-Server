@@ -1,8 +1,8 @@
 package raken
 
 import (
-	"prg_tools/payroll/dto"
 	"fmt"
+	"prg_tools/payroll/dto"
 	"strings"
 	"time"
 )
@@ -71,7 +71,7 @@ func mergeTimeAndEquipLogs(timeCards []adapterTimeCard, equipLogs []adapterEquip
 		if !exists {
 			newEntry, err := newBasePayrollEntry(timeCard)
 			if err != nil {
-				return nil, fmt.Errorf("Failed to make base payroll entry: %w")
+				return nil, fmt.Errorf("Failed to make base payroll entry: %w", err)
 			}
 			entries[key] = newEntry
 			payrollEntries = append(payrollEntries, newEntry)
@@ -89,7 +89,7 @@ func mergeTimeAndEquipLogs(timeCards []adapterTimeCard, equipLogs []adapterEquip
 		}
 		entry, exists := entries[key]
 		if !exists {
-			fmt.Println("Should exist but doesnt: %v", key)
+			fmt.Printf("Should exist but doesnt: %v", key)
 			continue
 		}
 		if entry.SpecialPayCode == "" {
@@ -134,16 +134,17 @@ func newBasePayrollEntry(timeCard adapterTimeCard) (*dto.PayrollEntry, error) {
 		return nil, fmt.Errorf("failed to convert date to int: %w")
 	}
 	return &dto.PayrollEntry{
-		CurrentDate:   timeCard.Date,
-		EmployeeCode:  timeCard.EmployeeCode,
-		JobNumber:     timeCard.JobNumber,
-		Day:           day,
-		Phase:         costCodeParts.Phase,
-		CostCode:      costCodeParts.Code,
-		ChangeOrder:   costCodeParts.ChangeOrder,
-		PremiumHours:  payRoute.PremiumHours,
-		OvertimeHours: payRoute.OvertimeHours,
-		RegularHours:  payRoute.RegularHours,
+		CurrentDate:      timeCard.Date,
+		EmployeeCode:     timeCard.EmployeeCode,
+		JobNumber:        timeCard.JobNumber,
+		Day:              day,
+		Phase:            costCodeParts.Phase,
+		CostCode:         costCodeParts.Code,
+		ChangeOrder:      costCodeParts.ChangeOrder,
+		PremiumHours:     payRoute.PremiumHours,
+		OvertimeHours:    payRoute.OvertimeHours,
+		RegularHours:     payRoute.RegularHours,
+		CostCodeDivision: timeCard.CostCodeDescription,
 	}, nil
 }
 
@@ -174,4 +175,3 @@ func routePay(timeCard adapterTimeCard) payRouting {
 		}
 	}
 }
-

@@ -16,10 +16,11 @@ func main() {
 	}
 	excel_exporter := excel.NewExcelPayrollExporter("Desktop")
 	payroll_service := payroll.NewPayrollService(raken_adapter, excel_exporter)
-	entries, err := payroll_service.GetEntries("2026-02-01", "2026-02-08")
+	entries, err := payroll_service.GetEntries("2026-01-26", "2026-02-01")
 	if err != nil {
 		panic(err)
 	}
+	fmt.Printf("warnings: %+v\n", entries.Warnings)
 	if err := payroll_service.Export(entries.Entries); err != nil {
 		panic(err)
 	}

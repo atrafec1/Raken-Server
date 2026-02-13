@@ -1,11 +1,11 @@
 package cp
 
 import (
-	"prg_tools/payroll/dto"
 	"encoding/csv"
 	"fmt"
 	"os"
 	"path/filepath"
+	"prg_tools/payroll/dto"
 	"strconv"
 )
 
@@ -56,4 +56,3 @@ func (a *Adapter) ExportPayrollEntries(entries []dto.PayrollEntry) error {
 	}
 	return nil
 }
-

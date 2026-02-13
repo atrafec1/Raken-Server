@@ -65,14 +65,15 @@ func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (port.Payro
 }
 
 type adapterTimeCard struct {
-	EmployeeCode string
-	EmployeeName string
-	Date         string
-	JobNumber    string
-	Class        string
-	CostCode     string
-	PayType      string
-	Hours        float64
+	EmployeeCode        string
+	EmployeeName        string
+	Date                string
+	JobNumber           string
+	Class               string
+	CostCode            string
+	PayType             string
+	Hours               float64
+	CostCodeDescription string
 }
 
 type adapterEquipLog struct {
@@ -172,14 +173,15 @@ func normalizeTimeCardResponse(
 
 			adapterTimeCards = append(adapterTimeCards,
 				adapterTimeCard{
-					EmployeeCode: employee.EmployeeID,
-					EmployeeName: fmt.Sprintf("%s %s", employee.FirstName, employee.LastName),
-					Date:         timeCard.Date,
-					Class:        timeEntry.Classification.Name,
-					JobNumber:    project.Number,
-					CostCode:     timeEntry.CostCode.Code,
-					PayType:      timeEntry.PayType.Code,
-					Hours:        timeEntry.Hours,
+					EmployeeCode:        employee.EmployeeID,
+					EmployeeName:        fmt.Sprintf("%s %s", employee.FirstName, employee.LastName),
+					Date:                timeCard.Date,
+					Class:               timeEntry.Classification.Name,
+					JobNumber:           project.Number,
+					CostCode:            timeEntry.CostCode.Code,
+					PayType:             timeEntry.PayType.Code,
+					Hours:               timeEntry.Hours,
+					CostCodeDescription: timeEntry.CostCode.Division,
 				})
 		}
 	}

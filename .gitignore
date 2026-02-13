@@ -14,8 +14,6 @@ go.sum
 # Dependency directories
 /vendor/
 
-# Environment variables / secrets
-.env
 
 # IDEs and editors
 .vscode/

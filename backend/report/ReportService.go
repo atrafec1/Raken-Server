@@ -48,7 +48,7 @@ func (r *ReportExporterService) ExportToBaseDir(fromDate, toDate string) error {
 		projectDir := r.getProjectDirectory(reportCollection.Reports[0].Project)
 
 		for _, report := range reportCollection.Reports {
-			savePath := filepath.Join(projectDir, report.ToFileName())
+			savePath := filepath.Join(projectDir, "Daily Reports", report.ToFileName())
 			if err := downloadPDF(report.PDFLink, savePath); err != nil {
 				return fmt.Errorf("failed to export report: %w", err)
 			}
