@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"prg_tools/external/rakenapi"
 	"prg_tools/payroll/dto"
-	"prg_tools/payroll/port"
 )
 
 type RakenAPIAdapter struct {
@@ -26,40 +25,40 @@ func NewRakenAPIAdapter() (*RakenAPIAdapter, error) {
 	}, nil
 }
 
-func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (port.PayrollEntryResult, error) {
+func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (dto.PayrollEntryResult, error) {
 
 	timeCardResponse, err := r.Client.GetTimeCards(fromDate, toDate)
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 	equipLogResponse, err := r.Client.GetEquipmentLogs(fromDate, toDate)
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 
 	projectMap, err := r.makeProjectMap()
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 	employeeMap, err := r.makeEmployeeMap()
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 	adapterTimeCards, err := r.normalizeTimeCardResponse(*timeCardResponse, projectMap, employeeMap)
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 	adapterEquipLogs, err := r.normalizeEquipLogResponse(*equipLogResponse, projectMap, employeeMap)
 	if err != nil {
-		return port.PayrollEntryResult{}, err
+		return dto.PayrollEntryResult{}, err
 	}
 	mergedLogs, err := r.mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
 	if err != nil {
-		return port.PayrollEntryResult{}, fmt.Errorf("failed to merge time cards and equip logs: %w", err)
+		return dto.PayrollEntryResult{}, fmt.Errorf("failed to merge time cards and equip logs: %w", err)
 	}
 	r.applyPayrollRules(mergedLogs)
 	warnings := collectWarnings(adapterTimeCards, adapterEquipLogs)
-	return port.PayrollEntryResult{
+	return dto.PayrollEntryResult{
 		Entries:  CopySlice(mergedLogs),
 		Warnings: warnings}, nil
 }

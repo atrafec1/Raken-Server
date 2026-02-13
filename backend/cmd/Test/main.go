@@ -24,4 +24,7 @@ func main() {
 	if err := payroll_service.Export(entries.Entries); err != nil {
 		panic(err)
 	}
+	if err := payroll_service.ExportWarnings(entries.Warnings, ""); err != nil {
+		panic(err)
+	}
 }

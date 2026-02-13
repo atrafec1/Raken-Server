@@ -1,5 +1,9 @@
 package dto
 
+type PayrollEntryResult struct {
+	Entries  []PayrollEntry
+	Warnings []Warning
+}
 type PayrollEntry struct {
 	EmployeeCode     string
 	CurrentDate      string

@@ -29,7 +29,6 @@ func (e *ExcelPayrollExporter) SetWeekEndingDate(weekEndingDate string) {
 func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntry) error {
 
 	// ---- BEGIN EXCEL CREATION ----
-
 	f := excelize.NewFile()
 	defer f.Close()
 

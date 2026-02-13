@@ -42,7 +42,6 @@ func (a *App) progressEventEmitter(message string) {
 }
 func (a *App) ExportDailyReports(fromDate, toDate string) error {
 	runtime.EventsEmit(a.ctx, "exportProgress", "Starting export...")
-	runtime.EventsEmit(a.ctx, "exportError", "test error!")
 	if err := a.ensureReportExporter(); err != nil {
 		return err
 	}
