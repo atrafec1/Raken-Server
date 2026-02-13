@@ -1,10 +1,10 @@
 package raken
 
 import (
+	"fmt"
 	"prg_tools/external/rakenapi"
 	"prg_tools/payroll/dto"
 	"prg_tools/payroll/port"
-	"fmt"
 )
 
 type RakenAPIAdapter struct {
@@ -211,4 +211,3 @@ func normalizeEquipLogResponse(
 	}
 	return adapterEquipLogs, nil
 }
-

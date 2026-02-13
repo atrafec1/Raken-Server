@@ -1,6 +1,7 @@
 package payroll
 
 import (
+	"fmt"
 	"prg_tools/payroll/dto"
 	"prg_tools/payroll/port"
 	"errors"
@@ -24,7 +25,7 @@ func (s *PayrollService) Export(payrollEntries []dto.PayrollEntry) error {
 	}
 
 	if err := s.Exporter.ExportPayrollEntries(payrollEntries); err != nil {
-		return errors.New("failed to export payroll entries")
+		return fmt.Errorf("failed to export payroll entries: %w", err)
 	}
 	return nil
 }
@@ -32,8 +33,9 @@ func (s *PayrollService) Export(payrollEntries []dto.PayrollEntry) error {
 func (s *PayrollService) GetEntries(fromDate, toDate string) (port.PayrollEntryResult, error) {
 	result, err := s.EntryReader.GetPayrollEntries(fromDate, toDate)
 	if err != nil {
-		return port.PayrollEntryResult{}, errors.New("failed to get payroll entries")
+		return port.PayrollEntryResult{}, fmt.Errorf("failed to get payroll entries: %w", err)
 	}
 	return result, nil
 }
+
 

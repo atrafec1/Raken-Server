@@ -15,11 +15,11 @@ type MaterialLog struct {
 }
 
 type Material struct {
-	UUID      string       `json:"uuid"`
-	Name      string       `json:"name"`
-	Unit      MaterialUnit `json:"materialUnit"`
-	Quantitiy float64      `json:"quantity"`
-	CostCode  CostCode     `json:"costCode"`
+	UUID     string       `json:"uuid"`
+	Name     string       `json:"name"`
+	Unit     MaterialUnit `json:"materialUnit"`
+	Quantity float64      `json:"quantity"`
+	CostCode CostCode     `json:"costCode"`
 }
 
 type MaterialUnit struct {
@@ -27,7 +27,7 @@ type MaterialUnit struct {
 }
 
 func (c *Client) GetMaterialLogs(projectUuid, fromDate, toDate string) (*MaterialLogResponse, error) {
-	requestURL := "materialLogs"
+	requestURL := c.config.BaseURL + "materialLogs"
 	req, err := http.NewRequest("GET", requestURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("bad request creation: %w", err)
@@ -39,7 +39,7 @@ func (c *Client) GetMaterialLogs(projectUuid, fromDate, toDate string) (*Materia
 	req.URL.RawQuery = queryParams.Encode()
 
 	var resp MaterialLogResponse
-	if err := c.doRequest(req, resp); err != nil {
+	if err := c.doRequest(req, &resp); err != nil {
 		return nil, fmt.Errorf("failed to get material logs: %w", err)
 	}
 	return &resp, nil
