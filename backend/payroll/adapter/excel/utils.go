@@ -143,6 +143,22 @@ func getWeekEndingDate(entries []dto.PayrollEntry) string {
 	return weekEnd
 }
 
+func getWeekBeginningDate(entries []dto.PayrollEntry) string {
+	//getsunday of the week given a date
+	var weekStart string
+	for _, entry := range entries {
+		if entry.CurrentDate != "" {
+			date, err := time.Parse("2006-01-02", entry.CurrentDate)
+			if err != nil {
+				return ""
+			}
+			weekStart = date.AddDate(0, 0, -int(date.Weekday())).Format("2006-01-02")
+			break
+		}
+	}
+	return weekStart
+}
+
 func getDayName(day int) string {
 	days := []string{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
 	if day >= 0 && day < 7 {

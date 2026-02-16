@@ -5,25 +5,20 @@ import (
 	"os"
 	"prg_tools/payroll/dto"
 	"strings"
-	"time"
 
 	"github.com/xuri/excelize/v2"
 )
 
 type ExcelPayrollExporter struct {
-	OutputPath     string
-	WeekEndingDate string
+	entriesDir  string
+	warningsDir string
 }
 
-func NewExcelPayrollExporter(outputPath string) *ExcelPayrollExporter {
+func NewPayrollExcelExporter(entriesDir, warningsDir string) *ExcelPayrollExporter {
 	return &ExcelPayrollExporter{
-		OutputPath:     outputPath,
-		WeekEndingDate: "",
+		entriesDir:  entriesDir,
+		warningsDir: warningsDir,
 	}
-}
-
-func (e *ExcelPayrollExporter) SetWeekEndingDate(weekEndingDate string) {
-	e.WeekEndingDate = weekEndingDate
 }
 
 func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntry) error {
@@ -33,7 +28,7 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 	defer f.Close()
 
 	weekEnd := getWeekEndingDate(rawEntries)
-	e.SetWeekEndingDate(weekEnd)
+	weekBeginning := getWeekBeginningDate(rawEntries)
 	entries := transformPayrollEntries(rawEntries)
 	sheetName := "Sheet1"
 
@@ -75,7 +70,7 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 	f.SetCellValue(sheetName, "C2", "PAYROLL")
 	f.SetCellStyle(sheetName, "C2", "C2", titleStyle)
 
-	f.SetCellValue(sheetName, "A3", fmt.Sprintf("Week Ending: %s", e.WeekEndingDate))
+	f.SetCellValue(sheetName, "A3", fmt.Sprintf("Week Ending: %s", weekEnd))
 	f.SetCellStyle(sheetName, "A3", "A3", boldStyle)
 
 	f.SetCellValue(sheetName, "A4", "Notes:")
@@ -178,17 +173,18 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 	f.SetCellValue(sheetName, fmt.Sprintf("J%d", row), totalPT)
 	f.SetCellStyle(sheetName, fmt.Sprintf("H%d", row), fmt.Sprintf("J%d", row), thickTopStyle)
 
-	if e.OutputPath == "" {
-		e.OutputPath = "."
+	if e.entriesDir == "" {
+		e.entriesDir = "."
 	}
 
-	if err := os.MkdirAll(e.OutputPath, 0755); err != nil {
+	if err := os.MkdirAll(e.entriesDir, 0755); err != nil {
 		return err
 	}
 
-	filename := fmt.Sprintf("%s/payroll_%s.xlsx",
-		e.OutputPath,
-		time.Now().Format("20060102_150405"),
+	filename := fmt.Sprintf("%s/Time-Card-%s-%s.xlsx",
+		e.entriesDir,
+		weekBeginning,
+		weekEnd,
 	)
 
 	return f.SaveAs(filename)

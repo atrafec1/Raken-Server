@@ -2,29 +2,31 @@ package main
 
 import (
 	"fmt"
-
 	"prg_tools/payroll"
-	"prg_tools/payroll/adapter/excel"
-	"prg_tools/payroll/adapter/raken"
 )
 
 func main() {
-	fmt.Println("starting")
-	raken_adapter, err := raken.NewRakenAPIAdapter()
+	cpPayrollService, err := payroll.NewTestCPService()
+
 	if err != nil {
 		panic(err)
 	}
-	excel_exporter := excel.NewExcelPayrollExporter("Desktop")
-	payroll_service := payroll.NewPayrollService(raken_adapter, excel_exporter)
-	entries, err := payroll_service.GetEntries("2026-01-26", "2026-02-01")
+
+	payrollEntryResult, err := cpPayrollService.GetEntries("2026-02-09", "2026-02-14")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("warnings: %+v\n", entries.Warnings)
-	if err := payroll_service.Export(entries.Entries); err != nil {
+	fmt.Println("Payroll entries retrieved successfully")
+
+	if err := cpPayrollService.ExportExcel(payrollEntryResult); err != nil {
 		panic(err)
 	}
-	if err := payroll_service.ExportWarnings(entries.Warnings, ""); err != nil {
+
+	fmt.Println("Payroll entries exported to excel successfully")
+
+	if err := cpPayrollService.ExportToPayroll(payrollEntryResult.Entries); err != nil {
 		panic(err)
 	}
+
+	fmt.Println("Payroll entries exported to payroll system successfully")
 }

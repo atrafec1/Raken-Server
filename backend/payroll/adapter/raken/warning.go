@@ -1,8 +1,8 @@
 package raken
 
 import (
-	"prg_tools/payroll/dto"
 	"fmt"
+	"prg_tools/payroll/dto"
 )
 
 func collectWarnings(timeCards []adapterTimeCard, equipLogs []adapterEquipLog) []dto.Warning {
@@ -10,6 +10,7 @@ func collectWarnings(timeCards []adapterTimeCard, equipLogs []adapterEquipLog) [
 	warnings = append(warnings, checkMissingCostCode(timeCards, equipLogs)...)
 	warnings = append(warnings, checkForDuplicateTimeCards(timeCards)...)
 	warnings = append(warnings, findOrphanEquipLogs(equipLogs, timeCards)...)
+	warnings = append(warnings, checkForMissingEquipOperator(equipLogs)...)
 	return warnings
 }
 
@@ -18,6 +19,7 @@ type timeCardDupeKey struct {
 	JobNumber  string
 	Date       string
 	CostCode   string
+	PayType    string
 }
 
 func checkForDuplicateTimeCards(timeCards []adapterTimeCard) []dto.Warning {
@@ -30,10 +32,12 @@ func checkForDuplicateTimeCards(timeCards []adapterTimeCard) []dto.Warning {
 			JobNumber:  timeCard.JobNumber,
 			Date:       timeCard.Date,
 			CostCode:   timeCard.CostCode,
+			PayType:    timeCard.PayType,
 		}
 		if _, exists := seenEntries[key]; exists {
 			warnings = append(warnings, dto.Warning{
-				Message:     fmt.Sprintf("Duplicate time card entry for employee %s on job %s for date %s and cost code %s", timeCard.EmployeeCode, timeCard.JobNumber, timeCard.Date, timeCard.CostCode),
+				Message: fmt.Sprintf("%s %s %s %s %s",
+					timeCard.EmployeeName, timeCard.JobNumber, timeCard.Date, timeCard.CostCode, timeCard.PayType),
 				WarningType: "Duplicate Time Card Entry",
 			})
 		} else {
@@ -48,7 +52,7 @@ func checkMissingCostCode(timeCards []adapterTimeCard, equipLog []adapterEquipLo
 	for _, timeCard := range timeCards {
 		if timeCard.CostCode == "" {
 			warnings = append(warnings, dto.Warning{
-				Message:     timeCard.EmployeeName + timeCard.JobNumber + timeCard.Date,
+				Message:     fmt.Sprintf("%s %s %s", timeCard.EmployeeName, timeCard.JobNumber, timeCard.Date),
 				WarningType: "Time Card Missing Cost Code",
 			})
 		}
@@ -57,8 +61,23 @@ func checkMissingCostCode(timeCards []adapterTimeCard, equipLog []adapterEquipLo
 	for _, equipLog := range equipLog {
 		if equipLog.CostCode == "" {
 			warnings = append(warnings, dto.Warning{
-				Message:     equipLog.EmployeeName + equipLog.JobNumber + equipLog.Date + equipLog.EquipNumber,
+				Message: fmt.Sprintf("%s %s %s %s",
+					equipLog.EmployeeName, equipLog.JobNumber, equipLog.Date, equipLog.EquipNumber),
 				WarningType: "Equip Log Missing Cost Code",
+			})
+		}
+	}
+	return warnings
+}
+
+func checkForMissingEquipOperator(equipLogs []adapterEquipLog) []dto.Warning {
+	var warnings []dto.Warning
+	for _, equipLog := range equipLogs {
+		if equipLog.EmployeeName == "" {
+			warnings = append(warnings, dto.Warning{
+				Message: fmt.Sprintf(
+					"Equip #: %s Job: %s, Date: %s", equipLog.EquipNumber, equipLog.JobNumber, equipLog.Date),
+				WarningType: "Equipment log with no operator",
 			})
 		}
 	}
@@ -86,7 +105,8 @@ func findOrphanEquipLogs(equipLogs []adapterEquipLog, timeCards []adapterTimeCar
 			CostCode:     eq.CostCode,
 			JobNumber:    eq.JobNumber,
 		}
-		if _, exists := timecardSet[k]; !exists {
+
+		if _, exists := timecardSet[k]; !exists && eq.CostCode != "" {
 			warnings = append(warnings,
 				dto.Warning{
 					Message:     eq.EmployeeName + eq.JobNumber + eq.Date + eq.CostCode,
@@ -97,4 +117,3 @@ func findOrphanEquipLogs(equipLogs []adapterEquipLog, timeCards []adapterTimeCar
 
 	return warnings
 }
-

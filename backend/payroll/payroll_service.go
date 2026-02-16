@@ -12,24 +12,40 @@ import (
 )
 
 type PayrollService struct {
-	EntryReader port.PayrollEntryPort
-	Exporter    port.PayrollExportPort
+	EntryReader     port.PayrollEntryPort
+	PayrollExporter port.PayrollExportPort
+	ExcelExporter   port.PayrollExcelPort
 }
 
-func NewPayrollService(payrollEntryPort port.PayrollEntryPort, payrollExportPort port.PayrollExportPort) *PayrollService {
+func NewPayrollService(
+	payrollEntryPort port.PayrollEntryPort,
+	payrollExportPort port.PayrollExportPort,
+	excelExporter port.PayrollExcelPort) *PayrollService {
+
 	return &PayrollService{
-		EntryReader: payrollEntryPort,
-		Exporter:    payrollExportPort,
+		EntryReader:     payrollEntryPort,
+		PayrollExporter: payrollExportPort,
+		ExcelExporter:   excelExporter,
 	}
 }
 
-func (s *PayrollService) Export(payrollEntries []dto.PayrollEntry) error {
+func (s *PayrollService) ExportToPayroll(payrollEntries []dto.PayrollEntry) error {
 	if len(payrollEntries) == 0 {
 		return errors.New("no payroll entries")
 	}
 
-	if err := s.Exporter.ExportPayrollEntries(payrollEntries); err != nil {
+	if err := s.PayrollExporter.ExportPayrollEntries(payrollEntries); err != nil {
 		return fmt.Errorf("failed to export payroll entries: %w", err)
+	}
+	return nil
+}
+
+func (s *PayrollService) ExportExcel(result dto.PayrollEntryResult) error {
+	if err := s.ExcelExporter.ExportPayrollEntries(result.Entries); err != nil {
+		return fmt.Errorf("failed to export payroll entries to excel: %w", err)
+	}
+	if err := s.ExcelExporter.ExportWarnings(result.Warnings); err != nil {
+		return fmt.Errorf("failed to export warnings to excel: %w", err)
 	}
 	return nil
 }

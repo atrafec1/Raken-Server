@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"prg_tools/external/rakenapi"
 	"prg_tools/payroll/dto"
+	"strings"
 )
 
 type RakenAPIAdapter struct {
@@ -176,7 +177,7 @@ func (r *RakenAPIAdapter) normalizeTimeCardResponse(
 			adapterTimeCards = append(adapterTimeCards,
 				adapterTimeCard{
 					EmployeeCode:        employee.EmployeeID,
-					EmployeeName:        fmt.Sprintf("%s %s", employee.FirstName, employee.LastName),
+					EmployeeName:        strings.TrimSpace(fmt.Sprintf("%s %s", employee.FirstName, employee.LastName)),
 					Date:                timeCard.Date,
 					Class:               timeEntry.Classification.Name,
 					JobNumber:           project.Number,
@@ -202,7 +203,10 @@ func (r *RakenAPIAdapter) normalizeEquipLogResponse(
 		projectUuid := assignment.ProjectUUID
 
 		for _, log := range assignment.Logs {
-			employeeName := fmt.Sprintf("%s %s", employeeMap[log.EmployeeID].FirstName, employeeMap[log.EmployeeID].LastName)
+			employeeName :=
+				strings.TrimSpace(
+					fmt.Sprintf(
+						"%s %s", employeeMap[log.EmployeeID].FirstName, employeeMap[log.EmployeeID].LastName))
 			adapterEquipLogs = append(adapterEquipLogs,
 				adapterEquipLog{
 					EmployeeName: employeeName,
