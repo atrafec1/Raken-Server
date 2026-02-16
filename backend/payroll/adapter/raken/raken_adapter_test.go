@@ -38,6 +38,9 @@ type RakenClientMock struct {
 	Employees rakenapi.EmployeeResponse
 }
 
+func (m *RakenClientMock) GetClasses() (*rakenapi.ClassResponse, error) {
+	return &rakenapi.ClassResponse{}, nil
+}
 func (m *RakenClientMock) GetTimeCards(from, to string) (*rakenapi.TimeCardResponse, error) {
 	return &m.TimeCards, nil
 }

@@ -20,9 +20,10 @@ type Config struct {
 
 // LoadConfig loads configuration from environment variables
 func LoadConfig() (*Config, error) {
-	err := godotenv.Load(".env")
-	if err != nil {
-		return nil, fmt.Errorf("error loading .env file: %v", err)
+	if os.Getenv("CLIENT_ID") == "" {
+		if err := godotenv.Load(".env"); err != nil {
+			return nil, fmt.Errorf("error loading .env file: %v", err)
+		}
 	}
 	cfg := &Config{
 		ClientID:     os.Getenv("CLIENT_ID"),

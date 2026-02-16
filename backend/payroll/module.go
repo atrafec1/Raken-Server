@@ -11,7 +11,7 @@ func NewCPService() (*PayrollService, error) {
 	if err != nil {
 		return nil, err
 	}
-	excelExporter := excel.NewPayrollExcelExporter("payroll_entries", "payroll_warnings")
+	excelExporter := excel.NewPayrollExcelExporter("I:\\Daily Time Sheets\\Raken Timesheets", "I:\\Daily Time Sheets\\Raken Timesheets\\Warnings")
 	payrollExporter := cp.NewAdapter("T:\\CP\\CPData")
 
 	return NewPayrollService(reader, payrollExporter, excelExporter), nil

@@ -145,6 +145,7 @@ func newBasePayrollEntry(timeCard adapterTimeCard) (*dto.PayrollEntry, error) {
 		OvertimeHours:    payRoute.OvertimeHours,
 		RegularHours:     payRoute.RegularHours,
 		CostCodeDivision: timeCard.CostCodeDescription,
+		CraftLevel:       timeCard.Class,
 	}, nil
 }
 

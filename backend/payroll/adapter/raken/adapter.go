@@ -49,14 +49,18 @@ func (r *RakenAPIAdapter) GetPayrollEntries(fromDate, toDate string) (dto.Payrol
 	if err != nil {
 		return dto.PayrollEntryResult{}, err
 	}
+	fmt.Println("ADAPTER TIME CARDS:", adapterTimeCards)
 	adapterEquipLogs, err := r.normalizeEquipLogResponse(*equipLogResponse, projectMap, employeeMap)
 	if err != nil {
 		return dto.PayrollEntryResult{}, err
 	}
+	fmt.Println("ADAPTER EQUIP LOGS:", adapterEquipLogs)
 	mergedLogs, err := r.mergeTimeAndEquipLogs(adapterTimeCards, adapterEquipLogs)
 	if err != nil {
 		return dto.PayrollEntryResult{}, fmt.Errorf("failed to merge time cards and equip logs: %w", err)
 	}
+
+	fmt.Printf("MERGED LOGS: %+v\n", mergedLogs)
 	r.applyPayrollRules(mergedLogs)
 	warnings := collectWarnings(adapterTimeCards, adapterEquipLogs)
 	return dto.PayrollEntryResult{
@@ -96,6 +100,18 @@ func (r *RakenAPIAdapter) makeProjectMap() (map[string]rakenapi.Project, error) 
 		projectMap[project.UUID] = project
 	}
 	return projectMap, nil
+}
+
+func (r *RakenAPIAdapter) makeClassMap() (map[string]rakenapi.Class, error) {
+	classMap := make(map[string]rakenapi.Class)
+	classResp, err := r.Client.GetClasses()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get classifications from raken api: %w", err)
+	}
+	for _, class := range classResp.Collection {
+		classMap[class.UUID] = class
+	}
+	return classMap, nil
 }
 
 func (r *RakenAPIAdapter) makeEmployeeMap() (map[string]rakenapi.Employee, error) {
@@ -158,7 +174,9 @@ func (r *RakenAPIAdapter) applyCAOvertimeRules(entry *dto.PayrollEntry) {
 func (r *RakenAPIAdapter) normalizeTimeCardResponse(
 	timeCardResponse rakenapi.TimeCardResponse,
 	projectMap map[string]rakenapi.Project,
-	employeeMap map[string]rakenapi.Employee) ([]adapterTimeCard, error) {
+	employeeMap map[string]rakenapi.Employee,
+) ([]adapterTimeCard, error) {
+	fmt.Println("TIMECARD RESPONSE:", timeCardResponse)
 
 	timeCards := timeCardResponse.Collection
 	var adapterTimeCards []adapterTimeCard
@@ -172,6 +190,9 @@ func (r *RakenAPIAdapter) normalizeTimeCardResponse(
 			project, exists := projectMap[timeCard.Project.UUID]
 			if !exists {
 				fmt.Printf("Project with uuid %s not found in project map\n", timeCard.Project.UUID)
+			}
+			if !exists {
+				fmt.Printf("Classification with uuid %s not found in class map\n", timeEntry.Classification.Name)
 			}
 
 			adapterTimeCards = append(adapterTimeCards,

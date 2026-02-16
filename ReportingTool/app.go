@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"prg_tools/payroll"
+	"prg_tools/payroll/dto"
 	"prg_tools/report"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
@@ -12,6 +14,7 @@ import (
 type App struct {
 	ctx            context.Context
 	ReportExporter *report.ReportExporterService
+	PayrollService *payroll.PayrollService
 }
 
 // NewApp creates a new App application struct
@@ -23,6 +26,63 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+}
+
+func (a *App) ensurePayrollService() error {
+	if a.PayrollService != nil {
+		return nil
+	}
+
+	svc, err := payroll.NewCPService()
+	if err != nil {
+		return fmt.Errorf("error initializing PayrollService: %v", err)
+	}
+	a.PayrollService = svc
+	return nil
+}
+
+func (a *App) FetchPayrollEntries(fromDate, toDate string) (dto.PayrollEntryResult, error) {
+	if err := a.ensurePayrollService(); err != nil {
+		return dto.PayrollEntryResult{}, err
+	}
+	result, err := a.PayrollService.GetEntries(fromDate, toDate)
+	if err != nil {
+		return dto.PayrollEntryResult{}, fmt.Errorf("error fetching payroll entries: %v", err)
+	}
+	return result, nil
+}
+
+// Handles both CP export and Excel export
+func (a *App) ProcessPayroll(result dto.PayrollEntryResult) error {
+	if err := a.ensurePayrollService(); err != nil {
+		return fmt.Errorf("error initializing PayrollService: %v", err)
+	}
+
+	if err := a.PayrollService.ExportToPayroll(result.Entries); err != nil {
+		return fmt.Errorf("error exporting to payroll: %v", err)
+	}
+	if err := a.PayrollService.ExportExcel(result); err != nil {
+		return fmt.Errorf("error exporting to excel: %v", err)
+	}
+	return nil
+}
+
+func (a *App) ExportPayrollWarnings(warnings []dto.Warning) error {
+	if err := a.ensurePayrollService(); err != nil {
+		return fmt.Errorf("error initializing PayrollService: %v", err)
+	}
+	if err := a.PayrollService.ExportWarnings(warnings); err != nil {
+		return fmt.Errorf("error exporting warnings: %v", err)
+	}
+	return nil
+}
+
+func (a *App) GroupPayrollWarnings(payrollResult dto.PayrollEntryResult) map[string][]dto.Warning {
+	grouped := make(map[string][]dto.Warning)
+	for _, w := range payrollResult.Warnings {
+		grouped[w.WarningType] = append(grouped[w.WarningType], w)
+	}
+	return grouped
 }
 
 func (a *App) ensureReportExporter() error {

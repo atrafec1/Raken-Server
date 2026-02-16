@@ -2,7 +2,10 @@ package main
 
 import (
 	"embed"
+	"os"
+	"strings"
 
+	"github.com/joho/godotenv"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -11,10 +14,22 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-func main() {
-	// Create an instance of the app structure
+//go:embed *.env
+var envFile string
 
+func main() {
+	println("ENV FILE CONTENT:")
+	println(envFile)
+	println("END ENV FILE CONTENT")
+	// Parse and load embedded .env
+	envMap, _ := godotenv.Parse(strings.NewReader(envFile))
+	for key, value := range envMap {
+		os.Setenv(key, value)
+	}
+
+	// Create an instance of the app structure
 	app := NewApp()
+
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "ReportingTool",

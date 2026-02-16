@@ -109,7 +109,8 @@ func findOrphanEquipLogs(equipLogs []adapterEquipLog, timeCards []adapterTimeCar
 		if _, exists := timecardSet[k]; !exists && eq.CostCode != "" {
 			warnings = append(warnings,
 				dto.Warning{
-					Message:     eq.EmployeeName + eq.JobNumber + eq.Date + eq.CostCode,
+					Message: fmt.Sprintf("%s %s %s %s %s",
+						eq.EmployeeName, eq.JobNumber, eq.Date, eq.CostCode, eq.EquipNumber),
 					WarningType: "Equipment log entry with no matching time card entry",
 				})
 		}

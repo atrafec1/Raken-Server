@@ -14,7 +14,7 @@ function FolderSelector({ path, onSelect }) {
   };
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center ">
       <button
         onClick={handleSelect}
         className="px-4 py-2 bg-primary-600 text-white font-medium rounded-lg 

@@ -16,6 +16,7 @@ type RakenClient interface {
 	GetEquipmentLogs(from, to string) (*EquipmentLogResponse, error)
 	GetProjects() (*ProjectResponse, error)
 	GetEmployees() (*EmployeeResponse, error)
+	GetClasses() (*ClassResponse, error)
 }
 
 type Client struct {
