@@ -81,16 +81,7 @@ func (a *Adapter) toDomainMaterialLogCollection(
 	}
 
 	for _, log := range materialLogResponse.Collection {
-		material := domain.Material{
-			Name: log.Material.Name,
-			Unit: log.Material.Unit.Name,
-		}
-		materialLogs = append(materialLogs, domain.MaterialLog{
-			Job:      job,
-			Date:     log.Date,
-			Material: material,
-			Quantity: log.Quantity,
-		})
+		materialLogs = append(materialLogs, newDomainMaterialLog(log))
 	}
 
 	return domain.MaterialLogCollection{

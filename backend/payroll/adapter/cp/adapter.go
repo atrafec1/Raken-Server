@@ -8,6 +8,7 @@ import (
 	"prg_tools/payroll/dto"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 type Adapter struct {
@@ -34,20 +35,21 @@ func (a *Adapter) ExportPayrollEntries(entries []dto.PayrollEntry) error {
 
 	for _, entry := range entries {
 		row := []string{
-			entry.EmployeeCode,
-			entry.CurrentDate,
-			entry.CraftLevel,
-			entry.JobNumber,
-			entry.Phase,
-			entry.CostCode,
-			entry.ChangeOrder,
+			strings.TrimSpace(entry.EmployeeCode),
+			strings.TrimSpace(entry.CurrentDate),
+			strings.TrimSpace(entry.CraftLevel),
+			strings.TrimSpace(entry.JobNumber),
+			strings.TrimSpace(entry.Phase),
+			strings.TrimSpace(entry.CostCode),
+			strings.TrimSpace(entry.ChangeOrder),
 			strconv.FormatFloat(entry.RegularHours, 'f', -1, 64),
 			strconv.FormatFloat(entry.OvertimeHours, 'f', -1, 64),
 			strconv.FormatFloat(entry.PremiumHours, 'f', -1, 64),
 			strconv.Itoa(entry.Day),
+			"", //EquipmentCode
 			entry.DownFlag,
-			entry.SpecialPayType,
-			entry.SpecialPayCode,
+			strings.TrimSpace(entry.SpecialPayType),
+			strings.TrimSpace(entry.SpecialPayCode),
 			strconv.FormatFloat(entry.SpecialUnits, 'f', -1, 64),
 			strconv.FormatFloat(entry.SpecialRate, 'f', -1, 64),
 		}

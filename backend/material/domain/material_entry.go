@@ -15,9 +15,9 @@ type MaterialLog struct {
 }
 
 type Material struct {
-	Number string
-	Name   string
-	Unit   string
+	BidNumber string
+	Name      string
+	Unit      string
 }
 type Job struct {
 	Name   string

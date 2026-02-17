@@ -66,7 +66,7 @@ func convertToProgressSheet(mLogs domain.MaterialLogCollection) ProgressSheetSec
 			Date:     log.Date,
 			Quantity: log.Quantity,
 			BidItem: BidItem{
-				Number:        log.Material.Number,
+				Number:        log.Material.BidNumber,
 				Name:          log.Material.Name,
 				UnitOfMeasure: log.Material.Unit,
 			},
