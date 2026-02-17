@@ -12,14 +12,13 @@ type MaterialLogResponse struct {
 type MaterialLog struct {
 	Date     string   `json:"date"`
 	Material Material `json:"material"`
+	Quantity float64  `json:"quantity"`
 }
 
 type Material struct {
-	UUID     string       `json:"uuid"`
-	Name     string       `json:"name"`
-	Unit     MaterialUnit `json:"materialUnit"`
-	Quantity float64      `json:"quantity"`
-	CostCode CostCode     `json:"costCode"`
+	UUID string       `json:"uuid"`
+	Name string       `json:"name"`
+	Unit MaterialUnit `json:"materialUnit"`
 }
 
 type MaterialUnit struct {

@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"prg_tools/payroll/dto"
+	"sort"
 	"strconv"
 )
 
@@ -19,6 +20,7 @@ func NewAdapter(path string) *Adapter {
 	}
 }
 func (a *Adapter) ExportPayrollEntries(entries []dto.PayrollEntry) error {
+	entries = sortPayrollEntries(entries)
 	cpCSVPath := filepath.Join(a.CPPath, "PAYROLLTIMECARD.CSV")
 
 	file, err := os.Create(cpCSVPath)
@@ -55,4 +57,14 @@ func (a *Adapter) ExportPayrollEntries(entries []dto.PayrollEntry) error {
 		}
 	}
 	return nil
+}
+
+func sortPayrollEntries(entries []dto.PayrollEntry) []dto.PayrollEntry {
+	sort.Slice(entries, func(i, j int) bool {
+		if entries[i].EmployeeCode == entries[j].EmployeeCode {
+			return entries[i].CurrentDate < entries[j].CurrentDate
+		}
+		return entries[i].EmployeeCode < entries[j].EmployeeCode
+	})
+	return entries
 }

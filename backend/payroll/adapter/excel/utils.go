@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"prg_tools/payroll/dto"
 	"sort"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -19,7 +21,7 @@ type ExcelPayrollEntry struct {
 	OvertimeHours  float64
 	PremiumHours   float64
 	EquipmentCode  []string
-	EquipmentHours []string
+	EquipmentHours []float64
 }
 type payrollKey struct {
 	EmployeeCode string
@@ -45,7 +47,7 @@ func transformPayrollEntries(entries []dto.PayrollEntry) []ExcelPayrollEntry {
 			if e.SpecialPayType == "EQP" {
 				existing.EquipmentCode = append(existing.EquipmentCode, e.SpecialPayCode)
 				existing.EquipmentHours = append(existing.EquipmentHours,
-					fmt.Sprintf("%.2f", e.SpecialUnits))
+					e.SpecialUnits)
 			}
 			continue
 		}
@@ -55,9 +57,7 @@ func transformPayrollEntries(entries []dto.PayrollEntry) []ExcelPayrollEntry {
 
 		if e.SpecialPayCode != "" && e.SpecialPayType == "EQP" {
 			excelEntry.EquipmentCode = []string{e.SpecialPayCode}
-			excelEntry.EquipmentHours = []string{
-				fmt.Sprintf("%.2f", e.SpecialUnits),
-			}
+			excelEntry.EquipmentHours = []float64{e.SpecialUnits}
 		}
 
 		grouped[key] = excelEntry
@@ -72,12 +72,21 @@ func transformPayrollEntries(entries []dto.PayrollEntry) []ExcelPayrollEntry {
 	sortExcelEntries(result)
 	return result
 }
+
+func convertToExcelDate(dateStr string) string {
+	date, err := time.Parse("2006-01-02", dateStr)
+	if err != nil {
+		return dateStr
+	}
+	return date.Format("1/2/06")
+}
+
 func newExcelEntry(payrollEntry dto.PayrollEntry) *ExcelPayrollEntry {
 	if payrollEntry.SpecialPayType == "PAY" {
 		return &ExcelPayrollEntry{
 			EmployeeCode:   payrollEntry.EmployeeCode,
 			Day:            getDayName(payrollEntry.Day),
-			Date:           payrollEntry.CurrentDate,
+			Date:           convertToExcelDate(payrollEntry.CurrentDate),
 			Class:          payrollEntry.CraftLevel,
 			JobNumber:      payrollEntry.JobNumber,
 			CostCodeNumber: payrollEntry.SpecialPayCode,
@@ -90,7 +99,7 @@ func newExcelEntry(payrollEntry dto.PayrollEntry) *ExcelPayrollEntry {
 	return &ExcelPayrollEntry{
 		EmployeeCode:   payrollEntry.EmployeeCode,
 		Day:            getDayName(payrollEntry.Day),
-		Date:           payrollEntry.CurrentDate,
+		Date:           convertToExcelDate(payrollEntry.CurrentDate),
 		Class:          payrollEntry.CraftLevel,
 		JobNumber:      payrollEntry.JobNumber,
 		CostCodeNumber: getCostCodeNumber(payrollEntry.Phase, payrollEntry.CostCode, payrollEntry.ChangeOrder),
@@ -182,4 +191,12 @@ func getCostCodeNumber(phase, costCode, changeOrder string) string {
 		costCodeStr += fmt.Sprintf("-%s", changeOrder)
 	}
 	return costCodeStr
+}
+
+func joinFloatSlice(nums []float64) string {
+	parts := make([]string, len(nums))
+	for i, n := range nums {
+		parts[i] = strconv.FormatFloat(n, 'f', -1, 64)
+	}
+	return strings.Join(parts, ", ")
 }

@@ -37,7 +37,7 @@ func checkForDuplicateTimeCards(timeCards []adapterTimeCard) []dto.Warning {
 		if _, exists := seenEntries[key]; exists {
 			warnings = append(warnings, dto.Warning{
 				Message: fmt.Sprintf("%s %s %s %s %s",
-					timeCard.EmployeeName, timeCard.JobNumber, timeCard.Date, timeCard.CostCode, timeCard.PayType),
+					timeCard.JobNumber, timeCard.EmployeeName, timeCard.Date, timeCard.CostCode, timeCard.PayType),
 				WarningType: "Duplicate Time Card Entry",
 			})
 		} else {
@@ -52,7 +52,7 @@ func checkMissingCostCode(timeCards []adapterTimeCard, equipLog []adapterEquipLo
 	for _, timeCard := range timeCards {
 		if timeCard.CostCode == "" {
 			warnings = append(warnings, dto.Warning{
-				Message:     fmt.Sprintf("%s %s %s", timeCard.EmployeeName, timeCard.JobNumber, timeCard.Date),
+				Message:     fmt.Sprintf("%s %s %s", timeCard.JobNumber, timeCard.EmployeeName, timeCard.Date),
 				WarningType: "Time Card Missing Cost Code",
 			})
 		}
@@ -62,7 +62,7 @@ func checkMissingCostCode(timeCards []adapterTimeCard, equipLog []adapterEquipLo
 		if equipLog.CostCode == "" {
 			warnings = append(warnings, dto.Warning{
 				Message: fmt.Sprintf("%s %s %s %s",
-					equipLog.EmployeeName, equipLog.JobNumber, equipLog.Date, equipLog.EquipNumber),
+					equipLog.JobNumber, equipLog.EmployeeName, equipLog.Date, equipLog.EquipNumber),
 				WarningType: "Equip Log Missing Cost Code",
 			})
 		}
@@ -76,7 +76,7 @@ func checkForMissingEquipOperator(equipLogs []adapterEquipLog) []dto.Warning {
 		if equipLog.EmployeeName == "" {
 			warnings = append(warnings, dto.Warning{
 				Message: fmt.Sprintf(
-					"Equip #: %s Job: %s, Date: %s", equipLog.EquipNumber, equipLog.JobNumber, equipLog.Date),
+					"%s %s %s", equipLog.JobNumber, equipLog.EquipNumber, equipLog.Date),
 				WarningType: "Equipment log with no operator",
 			})
 		}
@@ -110,7 +110,7 @@ func findOrphanEquipLogs(equipLogs []adapterEquipLog, timeCards []adapterTimeCar
 			warnings = append(warnings,
 				dto.Warning{
 					Message: fmt.Sprintf("%s %s %s %s %s",
-						eq.EmployeeName, eq.JobNumber, eq.Date, eq.CostCode, eq.EquipNumber),
+						eq.JobNumber, eq.EmployeeName, eq.Date, eq.CostCode, eq.EquipNumber),
 					WarningType: "Equipment log entry with no matching time card entry",
 				})
 		}

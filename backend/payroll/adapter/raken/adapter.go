@@ -102,18 +102,6 @@ func (r *RakenAPIAdapter) makeProjectMap() (map[string]rakenapi.Project, error) 
 	return projectMap, nil
 }
 
-func (r *RakenAPIAdapter) makeClassMap() (map[string]rakenapi.Class, error) {
-	classMap := make(map[string]rakenapi.Class)
-	classResp, err := r.Client.GetClasses()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get classifications from raken api: %w", err)
-	}
-	for _, class := range classResp.Collection {
-		classMap[class.UUID] = class
-	}
-	return classMap, nil
-}
-
 func (r *RakenAPIAdapter) makeEmployeeMap() (map[string]rakenapi.Employee, error) {
 	employeeMap := make(map[string]rakenapi.Employee)
 	employeeResp, err := r.Client.GetEmployees()

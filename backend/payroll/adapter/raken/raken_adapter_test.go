@@ -57,6 +57,10 @@ func (m *RakenClientMock) GetEmployees() (*rakenapi.EmployeeResponse, error) {
 	return &m.Employees, nil
 }
 
+func (m *RakenClientMock) GetMaterialLogs(projectUuid, from, to string) (*rakenapi.MaterialLogResponse, error) {
+	return &rakenapi.MaterialLogResponse{}, nil
+}
+
 // --- Global adapter ---
 
 var (

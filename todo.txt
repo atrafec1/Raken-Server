@@ -1,0 +1,20 @@
+
+Payroll Warnings
+
+- Make output more clear on excel sheet
+
+
+Payroll Helper Frontend 
+
+- Be explicit where the files are saving to (add helpers)
+
+
+Pay Items
+
+-Get materials
+-Format Materials into excel sheet 
+
+Progress Estimate Sheet 
+
+Header:  Bid Items and Unit Name 
+            

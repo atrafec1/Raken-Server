@@ -1,27 +1,90 @@
-# Go build outputs
-/bin/
-/build/
+# -----------------------
+# Go
+# -----------------------
+bin/
+dist/
+build/
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
 *.test
+*.out
+vendor/
 
-# Go modules
-go.sum
+# Go test / coverage
+coverage.out
+*.coverprofile
 
-# Dependency directories
-/vendor/
+# -----------------------
+# Wails
+# -----------------------
+wailsjs/go/
+wailsjs/runtime/
+frontend/dist/
+build/
+wailsjs/bindings/
 
+# Wails dev artifacts
+*.syso
+*.tmp
 
-# IDEs and editors
+# -----------------------
+# Node / React
+# -----------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.out/
+
+# -----------------------
+# Tailwind / PostCSS
+# -----------------------
+.cache/
+.postcss-cache/
+
+# -----------------------
+# Env files (IMPORTANT)
+# -----------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------
+# IDE / Editor
+# -----------------------
 .vscode/
 .idea/
 *.swp
 *.swo
-*.DS_Store
 
-# OS files
+# -----------------------
+# OS junk
+# -----------------------
+.DS_Store
 Thumbs.db
-Desktop.ini
+
+# -----------------------
+# Logs
+# -----------------------
+logs/
+*.log
+
+# -----------------------
+# Local databases
+# -----------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# -----------------------
+# Wails dev runtime (common)
+# -----------------------
+wails-dev.log

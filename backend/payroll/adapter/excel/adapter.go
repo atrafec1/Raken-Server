@@ -39,6 +39,17 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 		Border:    []excelize.Border{{Type: "bottom", Color: "000000", Style: 1}},
 	})
 
+	hourStyle, _ := f.NewStyle(&excelize.Style{
+		NumFmt: 0,
+		Font: &excelize.Font{
+			Family: "Aptos Narrow",
+		},
+		Alignment: &excelize.Alignment{
+			Horizontal: "center",
+			Vertical:   "center",
+		},
+	})
+
 	boldStyle, _ := f.NewStyle(&excelize.Style{
 		Font: &excelize.Font{Bold: true, Family: "Aptos Narrow"},
 	})
@@ -99,7 +110,6 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 	var prevEID string
 	var employeeRT, employeeOT, employeePT float64
 	var totalRT, totalOT, totalPT float64
-
 	for i, entry := range entries {
 
 		if prevEID != "" && entry.EmployeeCode != prevEID {
@@ -116,8 +126,7 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 		}
 
 		equipCodes := strings.Join(entry.EquipmentCode, ", ")
-		equipHours := strings.Join(entry.EquipmentHours, ", ")
-
+		equipHours := joinFloatSlice(entry.EquipmentHours)
 		f.SetCellValue(sheetName, fmt.Sprintf("A%d", row), entry.EmployeeCode)
 		f.SetCellValue(sheetName, fmt.Sprintf("B%d", row), entry.Day)
 		f.SetCellValue(sheetName, fmt.Sprintf("C%d", row), entry.Date)
@@ -125,9 +134,20 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 		f.SetCellValue(sheetName, fmt.Sprintf("E%d", row), entry.JobNumber)
 		f.SetCellValue(sheetName, fmt.Sprintf("F%d", row), entry.CostCodeNumber)
 		f.SetCellValue(sheetName, fmt.Sprintf("G%d", row), entry.CostCode)
-		f.SetCellValue(sheetName, fmt.Sprintf("H%d", row), entry.RegularHours)
-		f.SetCellValue(sheetName, fmt.Sprintf("I%d", row), entry.OvertimeHours)
-		f.SetCellValue(sheetName, fmt.Sprintf("J%d", row), entry.PremiumHours)
+
+		// ---- HOURS ----
+		hCell := fmt.Sprintf("H%d", row)
+		iCell := fmt.Sprintf("I%d", row)
+		jCell := fmt.Sprintf("J%d", row)
+
+		f.SetCellValue(sheetName, hCell, entry.RegularHours)
+		f.SetCellValue(sheetName, iCell, entry.OvertimeHours)
+		f.SetCellValue(sheetName, jCell, entry.PremiumHours)
+
+		// Apply hour style once across the range
+		f.SetCellStyle(sheetName, hCell, jCell, hourStyle)
+
+		// ---- EQUIPMENT ----
 		f.SetCellValue(sheetName, fmt.Sprintf("K%d", row), equipCodes)
 		f.SetCellValue(sheetName, fmt.Sprintf("L%d", row), equipHours)
 

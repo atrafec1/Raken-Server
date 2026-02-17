@@ -1,5 +1,0 @@
-package material
-
-func main() {
-
-}

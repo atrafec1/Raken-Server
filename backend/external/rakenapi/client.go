@@ -17,6 +17,7 @@ type RakenClient interface {
 	GetProjects() (*ProjectResponse, error)
 	GetEmployees() (*EmployeeResponse, error)
 	GetClasses() (*ClassResponse, error)
+	GetMaterialLogs(projectUuid, from, to string) (*MaterialLogResponse, error)
 }
 
 type Client struct {
