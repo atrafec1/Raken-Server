@@ -49,6 +49,10 @@ func transformPayrollEntries(entries []dto.PayrollEntry) []ExcelPayrollEntry {
 				existing.EquipmentHours = append(existing.EquipmentHours,
 					e.SpecialUnits)
 			}
+			//sum hours
+			existing.RegularHours += e.RegularHours
+			existing.OvertimeHours += e.OvertimeHours
+			existing.PremiumHours += e.PremiumHours
 			continue
 		}
 
@@ -69,7 +73,6 @@ func transformPayrollEntries(entries []dto.PayrollEntry) []ExcelPayrollEntry {
 		result = append(result, *v)
 	}
 
-	sortExcelEntries(result)
 	return result
 }
 
@@ -119,8 +122,8 @@ func sortExcelEntries(entries []ExcelPayrollEntry) {
 		}
 
 		// 2️⃣ Date (must parse, not string compare)
-		dateI, _ := time.Parse("2006-01-02", entries[i].Date)
-		dateJ, _ := time.Parse("2006-01-02", entries[j].Date)
+		dateI, _ := time.Parse("1/2/06", entries[i].Date)
+		dateJ, _ := time.Parse("1/2/06", entries[j].Date)
 
 		if !dateI.Equal(dateJ) {
 			return dateI.Before(dateJ)

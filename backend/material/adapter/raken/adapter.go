@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"prg_tools/external/rakenapi"
 	"prg_tools/material/domain"
+	"time"
 )
 
 type Adapter struct {
@@ -50,6 +51,7 @@ func (a *Adapter) GetMaterialLogs(fromDate, toDate string) ([]domain.MaterialLog
 		}
 		collection := a.toDomainMaterialLogCollection(*materialLogResponse, fromDate, toDate, uuid)
 		materialLogCollections = append(materialLogCollections, collection)
+		time.Sleep(500 * time.Millisecond)
 	}
 	return materialLogCollections, nil
 
@@ -67,7 +69,11 @@ func (a *Adapter) fetchProjectsWorkedOn(fromDate, toDate string) (map[string]str
 	return projectsWorkedOn, nil
 }
 
-func (a *Adapter) toDomainMaterialLogCollection(materialLogResponse rakenapi.MaterialLogResponse, fromDate, toDate, projectUuid string) domain.MaterialLogCollection {
+func (a *Adapter) toDomainMaterialLogCollection(
+	materialLogResponse rakenapi.MaterialLogResponse,
+	fromDate, toDate,
+	projectUuid string) domain.MaterialLogCollection {
+
 	var materialLogs []domain.MaterialLog
 	job := domain.Job{
 		Name:   a.projectMap[projectUuid].Name,

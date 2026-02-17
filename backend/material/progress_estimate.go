@@ -7,17 +7,21 @@ import (
 
 type ProgressEstimateService struct {
 	materialSource   port.MaterialSource
-	estimateExporter port.ProgressExporter
+	materialExporter port.MaterialExporter
 }
 
-func NewProgressEstimateService(materialSource port.MaterialSource, estimateExporter port.ProgressExporter) *ProgressEstimateService {
+func NewProgressEstimateService(materialSource port.MaterialSource, estimateExporter port.MaterialExporter) *ProgressEstimateService {
 	return &ProgressEstimateService{
 		materialSource:   materialSource,
-		estimateExporter: estimateExporter,
+		materialExporter: estimateExporter,
 	}
 
 }
 
 func (s *ProgressEstimateService) GetMaterialLogs(fromDate, toDate string) ([]domain.MaterialLogCollection, error) {
 	return s.materialSource.GetMaterialLogs(fromDate, toDate)
+}
+
+func (s *ProgressEstimateService) ExportMaterialLogs(logs []domain.MaterialLogCollection) error {
+	return s.materialExporter.ExportMaterialLogs(logs)
 }

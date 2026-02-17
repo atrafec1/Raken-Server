@@ -25,6 +25,7 @@ type EquipmentLog struct {
 	Date       string   `json:"date"`
 	Hours      float64  `json:"hours"`
 	EmployeeID string   `json:"operator"`
+	Status     string   `json:"status"`
 	CostCode   CostCode `json:"costCode"`
 }
 
@@ -50,4 +51,3 @@ func (c *Client) GetEquipmentLogs(fromDate, toDate string) (*EquipmentLogRespons
 
 	return &response, nil
 }
-

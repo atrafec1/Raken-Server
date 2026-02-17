@@ -30,6 +30,7 @@ func (e *ExcelPayrollExporter) ExportPayrollEntries(rawEntries []dto.PayrollEntr
 	weekEnd := getWeekEndingDate(rawEntries)
 	weekBeginning := getWeekBeginningDate(rawEntries)
 	entries := transformPayrollEntries(rawEntries)
+	sortExcelEntries(entries)
 	sheetName := "Sheet1"
 
 	// Styles

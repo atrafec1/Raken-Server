@@ -212,6 +212,11 @@ func (r *RakenAPIAdapter) normalizeEquipLogResponse(
 		projectUuid := assignment.ProjectUUID
 
 		for _, log := range assignment.Logs {
+			if log.Status == "NOT_IN_USE" {
+				fmt.Println("Not in use!")
+				fmt.Println(log)
+				continue
+			}
 			employeeName :=
 				strings.TrimSpace(
 					fmt.Sprintf(
