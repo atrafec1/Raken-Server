@@ -45,5 +45,17 @@ func (c *Client) GetMaterialLogs(projectUuid, fromDate, toDate string) (*Materia
 }
 
 func (c *Client) GetMaterialsForProject(projectUuid string) ([]Material, error) {
-	
+	requestURL := c.config.BaseURL + "materials"
+	req, err := http.NewRequest("GET", requestURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("bad request creation: %w", err)
+	}
+	queryParams := req.URL.Query()
+	queryParams.Set("projectUuid", projectUuid)
+	req.URL.RawQuery = queryParams.Encode()
+	var Materials []Material
+	if err := c.doRequest(req, &Materials); err != nil {
+		return nil, fmt.Errorf("failed to get materials for project: %w", err)
+	}
+	return Materials, nil
 }
