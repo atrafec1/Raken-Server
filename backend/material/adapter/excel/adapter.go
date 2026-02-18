@@ -16,26 +16,24 @@ func NewAdapter(estimateProgDir string) *Adapter {
 	}
 }
 
-func (a *Adapter) ExportMaterialLogs(logs []domain.MaterialLogCollection) error {
+func (a *Adapter) ExportMaterialLogs(collections []domain.MaterialLogCollection) error {
 	counter := 0
-	for _, log := range logs {
-		fmt.Printf("%+v\n", log)
+	for _, collection := range collections {
 		fmt.Println("Converting to progress sheet...")
-		progressSheet := convertToProgressSheet(log)
-		printProgressSheet(progressSheet)
-		fileName := filepath.Join(a.estimateProgDir, fmt.Sprintf("%d_%s.xlsx", counter, log.FromDate))
-		if err := createEstimateProgressSheet(progressSheet, fileName); err != nil {
-			return fmt.Errorf("failed to create progress sheet for job %s: %w", log.Job.Name, err)
+		progressSheet, err := ConvertToProgressSheet(collection, 21)
+		if err != nil {
+			return fmt.Errorf("failed to convert material logs to progress sheet for job %s: %w", collection.Job.Name, err)
 		}
+		fmt.Println("CreatedProgress sheet")
+
+		fileName := filepath.Join(a.estimateProgDir, fmt.Sprintf("%d_%s.xlsx", counter, collection.FromDate))
+		fmt.Println("Creating progress sheet for job ", collection.Job.Name, " with filename ", fileName)
+
+		if err := progressSheet.CreateEstimateProgressSheet(fileName); err != nil {
+			return fmt.Errorf("failed to create progress sheet for job %s: %w", collection.Job.Name, err)
+		}
+		fmt.Println("Created progress sheet for job ", collection.Job.Name)
 		counter++
 	}
 	return nil
-}
-
-func printProgressSheet(sheet ProgressSheetSection) {
-	fmt.Printf("Progress Sheet: From %s To %s\n", sheet.FromDate, sheet.ToDate)
-	for _, row := range sheet.Rows {
-		fmt.Printf("  Date: %s, Quantity: %.2f, Bid Item: %s - %s (%s)\n",
-			row.Date, row.Quantity, row.BidItem.Number, row.BidItem.Name, row.BidItem.UnitOfMeasure)
-	}
 }

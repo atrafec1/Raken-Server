@@ -43,3 +43,7 @@ func (c *Client) GetMaterialLogs(projectUuid, fromDate, toDate string) (*Materia
 	}
 	return &resp, nil
 }
+
+func (c *Client) GetMaterialsForProject(projectUuid string) ([]Material, error) {
+	
+}
