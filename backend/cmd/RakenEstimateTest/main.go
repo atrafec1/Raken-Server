@@ -1,6 +1,9 @@
 package main
 
-import "prg_tools/material"
+import (
+	"fmt"
+	"prg_tools/material"
+)
 
 func main() {
 	svc := material.RakenProgressEstimateService("./test_output/raken_estimate")
@@ -11,7 +14,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Material logs retrieved successfully:")
 	if err := svc.ExportMaterialLogs(materialLog); err != nil {
 		panic(err)
 	}
+	fmt.Println("Material logs exported successfully")
 }

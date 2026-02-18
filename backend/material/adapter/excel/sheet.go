@@ -219,19 +219,19 @@ func (p *ProgressSheet) CreateEstimateProgressSheet(fileName string) error {
 
 // --- Conversion Helpers ---
 
-func ConvertToProgressSheet(mLogs domain.MaterialLogCollection, sectionEndDay int) (ProgressSheet, error) {
+func ConvertToProgressSheet(mLogs domain.JobMaterialInfo, sectionEndDay int) (ProgressSheet, error) {
 	if len(mLogs.Logs) == 0 {
 		return ProgressSheet{}, nil
 	}
 
 	// 1. Extract unique bid items
 	bidMap := make(map[string]BidItem)
-	for _, log := range mLogs.Logs {
-		if _, ok := bidMap[log.Material.BidNumber]; !ok {
-			bidMap[log.Material.BidNumber] = BidItem{
-				Number:        log.Material.BidNumber,
-				Name:          log.Material.Name,
-				UnitOfMeasure: log.Material.Unit,
+	for _, mat := range mLogs.Materials {
+		if _, ok := bidMap[mat.BidNumber]; !ok {
+			bidMap[mat.BidNumber] = BidItem{
+				Number:        mat.BidNumber,
+				Name:          mat.Name,
+				UnitOfMeasure: mat.Unit,
 			}
 		}
 	}

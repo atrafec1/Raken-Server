@@ -60,6 +60,9 @@ func (m *RakenClientMock) GetEmployees() (*rakenapi.EmployeeResponse, error) {
 func (m *RakenClientMock) GetMaterialLogs(projectUuid, from, to string) (*rakenapi.MaterialLogResponse, error) {
 	return &rakenapi.MaterialLogResponse{}, nil
 }
+func (m *RakenClientMock) GetMaterialsForProject(projectUuid string) (*rakenapi.MaterialResponse, error) {
+	return nil, nil
+}
 
 // --- Global adapter ---
 

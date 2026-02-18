@@ -16,8 +16,10 @@ func NewAdapter(estimateProgDir string) *Adapter {
 	}
 }
 
-func (a *Adapter) ExportMaterialLogs(collections []domain.MaterialLogCollection) error {
+func (a *Adapter) ExportJobMaterialInfo(collections []domain.JobMaterialInfo) error {
 	counter := 0
+	fmt.Println("Exporting job material info to excel...")
+	fmt.Println("Number of job material info collections to export: ", len(collections))
 	for _, collection := range collections {
 		fmt.Println("Converting to progress sheet...")
 		progressSheet, err := ConvertToProgressSheet(collection, 21)

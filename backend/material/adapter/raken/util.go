@@ -7,33 +7,11 @@ import (
 	"strings"
 )
 
-func (a *Adapter) toDomainMaterialLogCollection(
-	materialLogResponse rakenapi.MaterialLogResponse,
-	fromDate, toDate,
-	projectUuid string) domain.MaterialLogCollection {
-
-	var materialLogs []domain.MaterialLog
-	job := domain.Job{
-		Name:   a.projectMap[projectUuid].Name,
-		Number: a.projectMap[projectUuid].Number,
-	}
-
-	for _, log := range materialLogResponse.Collection {
-		materialLogs = append(materialLogs, newDomainMaterialLog(log))
-	}
-
-	return domain.MaterialLogCollection{
-		Logs:     materialLogs,
-		FromDate: fromDate,
-		ToDate:   toDate,
-		Job:      job,
-	}
-}
-
-func newDomainMaterialLog(log rakenapi.MaterialLog) domain.MaterialLog {
+// Converts raken material log to a domain material log
+func toDomainMaterialLog(log rakenapi.MaterialLog) domain.MaterialLog {
 	material := domain.Material{
-		BidNumber: getBidItemNumber(log.Material.Name),
-		Name:      getMaterialName(log.Material.Name),
+		BidNumber: parseBidItemNumber(log.Material.Name),
+		Name:      parseMaterialName(log.Material.Name),
 		Unit:      log.Material.Unit.Name,
 	}
 
@@ -42,10 +20,10 @@ func newDomainMaterialLog(log rakenapi.MaterialLog) domain.MaterialLog {
 		Quantity: log.Quantity,
 		Material: material,
 	}
-
 }
 
-func getBidItemNumber(materialName string) string {
+// parses raken material name to get the bid item number, assuming format is "##-materialName"
+func parseBidItemNumber(materialName string) string {
 	parts := strings.Split(materialName, "-")
 	if len(parts) > 0 {
 		return strings.TrimSpace(parts[0])
@@ -53,9 +31,11 @@ func getBidItemNumber(materialName string) string {
 	return ""
 }
 
-// For bid items ##-materialName
-func getMaterialName(rakenMaterialName string) string {
-	parts := strings.Split(rakenMaterialName, "-")
+// parses material name from raken materials in ##-materialName format
+func parseMaterialName(rakenMaterialName string) string {
+	// SplitN with 2 ensures that if the material name itself contains a dash,
+	// it doesn't get cut off.
+	parts := strings.SplitN(rakenMaterialName, "-", 2)
 	if len(parts) > 1 {
 		return strings.TrimSpace(parts[1])
 	}
@@ -68,8 +48,65 @@ func (a *Adapter) makeProjectMap() error {
 		return fmt.Errorf("error getting projects: %w", err)
 	}
 
+	if a.projectMap == nil {
+		a.projectMap = make(map[string]rakenapi.Project)
+	}
+
 	for _, proj := range projects.Collection {
 		a.projectMap[proj.UUID] = proj
 	}
 	return nil
+}
+
+// converts raken material log response to domain material log list
+func toDomainMaterialLogs(materialLogResponse *rakenapi.MaterialLogResponse) []domain.MaterialLog {
+	var materialLogs []domain.MaterialLog
+	for _, log := range materialLogResponse.Collection {
+		materialLogs = append(materialLogs, toDomainMaterialLog(log))
+	}
+	return materialLogs
+}
+
+func (a *Adapter) toDomainMaterials(materials []rakenapi.Material) []domain.Material {
+	var domainMats []domain.Material
+	for _, mat := range materials {
+		domainMats = append(domainMats, domain.Material{
+			BidNumber: parseBidItemNumber(mat.Name),
+			Name:      parseMaterialName(mat.Name),
+			Unit:      mat.Unit.Name,
+		})
+	}
+	return domainMats
+}
+
+func (a *Adapter) toJobMaterialInfo(
+	materialLogResponse *rakenapi.MaterialLogResponse,
+	jobMats *rakenapi.MaterialResponse,
+	fromDate, toDate,
+	projectUuid string) domain.JobMaterialInfo {
+
+	domainMatLogs := toDomainMaterialLogs(materialLogResponse)
+
+	proj, ok := a.projectMap[projectUuid]
+	jobName := "Unknown Project"
+	jobNumber := ""
+	if ok {
+		jobName = proj.Name
+		jobNumber = proj.Number
+	}
+
+	job := domain.Job{
+		Name:   jobName,
+		Number: jobNumber,
+	}
+
+	jobMatInfo := domain.JobMaterialInfo{
+		Job:       job,
+		FromDate:  fromDate,
+		ToDate:    toDate,
+		Logs:      domainMatLogs,
+		Materials: a.toDomainMaterials(jobMats.Collection),
+	}
+
+	return jobMatInfo
 }

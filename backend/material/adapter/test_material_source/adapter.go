@@ -12,8 +12,8 @@ func NewAdapter() *Adapter {
 	return &Adapter{}
 }
 
-func (a *Adapter) GetMaterialLogs(fromDate, toDate string) ([]domain.MaterialLogCollection, error) {
-	var materialLogCollections []domain.MaterialLogCollection
+func (a *Adapter) GetJobMaterialInfo(fromDate, toDate string) ([]domain.JobMaterialInfo, error) {
+	var materialLogCollections []domain.JobMaterialInfo
 	rakenMaterialCollection := generateMockCollections(2, fromDate, toDate)
 	for _, materialResp := range rakenMaterialCollection {
 		collection := toDomainMaterialCollection(materialResp, fromDate, toDate)
@@ -22,13 +22,13 @@ func (a *Adapter) GetMaterialLogs(fromDate, toDate string) ([]domain.MaterialLog
 	return materialLogCollections, nil
 }
 
-func toDomainMaterialCollection(materialResp rakenapi.MaterialLogResponse, from, to string) domain.MaterialLogCollection {
+func toDomainMaterialCollection(materialResp rakenapi.MaterialLogResponse, from, to string) domain.JobMaterialInfo {
 	var materialLogs []domain.MaterialLog
 	job := generateMockJob()
 	for _, log := range materialResp.Collection {
 		materialLogs = append(materialLogs, newDomainMaterialLog(log))
 	}
-	return domain.MaterialLogCollection{
+	return domain.JobMaterialInfo{
 		Job: domain.Job{
 			Name:   job.Name,
 			Number: job.Number,

@@ -1,10 +1,11 @@
 package domain
 
-type MaterialLogCollection struct {
-	Logs     []MaterialLog
-	Job      Job
-	FromDate string
-	ToDate   string
+type JobMaterialInfo struct {
+	Logs      []MaterialLog
+	Materials []Material
+	Job       Job
+	FromDate  string
+	ToDate    string
 }
 
 type MaterialLog struct {

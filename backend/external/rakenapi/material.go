@@ -8,6 +8,9 @@ import (
 type MaterialLogResponse struct {
 	Collection []MaterialLog `json:"collection"`
 }
+type MaterialResponse struct {
+	Collection []Material `json:"collection"`
+}
 
 type MaterialLog struct {
 	Date     string   `json:"date"`
@@ -44,7 +47,7 @@ func (c *Client) GetMaterialLogs(projectUuid, fromDate, toDate string) (*Materia
 	return &resp, nil
 }
 
-func (c *Client) GetMaterialsForProject(projectUuid string) ([]Material, error) {
+func (c *Client) GetMaterialsForProject(projectUuid string) (*MaterialResponse, error) {
 	requestURL := c.config.BaseURL + "materials"
 	req, err := http.NewRequest("GET", requestURL, nil)
 	if err != nil {
@@ -53,9 +56,9 @@ func (c *Client) GetMaterialsForProject(projectUuid string) ([]Material, error) 
 	queryParams := req.URL.Query()
 	queryParams.Set("projectUuid", projectUuid)
 	req.URL.RawQuery = queryParams.Encode()
-	var Materials []Material
+	var Materials MaterialResponse
 	if err := c.doRequest(req, &Materials); err != nil {
 		return nil, fmt.Errorf("failed to get materials for project: %w", err)
 	}
-	return Materials, nil
+	return &Materials, nil
 }

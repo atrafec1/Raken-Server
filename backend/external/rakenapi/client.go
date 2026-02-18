@@ -18,6 +18,7 @@ type RakenClient interface {
 	GetEmployees() (*EmployeeResponse, error)
 	GetClasses() (*ClassResponse, error)
 	GetMaterialLogs(projectUuid, from, to string) (*MaterialLogResponse, error)
+	GetMaterialsForProject(projectUuid string) (*MaterialResponse, error)
 }
 
 type Client struct {
@@ -147,6 +148,6 @@ func (c *Client) doRequest(req *http.Request, respSchema interface{}) error {
 	if err != nil {
 		return err
 	}
-
+	time.Sleep(150 * time.Millisecond)
 	return json.Unmarshal(body, respSchema)
 }
