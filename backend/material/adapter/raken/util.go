@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"prg_tools/external/rakenapi"
 	"prg_tools/material/domain"
+	"regexp"
 	"strings"
 )
 
@@ -22,22 +23,21 @@ func toDomainMaterialLog(log rakenapi.MaterialLog) domain.MaterialLog {
 	}
 }
 
-// parses raken material name to get the bid item number, assuming format is "## - materialName"
 func parseBidItemNumber(materialName string) string {
-	parts := strings.SplitN(materialName, "-", 2)
-	if len(parts) > 0 {
-		return strings.TrimSpace(parts[0])
+	re := regexp.MustCompile(`(?i)^\s*(?:item\s*)?(\d+)\s*-?\s*.*$`)
+	matches := re.FindStringSubmatch(materialName)
+	if len(matches) > 1 {
+		return matches[1]
 	}
+	fmt.Println("No bid item number found in material name: ", materialName)
 	return ""
 }
 
-// parses material name from raken materials in ##-materialName format
 func parseMaterialName(rakenMaterialName string) string {
-	// SplitN with 2 ensures that if the material name itself contains a dash,
-	// it doesn't get cut off.
-	parts := strings.SplitN(rakenMaterialName, "-", 2)
-	if len(parts) > 1 {
-		return strings.TrimSpace(parts[1])
+	re := regexp.MustCompile(`(?i)^\s*(?:item\s*)?\d+\s*-?\s*(.*)$`)
+	matches := re.FindStringSubmatch(rakenMaterialName)
+	if len(matches) > 1 {
+		return strings.TrimSpace(matches[1])
 	}
 	return strings.TrimSpace(rakenMaterialName)
 }

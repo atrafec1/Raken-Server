@@ -10,8 +10,10 @@ import (
 )
 
 var materialNames = []string{
-	"Item-1-Hydroseed", "Item-2-Hydromulch", "Item-4-Fiberrolls", "Item-5-Sprinkler", "Item-6-Pipe", "Item-7-Gravel",
-	"Item-8-Fiberrolls", "Item-9-Fiberrolls", "Item-10-Fiberrolls", "Item-11-Fiberrolls", "Item-12-Fiberrolls", "Item-13-Fiberrolls",
+	"Item 1 - Hydroseed", "Item 2 - Hydromulch", "Item 4 - Fiber-rolls",
+	"Item 5 - Sprinkler", "029 - Temp Gravel Bag Berm", "030 - Temp Gravel Bag Berm",
+	"031 - Temp Gravel Bag Berm",
+	"032 - Temp Gravel Bag Berm", "033 - Temp Gravel Bag Berm",
 }
 
 var materialUnits = []string{

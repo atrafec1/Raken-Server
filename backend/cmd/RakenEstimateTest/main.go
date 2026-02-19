@@ -6,8 +6,10 @@ import (
 )
 
 func main() {
-	svc := material.RakenProgressEstimateService("./test_output/raken_estimate")
-
+	svc, err := material.RakenProgressEstimateService("I:\\Raken")
+	if err != nil {
+		panic(err)
+	}
 	fromDate := "2026-01-02"
 	toDate := "2026-01-31"
 	materialLog, err := svc.GetJobMaterialInfo(fromDate, toDate)

@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"prg_tools/helpers"
 	"prg_tools/report/adapter/raken"
 	"prg_tools/report/domain"
 	"prg_tools/report/port"
-	"strings"
 )
 
 type ReportExporterService struct {
@@ -64,9 +64,15 @@ func (r *ReportExporterService) ExportToBaseDir(fromDate, toDate string, onProgr
 	}
 	return nil
 }
-
+func projectFolder(project domain.Project) string {
+	if project.Number == "" {
+		return helpers.SanitizeFileName(project.Name)
+	}
+	sanitizedProjectName := helpers.SanitizeFileName(project.Name)
+	return fmt.Sprintf("%s-%s", project.Number, sanitizedProjectName)
+}
 func (r *ReportExporterService) getProjectDirectory(project domain.Project) string {
-	projectFolder := sanitize(fmt.Sprintf("%s-%s", project.Number, project.Name))
+	projectFolder := helpers.SanitizeFileName(fmt.Sprintf("%s-%s", project.Number, project.Name))
 	projectDir := filepath.Join(r.baseDir, projectFolder)
 	return projectDir
 }
@@ -93,19 +99,4 @@ func downloadPDF(url, filePath string) error {
 	defer out.Close()
 	_, err = io.Copy(out, resp.Body)
 	return err
-}
-
-func sanitize(name string) string {
-	replacer := strings.NewReplacer(
-		"/", "-",
-		"\\", "-",
-		":", "-",
-		"*", "",
-		"?", "",
-		"\"", "",
-		"<", "",
-		">", "",
-		"|", "",
-	)
-	return replacer.Replace(name)
 }
