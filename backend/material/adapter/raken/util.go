@@ -22,9 +22,9 @@ func toDomainMaterialLog(log rakenapi.MaterialLog) domain.MaterialLog {
 	}
 }
 
-// parses raken material name to get the bid item number, assuming format is "##-materialName"
+// parses raken material name to get the bid item number, assuming format is "## - materialName"
 func parseBidItemNumber(materialName string) string {
-	parts := strings.Split(materialName, "-")
+	parts := strings.SplitN(materialName, "-", 2)
 	if len(parts) > 0 {
 		return strings.TrimSpace(parts[0])
 	}

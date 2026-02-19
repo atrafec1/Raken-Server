@@ -9,11 +9,11 @@ func main() {
 
 	fromDate := "2024-01-01"
 	toDate := "2024-05-31"
-	materialLog, err := svc.GetMaterialLogs(fromDate, toDate)
+	matInfo, err := svc.GetJobMaterialInfo(fromDate, toDate)
 	if err != nil {
 		panic(err)
 	}
-	if err := svc.ExportMaterialLogs(materialLog); err != nil {
+	if err := svc.ExportJobMaterialInfo(matInfo); err != nil {
 		panic(err)
 	}
 }

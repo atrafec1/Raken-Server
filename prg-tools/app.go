@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"prg_tools/material"
+	"prg_tools/material/domain"
 	"prg_tools/payroll"
 	"prg_tools/payroll/dto"
 	"prg_tools/report"
@@ -12,9 +14,10 @@ import (
 
 // App struct
 type App struct {
-	ctx            context.Context
-	ReportExporter *report.ReportExporterService
-	PayrollService *payroll.PayrollService
+	ctx                     context.Context
+	ReportExporter          *report.ReportExporterService
+	PayrollService          *payroll.PayrollService
+	ProgressEstimateService *material.ProgressEstimateService
 }
 
 // NewApp creates a new App application struct
@@ -144,4 +147,31 @@ func (a *App) GetExportDir() string {
 		return ""
 	}
 	return a.ReportExporter.GetBaseDir()
+}
+
+// Progress Estimate Service
+func (a *App) ensureProgressEstimateService() error {
+	if a.ProgressEstimateService != nil {
+		return nil
+	}
+	svc, err := material.RakenProgressEstimateService("I:\\Raken")
+	if err != nil {
+		return fmt.Errorf("failed to intitialize Raken Progress Estimate Service: %w", err)
+	}
+	a.ProgressEstimateService = svc
+	return nil
+}
+
+func (a *App) ExportProgressEstimate(JobMatInfo []domain.JobMaterialInfo) error {
+	a.ensureProgressEstimateService()
+
+	if err := a.ProgressEstimateService.ExportJobMaterialInfo(JobMatInfo); err != nil {
+		return fmt.Errorf("error exporting job material info: %v", err)
+	}
+	return nil
+}
+
+func (a *App) GetJobMaterialInfo(fromDate, toDate string) ([]domain.JobMaterialInfo, error) {
+	a.ensureProgressEstimateService()
+	return a.ProgressEstimateService.GetJobMaterialInfo(fromDate, toDate)
 }

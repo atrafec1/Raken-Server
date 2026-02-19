@@ -18,10 +18,10 @@ func NewProgressEstimateService(materialSource port.MaterialSource, estimateExpo
 
 }
 
-func (s *ProgressEstimateService) GetMaterialLogs(fromDate, toDate string) ([]domain.JobMaterialInfo, error) {
+func (s *ProgressEstimateService) GetJobMaterialInfo(fromDate, toDate string) ([]domain.JobMaterialInfo, error) {
 	return s.materialSource.GetJobMaterialInfo(fromDate, toDate)
 }
 
-func (s *ProgressEstimateService) ExportMaterialLogs(logs []domain.JobMaterialInfo) error {
+func (s *ProgressEstimateService) ExportJobMaterialInfo(logs []domain.JobMaterialInfo) error {
 	return s.materialExporter.ExportJobMaterialInfo(logs)
 }

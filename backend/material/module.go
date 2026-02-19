@@ -13,12 +13,12 @@ func NewTestProgressEstimateService() *ProgressEstimateService {
 	return ProgressService
 }
 
-func RakenProgressEstimateService(estimateProgDir string) *ProgressEstimateService {
+func RakenProgressEstimateService(estimateProgDir string) (*ProgressEstimateService, error) {
 	rakenAdapter, err := raken.NewAdapter()
 	if err != nil {
-		panic("Failed to create Raken adapter: " + err.Error())
+		return nil, err
 	}
 	materialExporter := excel.NewAdapter(estimateProgDir)
 	ProgressService := NewProgressEstimateService(rakenAdapter, materialExporter)
-	return ProgressService
+	return ProgressService, nil
 }
