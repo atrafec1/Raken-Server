@@ -1,11 +1,5 @@
 package excel
 
-type ProgressSheetSection struct {
-	FromDate string
-	ToDate   string
-	Rows     []ProgressRow
-}
-
 type ProgressRow struct {
 	Date       string
 	Quantities map[string]float64 // BidNumber -> Quantity
@@ -13,9 +7,11 @@ type ProgressRow struct {
 
 type ProgressSheet struct {
 	BidItems  []BidItem
-	Sections  []ProgressSheetSection
 	SheetName string
 	JobDetail string
+	Rows      []ProgressRow
+	FromDate  string
+	ToDate    string
 }
 
 type BidItem struct {

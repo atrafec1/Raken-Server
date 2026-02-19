@@ -3,6 +3,7 @@ package excel
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/xuri/excelize/v2"
 )
@@ -33,4 +34,25 @@ func renameFileSheet(f *excelize.File, index int, newName string) error {
 }
 func renameBaseSheet(f *excelize.File, newName string) error {
 	return renameFileSheet(f, 0, newName)
+}
+
+// gets the date for th end of the week given the current week (from date)
+func getSunday(date string) string {
+	parsedDate, err := time.Parse("01-02-06", date)
+	if err != nil {
+		return date
+	}
+	offset := (int(parsedDate.Weekday()) + 7) % 7
+	sunday := parsedDate.AddDate(0, 0, -offset)
+	return sunday.Format("01-02-06")
+}
+
+func getMonday(date string) string {
+	parsedDate, err := time.Parse("01-02-06", date)
+	if err != nil {
+		return date
+	}
+	offset := (int(parsedDate.Weekday()) + 6) % 7
+	monday := parsedDate.AddDate(0, 0, -offset)
+	return monday.Format("01-02-06")
 }
