@@ -14,12 +14,20 @@ export function ExportPayrollWarnings(arg1) {
   return window['go']['main']['App']['ExportPayrollWarnings'](arg1);
 }
 
+export function ExportProgressEstimate(arg1) {
+  return window['go']['main']['App']['ExportProgressEstimate'](arg1);
+}
+
 export function FetchPayrollEntries(arg1, arg2) {
   return window['go']['main']['App']['FetchPayrollEntries'](arg1, arg2);
 }
 
 export function GetExportDir() {
   return window['go']['main']['App']['GetExportDir']();
+}
+
+export function GetJobMaterialInfo(arg1, arg2) {
+  return window['go']['main']['App']['GetJobMaterialInfo'](arg1, arg2);
 }
 
 export function GroupPayrollWarnings(arg1) {

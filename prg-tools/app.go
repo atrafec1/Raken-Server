@@ -8,8 +8,9 @@ import (
 	"prg_tools/payroll"
 	"prg_tools/payroll/dto"
 	"prg_tools/report"
-
+	"prg_tools/datbase"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
+	"gorm.io/gorm"
 )
 
 // App struct
@@ -18,10 +19,12 @@ type App struct {
 	ReportExporter          *report.ReportExporterService
 	PayrollService          *payroll.PayrollService
 	ProgressEstimateService *material.ProgressEstimateService
+	DB                      *gorm.DB
 }
 
 // NewApp creates a new App application struct
 func NewApp() *App {
+
 	return &App{}
 }
 
@@ -31,6 +34,10 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
+
+func (a *App) InitDB() error {
+	
+}
 func (a *App) ensurePayrollService() error {
 	if a.PayrollService != nil {
 		return nil

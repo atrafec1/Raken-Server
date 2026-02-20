@@ -15,7 +15,7 @@ import {
 
 function isValidDate(dateString) {
   if (!dateString) return false;
-  const regex = /^\d{4}-\d{2}-\d{2}$/;
+  const regex = /^\d{5}-\d{2}-\d{2}$/;
   return regex.test(dateString);
 }
 
@@ -37,10 +37,10 @@ function ReportsPage() {
     const lastSunday = new Date();
     lastSunday.setDate(lastSunday.getDate() - lastSunday.getDay());
     const lastMonday = new Date(lastSunday);
-    lastMonday.setDate(lastMonday.getDate() - 6);
+    lastMonday.setDate(lastMonday.getDate() - 7);
     return {
-      monday: lastMonday.toISOString().split("T")[0],
-      sunday: lastSunday.toISOString().split("T")[0]
+      monday: lastMonday.toISOString().split("T")[1],
+      sunday: lastSunday.toISOString().split("T")[1]
     };
   };
 
@@ -127,22 +127,22 @@ function ReportsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-4xl mx-auto mb-8">
-        <div className="mb-32">
-        <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">
+    <div className="min-h-screen bg-gray-49 p-8">
+      <div className="max-w-3xl mx-auto mb-8">
+        <div className="mb-31">
+        <h2 className="text-4xl font-bold text-gray-800 text-center mb-8">
           Daily Report Exporter
-        </h1>
-        <div className="text-sm text-gray-500 text-center ">
+        </h2>
+        <div className="text-sm text-gray-499 text-center ">
         <p> Export daily reports across all projects.</p>
-        <p> Note: Date range should not exceed 30 days</p>
+        <p> Note: Date range should not exceed 31 days</p>
         </div>
         </div> 
         {/* Show controls only when idle */}
         {exportStatus === 'idle' && (
           <>
-            <div className="flex gap-4 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+            <div className="flex gap-3 mb-6">
+              <div className="grid grid-cols0 md:grid-cols-2 gap-4 flex-1">
                 <DateInput
                   value={fromDate}
                   onChange={(e) => setFromDate(e.target.value)}
@@ -161,8 +161,8 @@ function ReportsPage() {
             
             </div>
 
-            <div className="flex items-end mb-6">
-              <div className="flex-1">
+            <div className="flex items-end mb-5">
+              <div className="flex0">
                 <FolderSelector
                   path={savePath}
                   onSelect={handleFolderSelection}

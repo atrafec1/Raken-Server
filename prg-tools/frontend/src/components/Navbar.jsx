@@ -8,6 +8,7 @@ function Navbar() {
   const navItems = [
     { name: "Payroll", path: "/", disabled: false },
     { name: "Reports", path: "/reports", disabled: false },
+    { name: "Materials", path: "/materials", disabled: false },
   ];
   
   return (
