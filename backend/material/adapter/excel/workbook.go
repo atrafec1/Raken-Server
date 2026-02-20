@@ -30,7 +30,7 @@ func CreateProgressWorkbook(saveDir, fileName string, sheets []ProgressSheet) er
 	}
 
 	f := excelize.NewFile()
-
+	renameBaseSheet(f, "Estimate - Daily Analysis")
 	// Rename default sheet to first sheet name
 	firstName := safeSheetName(sheets[0].SheetName, 1)
 	renameBaseSheet(f, firstName)

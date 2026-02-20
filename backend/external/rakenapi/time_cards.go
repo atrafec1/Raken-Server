@@ -34,10 +34,7 @@ type Classification struct {
 	Name string `json:"name"`
 }
 
-type CostCode struct {
-	Code     string `json:"code"`
-	Division string `json:"division"`
-}
+
 
 func (c *Client) GetTimeCards(fromDate, toDate string) (*TimeCardResponse, error) {
 	limit := "1000"
